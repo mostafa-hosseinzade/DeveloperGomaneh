@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="FactorCreateDlg" widgetVar="FactorCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateFactorTitle}">
+            <h:form id="FactorCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{factorController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateFactorLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{factorController.selected.id}" title="#{bundle.CreateFactorTitle_id}" required="true" requiredMessage="#{bundle.CreateFactorRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.CreateFactorLabel_arrayFactorField}" for="arrayFactorField" />
+                        <p:inputText id="arrayFactorField" value="#{factorController.selected.arrayFactorField}" title="#{bundle.CreateFactorTitle_arrayFactorField}" required="true" requiredMessage="#{bundle.CreateFactorRequiredMessage_arrayFactorField}"/>
+                        <p:outputLabel value="#{bundle.CreateFactorLabel_total}" for="total" />
+                        <p:inputText id="total" value="#{factorController.selected.total}" title="#{bundle.CreateFactorTitle_total}" required="true" requiredMessage="#{bundle.CreateFactorRequiredMessage_total}"/>
+                        <p:outputLabel value="#{bundle.CreateFactorLabel_ipClient}" for="ipClient" />
+                        <p:inputText id="ipClient" value="#{factorController.selected.ipClient}" title="#{bundle.CreateFactorTitle_ipClient}" />
+                        <p:outputLabel value="#{bundle.CreateFactorLabel_date}" for="date" />
+                        <p:calendar id="date" pattern="MM/dd/yyyy" value="#{factorController.selected.date}" title="#{bundle.EditFactorTitle_date}" required="true" requiredMessage="#{bundle.EditFactorRequiredMessage_date}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateFactorLabel_createdAt}" for="createdAt" />
+                        <p:calendar id="createdAt" pattern="MM/dd/yyyy HH:mm:ss" value="#{factorController.selected.createdAt}" title="#{bundle.EditFactorTitle_createdAt}" required="true" requiredMessage="#{bundle.EditFactorRequiredMessage_createdAt}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateFactorLabel_userid}" for="userid" />
+                        <p:selectOneMenu id="userid" value="#{factorController.selected.userid}" >
+                            <f:selectItems value="#{userController.itemsAvailableSelectOne}"
+                                           var="useridItem"
+                                           itemValue="#{useridItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{factorController.create}" value="#{bundle.Save}" update="display,:FactorListForm:datalist,:growl" oncomplete="handleSubmit(args,'FactorCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="FactorCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

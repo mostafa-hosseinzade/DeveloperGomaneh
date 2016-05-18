@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="FaqCreateDlg" widgetVar="FaqCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateFaqTitle}">
+            <h:form id="FaqCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{faqController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateFaqLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{faqController.selected.id}" title="#{bundle.CreateFaqTitle_id}" required="true" requiredMessage="#{bundle.CreateFaqRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.CreateFaqLabel_faq}" for="faq" />
+                        <p:inputText id="faq" value="#{faqController.selected.faq}" title="#{bundle.CreateFaqTitle_faq}" required="true" requiredMessage="#{bundle.CreateFaqRequiredMessage_faq}"/>
+                        <p:outputLabel value="#{bundle.CreateFaqLabel_slug}" for="slug" />
+                        <p:inputText id="slug" value="#{faqController.selected.slug}" title="#{bundle.CreateFaqTitle_slug}" required="true" requiredMessage="#{bundle.CreateFaqRequiredMessage_slug}"/>
+                        <p:outputLabel value="#{bundle.CreateFaqLabel_orderList}" for="orderList" />
+                        <p:inputText id="orderList" value="#{faqController.selected.orderList}" title="#{bundle.CreateFaqTitle_orderList}" />
+                        <p:outputLabel value="#{bundle.CreateFaqLabel_visible}" for="visible" />
+                        <p:selectBooleanCheckbox id="visible" value="#{faqController.selected.visible}" required="true" requiredMessage="#{bundle.EditFaqRequiredMessage_visible}"/>
+                        <p:outputLabel value="#{bundle.CreateFaqLabel_enable}" for="enable" />
+                        <p:selectBooleanCheckbox id="enable" value="#{faqController.selected.enable}" required="true" requiredMessage="#{bundle.EditFaqRequiredMessage_enable}"/>
+                        <p:outputLabel value="#{bundle.CreateFaqLabel_answer}" for="answer" />
+                        <p:inputText id="answer" value="#{faqController.selected.answer}" title="#{bundle.CreateFaqTitle_answer}" />
+                        <p:outputLabel value="#{bundle.CreateFaqLabel_meta}" for="meta" />
+                        <p:inputText id="meta" value="#{faqController.selected.meta}" title="#{bundle.CreateFaqTitle_meta}" />
+                        <p:outputLabel value="#{bundle.CreateFaqLabel_createdAt}" for="createdAt" />
+                        <p:calendar id="createdAt" pattern="MM/dd/yyyy HH:mm:ss" value="#{faqController.selected.createdAt}" title="#{bundle.EditFaqTitle_createdAt}" required="true" requiredMessage="#{bundle.EditFaqRequiredMessage_createdAt}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateFaqLabel_updatedAt}" for="updatedAt" />
+                        <p:calendar id="updatedAt" pattern="MM/dd/yyyy HH:mm:ss" value="#{faqController.selected.updatedAt}" title="#{bundle.EditFaqTitle_updatedAt}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateFaqLabel_userid}" for="userid" />
+                        <p:selectOneMenu id="userid" value="#{faqController.selected.userid}" >
+                            <f:selectItems value="#{userController.itemsAvailableSelectOne}"
+                                           var="useridItem"
+                                           itemValue="#{useridItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{faqController.create}" value="#{bundle.Save}" update="display,:FaqListForm:datalist,:growl" oncomplete="handleSubmit(args,'FaqCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="FaqCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

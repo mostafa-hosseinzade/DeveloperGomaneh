@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="FactorFieldEditDlg" widgetVar="FactorFieldEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditFactorFieldTitle}">
+            <h:form id="FactorFieldEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{factorFieldController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditFactorFieldLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{factorFieldController.selected.id}" title="#{bundle.EditFactorFieldTitle_id}" required="true" requiredMessage="#{bundle.EditFactorFieldRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.EditFactorFieldLabel_title}" for="title" />
+                        <p:inputText id="title" value="#{factorFieldController.selected.title}" title="#{bundle.EditFactorFieldTitle_title}" required="true" requiredMessage="#{bundle.EditFactorFieldRequiredMessage_title}"/>
+                        <p:outputLabel value="#{bundle.EditFactorFieldLabel_price}" for="price" />
+                        <p:inputText id="price" value="#{factorFieldController.selected.price}" title="#{bundle.EditFactorFieldTitle_price}" required="true" requiredMessage="#{bundle.EditFactorFieldRequiredMessage_price}"/>
+                        <p:outputLabel value="#{bundle.EditFactorFieldLabel_describtion}" for="describtion" />
+                        <p:inputText id="describtion" value="#{factorFieldController.selected.describtion}" title="#{bundle.EditFactorFieldTitle_describtion}" />
+                        <p:outputLabel value="#{bundle.EditFactorFieldLabel_createdAt}" for="createdAt" />
+                        <p:calendar id="createdAt" pattern="MM/dd/yyyy HH:mm:ss" value="#{factorFieldController.selected.createdAt}" title="#{bundle.EditFactorFieldTitle_createdAt}" required="true" requiredMessage="#{bundle.EditFactorFieldRequiredMessage_createdAt}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditFactorFieldLabel_updatedAt}" for="updatedAt" />
+                        <p:calendar id="updatedAt" pattern="MM/dd/yyyy HH:mm:ss" value="#{factorFieldController.selected.updatedAt}" title="#{bundle.EditFactorFieldTitle_updatedAt}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditFactorFieldLabel_userid}" for="userid" />
+                        <p:selectOneMenu id="userid" value="#{factorFieldController.selected.userid}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{userController.itemsAvailableSelectOne}"
+                                           var="useridItem"
+                                           itemValue="#{useridItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditFactorFieldLabel_sectionFactorid}" for="sectionFactorid" />
+                        <p:selectOneMenu id="sectionFactorid" value="#{factorFieldController.selected.sectionFactorid}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{sectionFactorController.itemsAvailableSelectOne}"
+                                           var="sectionFactoridItem"
+                                           itemValue="#{sectionFactoridItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{factorFieldController.update}" value="#{bundle.Save}" update="display,:FactorFieldListForm:datalist,:growl" oncomplete="handleSubmit(args, 'FactorFieldEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="FactorFieldEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

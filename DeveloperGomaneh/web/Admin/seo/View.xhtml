@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SeoViewDlg" widgetVar="SeoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewSeoTitle}">
+            <h:form id="SeoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{seoController.selected != null}">
+                        <h:outputText value="#{bundle.ViewSeoLabel_id}"/>
+                        <h:outputText value="#{seoController.selected.id}" title="#{bundle.ViewSeoTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewSeoLabel_title}"/>
+                        <h:outputText value="#{seoController.selected.title}" title="#{bundle.ViewSeoTitle_title}"/>
+                        <h:outputText value="#{bundle.ViewSeoLabel_describtion}"/>
+                        <h:outputText value="#{seoController.selected.describtion}" title="#{bundle.ViewSeoTitle_describtion}"/>
+                        <h:outputText value="#{bundle.ViewSeoLabel_price}"/>
+                        <h:outputText value="#{seoController.selected.price}" title="#{bundle.ViewSeoTitle_price}"/>
+                        <h:outputText value="#{bundle.ViewSeoLabel_meta}"/>
+                        <h:outputText value="#{seoController.selected.meta}" title="#{bundle.ViewSeoTitle_meta}"/>
+                        <h:outputText value="#{bundle.ViewSeoLabel_slug}"/>
+                        <h:outputText value="#{seoController.selected.slug}" title="#{bundle.ViewSeoTitle_slug}"/>
+                        <h:outputText value="#{bundle.ViewSeoLabel_createdAt}"/>
+                        <h:outputText value="#{seoController.selected.createdAt}" title="#{bundle.ViewSeoTitle_createdAt}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewSeoLabel_updatedAt}"/>
+                        <h:outputText value="#{seoController.selected.updatedAt}" title="#{bundle.ViewSeoTitle_updatedAt}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewSeoLabel_userid}"/>
+                        <h:outputText value="#{seoController.selected.userid}" title="#{bundle.ViewSeoTitle_userid}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="SeoViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

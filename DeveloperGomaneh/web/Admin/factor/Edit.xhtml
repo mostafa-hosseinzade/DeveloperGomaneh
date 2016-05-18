@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="FactorEditDlg" widgetVar="FactorEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditFactorTitle}">
+            <h:form id="FactorEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{factorController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditFactorLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{factorController.selected.id}" title="#{bundle.EditFactorTitle_id}" required="true" requiredMessage="#{bundle.EditFactorRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.EditFactorLabel_arrayFactorField}" for="arrayFactorField" />
+                        <p:inputText id="arrayFactorField" value="#{factorController.selected.arrayFactorField}" title="#{bundle.EditFactorTitle_arrayFactorField}" required="true" requiredMessage="#{bundle.EditFactorRequiredMessage_arrayFactorField}"/>
+                        <p:outputLabel value="#{bundle.EditFactorLabel_total}" for="total" />
+                        <p:inputText id="total" value="#{factorController.selected.total}" title="#{bundle.EditFactorTitle_total}" required="true" requiredMessage="#{bundle.EditFactorRequiredMessage_total}"/>
+                        <p:outputLabel value="#{bundle.EditFactorLabel_ipClient}" for="ipClient" />
+                        <p:inputText id="ipClient" value="#{factorController.selected.ipClient}" title="#{bundle.EditFactorTitle_ipClient}" />
+                        <p:outputLabel value="#{bundle.EditFactorLabel_date}" for="date" />
+                        <p:calendar id="date" pattern="MM/dd/yyyy" value="#{factorController.selected.date}" title="#{bundle.EditFactorTitle_date}" required="true" requiredMessage="#{bundle.EditFactorRequiredMessage_date}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditFactorLabel_createdAt}" for="createdAt" />
+                        <p:calendar id="createdAt" pattern="MM/dd/yyyy HH:mm:ss" value="#{factorController.selected.createdAt}" title="#{bundle.EditFactorTitle_createdAt}" required="true" requiredMessage="#{bundle.EditFactorRequiredMessage_createdAt}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditFactorLabel_userid}" for="userid" />
+                        <p:selectOneMenu id="userid" value="#{factorController.selected.userid}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{userController.itemsAvailableSelectOne}"
+                                           var="useridItem"
+                                           itemValue="#{useridItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{factorController.update}" value="#{bundle.Save}" update="display,:FactorListForm:datalist,:growl" oncomplete="handleSubmit(args, 'FactorEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="FactorEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

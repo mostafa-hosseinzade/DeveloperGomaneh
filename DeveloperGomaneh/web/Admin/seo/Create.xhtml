@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SeoCreateDlg" widgetVar="SeoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateSeoTitle}">
+            <h:form id="SeoCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{seoController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateSeoLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{seoController.selected.id}" title="#{bundle.CreateSeoTitle_id}" required="true" requiredMessage="#{bundle.CreateSeoRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.CreateSeoLabel_title}" for="title" />
+                        <p:inputText id="title" value="#{seoController.selected.title}" title="#{bundle.CreateSeoTitle_title}" required="true" requiredMessage="#{bundle.CreateSeoRequiredMessage_title}"/>
+                        <p:outputLabel value="#{bundle.CreateSeoLabel_describtion}" for="describtion" />
+                        <p:inputTextarea rows="4" cols="30" id="describtion" value="#{seoController.selected.describtion}" title="#{bundle.CreateSeoTitle_describtion}" required="true" requiredMessage="#{bundle.CreateSeoRequiredMessage_describtion}"/>
+                        <p:outputLabel value="#{bundle.CreateSeoLabel_price}" for="price" />
+                        <p:inputText id="price" value="#{seoController.selected.price}" title="#{bundle.CreateSeoTitle_price}" />
+                        <p:outputLabel value="#{bundle.CreateSeoLabel_meta}" for="meta" />
+                        <p:inputText id="meta" value="#{seoController.selected.meta}" title="#{bundle.CreateSeoTitle_meta}" />
+                        <p:outputLabel value="#{bundle.CreateSeoLabel_slug}" for="slug" />
+                        <p:inputText id="slug" value="#{seoController.selected.slug}" title="#{bundle.CreateSeoTitle_slug}" required="true" requiredMessage="#{bundle.CreateSeoRequiredMessage_slug}"/>
+                        <p:outputLabel value="#{bundle.CreateSeoLabel_createdAt}" for="createdAt" />
+                        <p:calendar id="createdAt" pattern="MM/dd/yyyy HH:mm:ss" value="#{seoController.selected.createdAt}" title="#{bundle.EditSeoTitle_createdAt}" required="true" requiredMessage="#{bundle.EditSeoRequiredMessage_createdAt}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateSeoLabel_updatedAt}" for="updatedAt" />
+                        <p:calendar id="updatedAt" pattern="MM/dd/yyyy HH:mm:ss" value="#{seoController.selected.updatedAt}" title="#{bundle.EditSeoTitle_updatedAt}" required="true" requiredMessage="#{bundle.EditSeoRequiredMessage_updatedAt}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateSeoLabel_userid}" for="userid" />
+                        <p:selectOneMenu id="userid" value="#{seoController.selected.userid}" >
+                            <f:selectItems value="#{userController.itemsAvailableSelectOne}"
+                                           var="useridItem"
+                                           itemValue="#{useridItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{seoController.create}" value="#{bundle.Save}" update="display,:SeoListForm:datalist,:growl" oncomplete="handleSubmit(args,'SeoCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="SeoCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

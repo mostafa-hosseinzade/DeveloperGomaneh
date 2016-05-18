@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ContentViewDlg" widgetVar="ContentViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewContentTitle}">
+            <h:form id="ContentViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{contentController.selected != null}">
+                        <h:outputText value="#{bundle.ViewContentLabel_id}"/>
+                        <h:outputText value="#{contentController.selected.id}" title="#{bundle.ViewContentTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewContentLabel_title}"/>
+                        <h:outputText value="#{contentController.selected.title}" title="#{bundle.ViewContentTitle_title}"/>
+                        <h:outputText value="#{bundle.ViewContentLabel_content}"/>
+                        <h:outputText value="#{contentController.selected.content}" title="#{bundle.ViewContentTitle_content}"/>
+                        <h:outputText value="#{bundle.ViewContentLabel_orderList}"/>
+                        <h:outputText value="#{contentController.selected.orderList}" title="#{bundle.ViewContentTitle_orderList}"/>
+                        <h:outputText value="#{bundle.ViewContentLabel_meta}"/>
+                        <h:outputText value="#{contentController.selected.meta}" title="#{bundle.ViewContentTitle_meta}"/>
+                        <h:outputText value="#{bundle.ViewContentLabel_slug}"/>
+                        <h:outputText value="#{contentController.selected.slug}" title="#{bundle.ViewContentTitle_slug}"/>
+                        <h:outputText value="#{bundle.ViewContentLabel_createdAt}"/>
+                        <h:outputText value="#{contentController.selected.createdAt}" title="#{bundle.ViewContentTitle_createdAt}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewContentLabel_updatedAt}"/>
+                        <h:outputText value="#{contentController.selected.updatedAt}" title="#{bundle.ViewContentTitle_updatedAt}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewContentLabel_userid}"/>
+                        <h:outputText value="#{contentController.selected.userid}" title="#{bundle.ViewContentTitle_userid}"/>
+                        <h:outputText value="#{bundle.ViewContentLabel_contentCategoryid}"/>
+                        <h:outputText value="#{contentController.selected.contentCategoryid}" title="#{bundle.ViewContentTitle_contentCategoryid}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="ContentViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
