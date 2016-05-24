@@ -6,6 +6,7 @@
 package Bean;
 
 import Entity.Portfolio;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -17,7 +18,7 @@ import javax.persistence.PersistenceContext;
 @Stateless
 public class PortfolioFacade extends AbstractFacade<Portfolio> {
 
-    @PersistenceContext(unitName = "DeveloperGomanehPU")
+    @PersistenceContext(unitName = "DeveloperPU")
     private EntityManager em;
 
     @Override

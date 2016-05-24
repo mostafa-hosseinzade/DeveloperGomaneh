@@ -7,15 +7,6 @@
 #menu-4 .mbr-navbar__hamburger {
   color: #ffffff;
 }
-#features1-6 P {
-  text-align: right;
-}
-#header2-5 P {
-  text-align: right;
-}
-#header2-5 H1 {
-  text-align: right;
-}
 #msg-box1-7 .mbr-header .mbr-header__text {
   color: #fff;
   text-align: right;
@@ -35,5 +26,11 @@
   color: #ffffff;
 }
 #msg-box4-14 .mbr-article P {
+  text-align: right;
+}
+#header2-5 P {
+  text-align: right;
+}
+#header2-5 H1 {
   text-align: right;
 }

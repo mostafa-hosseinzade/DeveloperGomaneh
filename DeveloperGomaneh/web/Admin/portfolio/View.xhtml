@@ -8,40 +8,38 @@
 
     <ui:composition>
 
-        <p:dialog id="PortfolioViewDlg" widgetVar="PortfolioViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewPortfolioTitle}">
+        <p:dialog id="PortfolioViewDlg" widgetVar="PortfolioViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle3.ViewPortfolioTitle}">
             <h:form id="PortfolioViewForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{portfolioController.selected != null}">
-                        <h:outputText value="#{bundle.ViewPortfolioLabel_id}"/>
-                        <h:outputText value="#{portfolioController.selected.id}" title="#{bundle.ViewPortfolioTitle_id}"/>
-                        <h:outputText value="#{bundle.ViewPortfolioLabel_title}"/>
-                        <h:outputText value="#{portfolioController.selected.title}" title="#{bundle.ViewPortfolioTitle_title}"/>
-                        <h:outputText value="#{bundle.ViewPortfolioLabel_describtion}"/>
-                        <h:outputText value="#{portfolioController.selected.describtion}" title="#{bundle.ViewPortfolioTitle_describtion}"/>
-                        <h:outputText value="#{bundle.ViewPortfolioLabel_url}"/>
-                        <h:outputText value="#{portfolioController.selected.url}" title="#{bundle.ViewPortfolioTitle_url}"/>
-                        <h:outputText value="#{bundle.ViewPortfolioLabel_pic}"/>
-                        <h:outputText value="#{portfolioController.selected.pic}" title="#{bundle.ViewPortfolioTitle_pic}"/>
-                        <h:outputText value="#{bundle.ViewPortfolioLabel_visit}"/>
-                        <h:outputText value="#{portfolioController.selected.visit}" title="#{bundle.ViewPortfolioTitle_visit}"/>
-                        <h:outputText value="#{bundle.ViewPortfolioLabel_finished}"/>
-                        <h:outputText value="#{portfolioController.selected.finished}" title="#{bundle.ViewPortfolioTitle_finished}">
+                        <h:outputText value="#{bundle3.ViewPortfolioLabel_id}"/>
+                        <h:outputText value="#{portfolioController.selected.id}" title="#{bundle3.ViewPortfolioTitle_id}"/>
+                        <h:outputText value="#{bundle3.ViewPortfolioLabel_title}"/>
+                        <h:outputText value="#{portfolioController.selected.title}" title="#{bundle3.ViewPortfolioTitle_title}"/>
+                        <h:outputText value="#{bundle3.ViewPortfolioLabel_describtion}"/>
+                        <h:outputText value="#{portfolioController.selected.describtion}" title="#{bundle3.ViewPortfolioTitle_describtion}"/>
+                        <h:outputText value="#{bundle3.ViewPortfolioLabel_url}"/>
+                        <h:outputText value="#{portfolioController.selected.url}" title="#{bundle3.ViewPortfolioTitle_url}"/>
+                        <h:outputText value="#{bundle3.ViewPortfolioLabel_visit}"/>
+                        <h:outputText value="#{portfolioController.selected.visit}" title="#{bundle3.ViewPortfolioTitle_visit}"/>
+                        <h:outputText value="#{bundle3.ViewPortfolioLabel_finished}"/>
+                        <h:outputText value="#{portfolioController.selected.finished}" title="#{bundle3.ViewPortfolioTitle_finished}">
                             <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
                         </h:outputText>
-                        <h:outputText value="#{bundle.ViewPortfolioLabel_portfolioCategoryid}"/>
-                        <h:outputText value="#{portfolioController.selected.portfolioCategoryid}" title="#{bundle.ViewPortfolioTitle_portfolioCategoryid}"/>
-                        <h:outputText value="#{bundle.ViewPortfolioLabel_percent}"/>
-                        <h:outputText value="#{portfolioController.selected.percent}" title="#{bundle.ViewPortfolioTitle_percent}"/>
-                        <h:outputText value="#{bundle.ViewPortfolioLabel_createdAt}"/>
-                        <h:outputText value="#{portfolioController.selected.createdAt}" title="#{bundle.ViewPortfolioTitle_createdAt}">
+                        <h:outputText value="#{bundle3.ViewPortfolioLabel_portfolioCategoryid}"/>
+                        <h:outputText value="#{portfolioController.selected.portfolioCategoryid}" title="#{bundle3.ViewPortfolioTitle_portfolioCategoryid}"/>
+                        <h:outputText value="#{bundle3.ViewPortfolioLabel_percent}"/>
+                        <h:outputText value="#{portfolioController.selected.percent}" title="#{bundle3.ViewPortfolioTitle_percent}"/>
+                        <h:outputText value="#{bundle3.ViewPortfolioLabel_createdAt}"/>
+                        <h:outputText value="#{portfolioController.selected.createdAt}" title="#{bundle3.ViewPortfolioTitle_createdAt}">
                             <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
                         </h:outputText>
-                        <h:outputText value="#{bundle.ViewPortfolioLabel_updatedAt}"/>
-                        <h:outputText value="#{portfolioController.selected.updatedAt}" title="#{bundle.ViewPortfolioTitle_updatedAt}">
+                        <h:outputText value="#{bundle3.ViewPortfolioLabel_updatedAt}"/>
+                        <h:outputText value="#{portfolioController.selected.updatedAt}" title="#{bundle3.ViewPortfolioTitle_updatedAt}">
                             <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
                         </h:outputText>
                     </p:panelGrid>
-                    <p:commandButton value="#{bundle.Close}" onclick="PortfolioViewDialog.hide()"/>
+                    <p:commandButton value="#{bundle3.Close}" onclick="PortfolioViewDialog.hide()"/>
                 </h:panelGroup>
             </h:form>
         </p:dialog>

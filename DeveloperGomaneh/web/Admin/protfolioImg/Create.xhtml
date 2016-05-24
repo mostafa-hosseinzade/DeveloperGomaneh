@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ProtfolioImgCreateDlg" widgetVar="ProtfolioImgCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle3.CreateProtfolioImgTitle}">
+            <h:form id="ProtfolioImgCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{protfolioImgController.selected != null}">
+                        <p:outputLabel value="#{bundle3.CreateProtfolioImgLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{protfolioImgController.selected.id}" title="#{bundle3.CreateProtfolioImgTitle_id}" required="true" requiredMessage="#{bundle3.CreateProtfolioImgRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle3.CreateProtfolioImgLabel_title}" for="title" />
+                        <p:inputText id="title" value="#{protfolioImgController.selected.title}" title="#{bundle3.CreateProtfolioImgTitle_title}" required="true" requiredMessage="#{bundle3.CreateProtfolioImgRequiredMessage_title}"/>
+                        <p:outputLabel value="#{bundle3.CreateProtfolioImgLabel_url}" for="url" />
+                        <p:inputText id="url" value="#{protfolioImgController.selected.url}" title="#{bundle3.CreateProtfolioImgTitle_url}" required="true" requiredMessage="#{bundle3.CreateProtfolioImgRequiredMessage_url}"/>
+                        <p:outputLabel value="#{bundle3.CreateProtfolioImgLabel_type}" for="type" />
+                        <p:inputText id="type" value="#{protfolioImgController.selected.type}" title="#{bundle3.CreateProtfolioImgTitle_type}" required="true" requiredMessage="#{bundle3.CreateProtfolioImgRequiredMessage_type}"/>
+                        <p:outputLabel value="#{bundle3.CreateProtfolioImgLabel_createdAt}" for="createdAt" />
+                        <p:calendar id="createdAt" pattern="MM/dd/yyyy HH:mm:ss" value="#{protfolioImgController.selected.createdAt}" title="#{bundle3.EditProtfolioImgTitle_createdAt}" required="true" requiredMessage="#{bundle3.EditProtfolioImgRequiredMessage_createdAt}" showOn="button"/>
+                        <p:outputLabel value="#{bundle3.CreateProtfolioImgLabel_updatedAt}" for="updatedAt" />
+                        <p:calendar id="updatedAt" pattern="MM/dd/yyyy HH:mm:ss" value="#{protfolioImgController.selected.updatedAt}" title="#{bundle3.EditProtfolioImgTitle_updatedAt}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle3.CreateProtfolioImgLabel_potfolioid}" for="potfolioid" />
+                        <p:selectOneMenu id="potfolioid" value="#{protfolioImgController.selected.potfolioid}" >
+                            <f:selectItems value="#{portfolioController.itemsAvailableSelectOne}"
+                                           var="potfolioidItem"
+                                           itemValue="#{potfolioidItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{protfolioImgController.create}" value="#{bundle3.Save}" update="display,:ProtfolioImgListForm:datalist,:growl" oncomplete="handleSubmit(args,'ProtfolioImgCreateDialog');"/>
+                    <p:commandButton value="#{bundle3.Cancel}" onclick="ProtfolioImgCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

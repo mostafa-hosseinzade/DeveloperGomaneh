@@ -17,7 +17,7 @@ import javax.persistence.PersistenceContext;
 @Stateless
 public class SectionFactorFacade extends AbstractFacade<SectionFactor> {
 
-    @PersistenceContext(unitName = "DeveloperGomanehPU")
+    @PersistenceContext(unitName = "DeveloperPU")
     private EntityManager em;
 
     @Override

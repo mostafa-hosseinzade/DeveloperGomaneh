@@ -67,12 +67,12 @@ public class FactorField implements Serializable {
     @Column(name = "updated_at")
     @Temporal(TemporalType.TIMESTAMP)
     private Date updatedAt;
-    @JoinColumn(name = "User_id", referencedColumnName = "id")
-    @ManyToOne
-    private User userid;
     @JoinColumn(name = "SectionFactor_id", referencedColumnName = "id")
     @ManyToOne
     private SectionFactor sectionFactorid;
+    @JoinColumn(name = "User_id", referencedColumnName = "id")
+    @ManyToOne
+    private User userid;
 
     public FactorField() {
     }
@@ -136,20 +136,20 @@ public class FactorField implements Serializable {
         this.updatedAt = updatedAt;
     }
 
-    public User getUserid() {
-        return userid;
-    }
-
-    public void setUserid(User userid) {
-        this.userid = userid;
-    }
-
     public SectionFactor getSectionFactorid() {
         return sectionFactorid;
     }
 
     public void setSectionFactorid(SectionFactor sectionFactorid) {
         this.sectionFactorid = sectionFactorid;
+    }
+
+    public User getUserid() {
+        return userid;
+    }
+
+    public void setUserid(User userid) {
+        this.userid = userid;
     }
 
     @Override

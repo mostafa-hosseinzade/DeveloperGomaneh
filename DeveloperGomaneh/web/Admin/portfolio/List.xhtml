@@ -4,18 +4,19 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
-    <ui:composition template="/Admin/template.xhtml">
+    <ui:composition template="/template.xhtml">
 
 
         <ui:define name="title">
-            <h:outputText value="#{bundle.ListPortfolioTitle}"></h:outputText>
+            <h:outputText value="#{bundle3.ListPortfolioTitle}"></h:outputText>
         </ui:define>
 
         <ui:define name="body">
             <h:form id="PortfolioListForm">
-                <p:panel header="#{bundle.ListPortfolioTitle}">
+                <p:panel header="#{bundle3.ListPortfolioTitle}">
                     <p:dataTable id="datalist" value="#{portfolioController.items}" var="item"
                                  selectionMode="single" selection="#{portfolioController.selected}"
                                  paginator="true"
@@ -29,43 +30,37 @@
 
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListPortfolioTitle_id}"/>
+                                <h:outputText value="#{bundle3.ListPortfolioTitle_id}"/>
                             </f:facet>
                             <h:outputText value="#{item.id}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListPortfolioTitle_title}"/>
+                                <h:outputText value="#{bundle3.ListPortfolioTitle_title}"/>
                             </f:facet>
                             <h:outputText value="#{item.title}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListPortfolioTitle_describtion}"/>
+                                <h:outputText value="#{bundle3.ListPortfolioTitle_describtion}"/>
                             </f:facet>
                             <h:outputText value="#{item.describtion}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListPortfolioTitle_url}"/>
+                                <h:outputText value="#{bundle3.ListPortfolioTitle_url}"/>
                             </f:facet>
                             <h:outputText value="#{item.url}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListPortfolioTitle_pic}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.pic}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListPortfolioTitle_visit}"/>
+                                <h:outputText value="#{bundle3.ListPortfolioTitle_visit}"/>
                             </f:facet>
                             <h:outputText value="#{item.visit}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListPortfolioTitle_finished}"/>
+                                <h:outputText value="#{bundle3.ListPortfolioTitle_finished}"/>
                             </f:facet>
                             <h:outputText value="#{item.finished}">
                                 <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
@@ -73,19 +68,27 @@
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListPortfolioTitle_portfolioCategoryid}"/>
+                                <h:outputText value="#{bundle3.ListPortfolioTitle_portfolioCategoryid}"/>
                             </f:facet>
                             <h:outputText value="#{item.portfolioCategoryid}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListPortfolioTitle_percent}"/>
+                                <h:outputText value="#{bundle3.ListPortfolioTitle_percent}"/>
                             </f:facet>
                             <h:outputText value="#{item.percent}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListPortfolioTitle_createdAt}"/>
+                                <h:outputText value="تصاویر"/>
+                            </f:facet>
+                            <ui:repeat var="i" value="#{item.img}" >
+                                <h:graphicImage   value='/images/portfolio/#{i}' width="100" ></h:graphicImage>
+                            </ui:repeat>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle3.ListPortfolioTitle_createdAt}"/>
                             </f:facet>
                             <h:outputText value="#{item.createdAt}">
                                 <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
@@ -93,17 +96,17 @@
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListPortfolioTitle_updatedAt}"/>
+                                <h:outputText value="#{bundle3.ListPortfolioTitle_updatedAt}"/>
                             </f:facet>
                             <h:outputText value="#{item.updatedAt}">
                                 <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
                             </h:outputText>
                         </p:column>
                         <f:facet name="footer">
-                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{portfolioController.prepareCreate}" update=":PortfolioCreateForm" oncomplete="PF('PortfolioCreateDialog').show()"/>
-                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":PortfolioViewForm" oncomplete="PF('PortfolioViewDialog').show()" disabled="#{empty portfolioController.selected}"/>
-                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":PortfolioEditForm" oncomplete="PF('PortfolioEditDialog').show()" disabled="#{empty portfolioController.selected}"/>
-                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{portfolioController.destroy}" update=":growl,datalist" disabled="#{empty portfolioController.selected}"/>
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle3.Create}" actionListener="#{portfolioController.prepareCreate}" update=":PortfolioCreateForm" oncomplete="PF('PortfolioCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle3.View}" update=":PortfolioViewForm" oncomplete="PF('PortfolioViewDialog').show()" disabled="#{empty portfolioController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle3.Edit}" update=":PortfolioEditForm" oncomplete="PF('PortfolioEditDialog').show()" disabled="#{empty portfolioController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle3.Delete}" actionListener="#{portfolioController.destroy}" update=":growl,datalist" disabled="#{empty portfolioController.selected}"/>
                         </f:facet>
                     </p:dataTable>
                 </p:panel>

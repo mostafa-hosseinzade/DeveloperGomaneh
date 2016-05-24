@@ -24,17 +24,17 @@
                         <p:calendar id="createdAt" pattern="MM/dd/yyyy HH:mm:ss" value="#{factorFieldController.selected.createdAt}" title="#{bundle.EditFactorFieldTitle_createdAt}" required="true" requiredMessage="#{bundle.EditFactorFieldRequiredMessage_createdAt}" showOn="button"/>
                         <p:outputLabel value="#{bundle.CreateFactorFieldLabel_updatedAt}" for="updatedAt" />
                         <p:calendar id="updatedAt" pattern="MM/dd/yyyy HH:mm:ss" value="#{factorFieldController.selected.updatedAt}" title="#{bundle.EditFactorFieldTitle_updatedAt}"  showOn="button"/>
-                        <p:outputLabel value="#{bundle.CreateFactorFieldLabel_userid}" for="userid" />
-                        <p:selectOneMenu id="userid" value="#{factorFieldController.selected.userid}" >
-                            <f:selectItems value="#{userController.itemsAvailableSelectOne}"
-                                           var="useridItem"
-                                           itemValue="#{useridItem}"/>
-                        </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.CreateFactorFieldLabel_sectionFactorid}" for="sectionFactorid" />
                         <p:selectOneMenu id="sectionFactorid" value="#{factorFieldController.selected.sectionFactorid}" >
                             <f:selectItems value="#{sectionFactorController.itemsAvailableSelectOne}"
                                            var="sectionFactoridItem"
                                            itemValue="#{sectionFactoridItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateFactorFieldLabel_userid}" for="userid" />
+                        <p:selectOneMenu id="userid" value="#{factorFieldController.selected.userid}" >
+                            <f:selectItems value="#{userController.itemsAvailableSelectOne}"
+                                           var="useridItem"
+                                           itemValue="#{useridItem}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{factorFieldController.create}" value="#{bundle.Save}" update="display,:FactorFieldListForm:datalist,:growl" oncomplete="handleSubmit(args,'FactorFieldCreateDialog');"/>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ProtfolioImgViewDlg" widgetVar="ProtfolioImgViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle3.ViewProtfolioImgTitle}">
+            <h:form id="ProtfolioImgViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{protfolioImgController.selected != null}">
+                        <h:outputText value="#{bundle3.ViewProtfolioImgLabel_id}"/>
+                        <h:outputText value="#{protfolioImgController.selected.id}" title="#{bundle3.ViewProtfolioImgTitle_id}"/>
+                        <h:outputText value="#{bundle3.ViewProtfolioImgLabel_title}"/>
+                        <h:outputText value="#{protfolioImgController.selected.title}" title="#{bundle3.ViewProtfolioImgTitle_title}"/>
+                        <h:outputText value="#{bundle3.ViewProtfolioImgLabel_url}"/>
+                        <h:outputText value="#{protfolioImgController.selected.url}" title="#{bundle3.ViewProtfolioImgTitle_url}"/>
+                        <h:outputText value="#{bundle3.ViewProtfolioImgLabel_type}"/>
+                        <h:outputText value="#{protfolioImgController.selected.type}" title="#{bundle3.ViewProtfolioImgTitle_type}"/>
+                        <h:outputText value="#{bundle3.ViewProtfolioImgLabel_createdAt}"/>
+                        <h:outputText value="#{protfolioImgController.selected.createdAt}" title="#{bundle3.ViewProtfolioImgTitle_createdAt}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle3.ViewProtfolioImgLabel_updatedAt}"/>
+                        <h:outputText value="#{protfolioImgController.selected.updatedAt}" title="#{bundle3.ViewProtfolioImgTitle_updatedAt}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle3.ViewProtfolioImgLabel_potfolioid}"/>
+                        <h:outputText value="#{protfolioImgController.selected.potfolioid}" title="#{bundle3.ViewProtfolioImgTitle_potfolioid}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle3.Close}" onclick="ProtfolioImgViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

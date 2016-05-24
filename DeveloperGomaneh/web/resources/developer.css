@@ -1,0 +1,28 @@
+.testd{
+    position: relative;
+    direction: rtl;
+}
+
+.dropdown-test-d{
+    display: none;
+    position: absolute;
+    background-color: #1999ac;
+    width: 400px;
+    height: 100px;
+    
+}
+
+@media(max-width:460px){
+ .dropdown-test-d{
+     height: 150px;
+     width: 200px
+ }
+}
+
+.testd:hover > .dropdown-test-d{
+    display: block;
+}
+
+.dropdown-test-d:hover{
+    display: block;
+}

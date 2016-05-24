@@ -8,35 +8,33 @@
 
     <ui:composition>
 
-        <p:dialog id="PortfolioEditDlg" widgetVar="PortfolioEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditPortfolioTitle}">
+        <p:dialog id="PortfolioEditDlg" widgetVar="PortfolioEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle3.EditPortfolioTitle}">
             <h:form id="PortfolioEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{portfolioController.selected != null}">
-                        <p:outputLabel value="#{bundle.EditPortfolioLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{portfolioController.selected.id}" title="#{bundle.EditPortfolioTitle_id}" required="true" requiredMessage="#{bundle.EditPortfolioRequiredMessage_id}"/>
-                        <p:outputLabel value="#{bundle.EditPortfolioLabel_title}" for="title" />
-                        <p:inputText id="title" value="#{portfolioController.selected.title}" title="#{bundle.EditPortfolioTitle_title}" required="true" requiredMessage="#{bundle.EditPortfolioRequiredMessage_title}"/>
-                        <p:outputLabel value="#{bundle.EditPortfolioLabel_describtion}" for="describtion" />
-                        <p:inputText id="describtion" value="#{portfolioController.selected.describtion}" title="#{bundle.EditPortfolioTitle_describtion}" />
-                        <p:outputLabel value="#{bundle.EditPortfolioLabel_url}" for="url" />
-                        <p:inputText id="url" value="#{portfolioController.selected.url}" title="#{bundle.EditPortfolioTitle_url}" required="true" requiredMessage="#{bundle.EditPortfolioRequiredMessage_url}"/>
-                        <p:outputLabel value="#{bundle.EditPortfolioLabel_pic}" for="pic" />
-                        <p:inputText id="pic" value="#{portfolioController.selected.pic}" title="#{bundle.EditPortfolioTitle_pic}" />
-                        <p:outputLabel value="#{bundle.EditPortfolioLabel_visit}" for="visit" />
-                        <p:inputText id="visit" value="#{portfolioController.selected.visit}" title="#{bundle.EditPortfolioTitle_visit}" required="true" requiredMessage="#{bundle.EditPortfolioRequiredMessage_visit}"/>
-                        <p:outputLabel value="#{bundle.EditPortfolioLabel_finished}" for="finished" />
-                        <p:calendar id="finished" pattern="MM/dd/yyyy HH:mm:ss" value="#{portfolioController.selected.finished}" title="#{bundle.EditPortfolioTitle_finished}"  showOn="button"/>
-                        <p:outputLabel value="#{bundle.EditPortfolioLabel_portfolioCategoryid}" for="portfolioCategoryid" />
-                        <p:inputText id="portfolioCategoryid" value="#{portfolioController.selected.portfolioCategoryid}" title="#{bundle.EditPortfolioTitle_portfolioCategoryid}" />
-                        <p:outputLabel value="#{bundle.EditPortfolioLabel_percent}" for="percent" />
-                        <p:inputText id="percent" value="#{portfolioController.selected.percent}" title="#{bundle.EditPortfolioTitle_percent}" required="true" requiredMessage="#{bundle.EditPortfolioRequiredMessage_percent}"/>
-                        <p:outputLabel value="#{bundle.EditPortfolioLabel_createdAt}" for="createdAt" />
-                        <p:calendar id="createdAt" pattern="MM/dd/yyyy HH:mm:ss" value="#{portfolioController.selected.createdAt}" title="#{bundle.EditPortfolioTitle_createdAt}" required="true" requiredMessage="#{bundle.EditPortfolioRequiredMessage_createdAt}" showOn="button"/>
-                        <p:outputLabel value="#{bundle.EditPortfolioLabel_updatedAt}" for="updatedAt" />
-                        <p:calendar id="updatedAt" pattern="MM/dd/yyyy HH:mm:ss" value="#{portfolioController.selected.updatedAt}" title="#{bundle.EditPortfolioTitle_updatedAt}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle3.EditPortfolioLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{portfolioController.selected.id}" title="#{bundle3.EditPortfolioTitle_id}" required="true" requiredMessage="#{bundle3.EditPortfolioRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle3.EditPortfolioLabel_title}" for="title" />
+                        <p:inputText id="title" value="#{portfolioController.selected.title}" title="#{bundle3.EditPortfolioTitle_title}" required="true" requiredMessage="#{bundle3.EditPortfolioRequiredMessage_title}"/>
+                        <p:outputLabel value="#{bundle3.EditPortfolioLabel_describtion}" for="describtion" />
+                        <p:inputText id="describtion" value="#{portfolioController.selected.describtion}" title="#{bundle3.EditPortfolioTitle_describtion}" />
+                        <p:outputLabel value="#{bundle3.EditPortfolioLabel_url}" for="url" />
+                        <p:inputText id="url" value="#{portfolioController.selected.url}" title="#{bundle3.EditPortfolioTitle_url}" required="true" requiredMessage="#{bundle3.EditPortfolioRequiredMessage_url}"/>
+                        <p:outputLabel value="#{bundle3.EditPortfolioLabel_visit}" for="visit" />
+                        <p:inputText id="visit" value="#{portfolioController.selected.visit}" title="#{bundle3.EditPortfolioTitle_visit}" required="true" requiredMessage="#{bundle3.EditPortfolioRequiredMessage_visit}"/>
+                        <p:outputLabel value="#{bundle3.EditPortfolioLabel_finished}" for="finished" />
+                        <p:calendar id="finished" pattern="MM/dd/yyyy HH:mm:ss" value="#{portfolioController.selected.finished}" title="#{bundle3.EditPortfolioTitle_finished}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle3.EditPortfolioLabel_portfolioCategoryid}" for="portfolioCategoryid" />
+                        <p:inputText id="portfolioCategoryid" value="#{portfolioController.selected.portfolioCategoryid}" title="#{bundle3.EditPortfolioTitle_portfolioCategoryid}" />
+                        <p:outputLabel value="#{bundle3.EditPortfolioLabel_percent}" for="percent" />
+                        <p:inputText id="percent" value="#{portfolioController.selected.percent}" title="#{bundle3.EditPortfolioTitle_percent}" required="true" requiredMessage="#{bundle3.EditPortfolioRequiredMessage_percent}"/>
+                        <p:outputLabel value="#{bundle3.EditPortfolioLabel_createdAt}" for="createdAt" />
+                        <p:calendar id="createdAt" pattern="MM/dd/yyyy HH:mm:ss" value="#{portfolioController.selected.createdAt}" title="#{bundle3.EditPortfolioTitle_createdAt}" required="true" requiredMessage="#{bundle3.EditPortfolioRequiredMessage_createdAt}" showOn="button"/>
+                        <p:outputLabel value="#{bundle3.EditPortfolioLabel_updatedAt}" for="updatedAt" />
+                        <p:calendar id="updatedAt" pattern="MM/dd/yyyy HH:mm:ss" value="#{portfolioController.selected.updatedAt}" title="#{bundle3.EditPortfolioTitle_updatedAt}"  showOn="button"/>
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{portfolioController.update}" value="#{bundle.Save}" update="display,:PortfolioListForm:datalist,:growl" oncomplete="handleSubmit(args, 'PortfolioEditDialog');"/>
-                    <p:commandButton value="#{bundle.Cancel}" onclick="PortfolioEditDialog.hide()"/>
+                    <p:commandButton actionListener="#{portfolioController.update}" value="#{bundle3.Save}" update="display,:PortfolioListForm:datalist,:growl" oncomplete="handleSubmit(args, 'PortfolioEditDialog');"/>
+                    <p:commandButton value="#{bundle3.Cancel}" onclick="PortfolioEditDialog.hide()"/>
                 </h:panelGroup>
             </h:form>
         </p:dialog>

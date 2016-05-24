@@ -6,7 +6,11 @@
 package Entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,12 +19,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -35,7 +41,6 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Portfolio.findByTitle", query = "SELECT p FROM Portfolio p WHERE p.title = :title"),
     @NamedQuery(name = "Portfolio.findByDescribtion", query = "SELECT p FROM Portfolio p WHERE p.describtion = :describtion"),
     @NamedQuery(name = "Portfolio.findByUrl", query = "SELECT p FROM Portfolio p WHERE p.url = :url"),
-    @NamedQuery(name = "Portfolio.findByPic", query = "SELECT p FROM Portfolio p WHERE p.pic = :pic"),
     @NamedQuery(name = "Portfolio.findByVisit", query = "SELECT p FROM Portfolio p WHERE p.visit = :visit"),
     @NamedQuery(name = "Portfolio.findByFinished", query = "SELECT p FROM Portfolio p WHERE p.finished = :finished"),
     @NamedQuery(name = "Portfolio.findByPortfolioCategoryid", query = "SELECT p FROM Portfolio p WHERE p.portfolioCategoryid = :portfolioCategoryid"),
@@ -43,6 +48,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Portfolio.findByCreatedAt", query = "SELECT p FROM Portfolio p WHERE p.createdAt = :createdAt"),
     @NamedQuery(name = "Portfolio.findByUpdatedAt", query = "SELECT p FROM Portfolio p WHERE p.updatedAt = :updatedAt")})
 public class Portfolio implements Serializable {
+
+    @OneToMany(mappedBy = "potfolioid")
+    private Collection<ProtfolioImg> protfolioImgCollection;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -63,9 +71,6 @@ public class Portfolio implements Serializable {
     @Size(min = 1, max = 300)
     @Column(name = "url")
     private String url;
-    @Size(max = 300)
-    @Column(name = "pic")
-    private String pic;
     @Basic(optional = false)
     @NotNull
     @Column(name = "visit")
@@ -87,6 +92,19 @@ public class Portfolio implements Serializable {
     @Column(name = "updated_at")
     @Temporal(TemporalType.TIMESTAMP)
     private Date updatedAt;
+
+    @Column(name = "img" , nullable = false)
+    private String img;
+
+    public Collection<String> getImg() {
+        List<String> list=new ArrayList<>();
+        list.addAll(Arrays.asList(img.split(";")));
+        return list;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
 
     public Portfolio() {
     }
@@ -134,14 +152,6 @@ public class Portfolio implements Serializable {
 
     public void setUrl(String url) {
         this.url = url;
-    }
-
-    public String getPic() {
-        return pic;
-    }
-
-    public void setPic(String pic) {
-        this.pic = pic;
     }
 
     public int getVisit() {
@@ -216,5 +226,14 @@ public class Portfolio implements Serializable {
     public String toString() {
         return "Entity.Portfolio[ id=" + id + " ]";
     }
-    
+
+    @XmlTransient
+    public Collection<ProtfolioImg> getProtfolioImgCollection() {
+        return protfolioImgCollection;
+    }
+
+    public void setProtfolioImgCollection(Collection<ProtfolioImg> protfolioImgCollection) {
+        this.protfolioImgCollection = protfolioImgCollection;
+    }
+
 }

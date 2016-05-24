@@ -6,7 +6,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
 
-    <ui:composition template="/Admin/template.xhtml">
+    <ui:composition template="/template.xhtml">
 
 
         <ui:define name="title">
@@ -81,15 +81,15 @@
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListContentTitle_userid}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.userid}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
                                 <h:outputText value="#{bundle.ListContentTitle_contentCategoryid}"/>
                             </f:facet>
                             <h:outputText value="#{item.contentCategoryid}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListContentTitle_userid}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.userid}"/>
                         </p:column>
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{contentController.prepareCreate}" update=":ContentCreateForm" oncomplete="PF('ContentCreateDialog').show()"/>

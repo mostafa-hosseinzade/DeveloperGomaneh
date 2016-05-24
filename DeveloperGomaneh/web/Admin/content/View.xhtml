@@ -32,10 +32,10 @@
                         <h:outputText value="#{contentController.selected.updatedAt}" title="#{bundle.ViewContentTitle_updatedAt}">
                             <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
                         </h:outputText>
-                        <h:outputText value="#{bundle.ViewContentLabel_userid}"/>
-                        <h:outputText value="#{contentController.selected.userid}" title="#{bundle.ViewContentTitle_userid}"/>
                         <h:outputText value="#{bundle.ViewContentLabel_contentCategoryid}"/>
                         <h:outputText value="#{contentController.selected.contentCategoryid}" title="#{bundle.ViewContentTitle_contentCategoryid}"/>
+                        <h:outputText value="#{bundle.ViewContentLabel_userid}"/>
+                        <h:outputText value="#{contentController.selected.userid}" title="#{bundle.ViewContentTitle_userid}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{bundle.Close}" onclick="ContentViewDialog.hide()"/>
                 </h:panelGroup>

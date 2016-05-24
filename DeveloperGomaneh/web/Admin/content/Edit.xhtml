@@ -28,19 +28,19 @@
                         <p:calendar id="createdAt" pattern="MM/dd/yyyy HH:mm:ss" value="#{contentController.selected.createdAt}" title="#{bundle.EditContentTitle_createdAt}" required="true" requiredMessage="#{bundle.EditContentRequiredMessage_createdAt}" showOn="button"/>
                         <p:outputLabel value="#{bundle.EditContentLabel_updatedAt}" for="updatedAt" />
                         <p:calendar id="updatedAt" pattern="MM/dd/yyyy HH:mm:ss" value="#{contentController.selected.updatedAt}" title="#{bundle.EditContentTitle_updatedAt}"  showOn="button"/>
-                        <p:outputLabel value="#{bundle.EditContentLabel_userid}" for="userid" />
-                        <p:selectOneMenu id="userid" value="#{contentController.selected.userid}" >
-                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
-                            <f:selectItems value="#{userController.itemsAvailableSelectOne}"
-                                           var="useridItem"
-                                           itemValue="#{useridItem}"/>
-                        </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.EditContentLabel_contentCategoryid}" for="contentCategoryid" />
                         <p:selectOneMenu id="contentCategoryid" value="#{contentController.selected.contentCategoryid}" >
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{contentCategoryController.itemsAvailableSelectOne}"
                                            var="contentCategoryidItem"
                                            itemValue="#{contentCategoryidItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditContentLabel_userid}" for="userid" />
+                        <p:selectOneMenu id="userid" value="#{contentController.selected.userid}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{userController.itemsAvailableSelectOne}"
+                                           var="useridItem"
+                                           itemValue="#{useridItem}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{contentController.update}" value="#{bundle.Save}" update="display,:ContentListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ContentEditDialog');"/>

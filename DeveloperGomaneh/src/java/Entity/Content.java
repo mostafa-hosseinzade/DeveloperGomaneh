@@ -78,12 +78,12 @@ public class Content implements Serializable {
     @Column(name = "updated_at")
     @Temporal(TemporalType.TIMESTAMP)
     private Date updatedAt;
-    @JoinColumn(name = "User_id", referencedColumnName = "id")
-    @ManyToOne
-    private User userid;
     @JoinColumn(name = "ContentCategory_id", referencedColumnName = "id")
     @ManyToOne
     private ContentCategory contentCategoryid;
+    @JoinColumn(name = "User_id", referencedColumnName = "id")
+    @ManyToOne
+    private User userid;
 
     public Content() {
     }
@@ -164,20 +164,20 @@ public class Content implements Serializable {
         this.updatedAt = updatedAt;
     }
 
-    public User getUserid() {
-        return userid;
-    }
-
-    public void setUserid(User userid) {
-        this.userid = userid;
-    }
-
     public ContentCategory getContentCategoryid() {
         return contentCategoryid;
     }
 
     public void setContentCategoryid(ContentCategory contentCategoryid) {
         this.contentCategoryid = contentCategoryid;
+    }
+
+    public User getUserid() {
+        return userid;
+    }
+
+    public void setUserid(User userid) {
+        this.userid = userid;
     }
 
     @Override
