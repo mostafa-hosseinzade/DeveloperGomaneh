@@ -26,7 +26,7 @@ public class MainController {
     private String message;
 
     public List<Portfolio> getPortFolio(){
-        return ejbPortF.findRange(new int[]{0,7});
+        return ejbPortF.findRange(new int[]{0,5});
     }
 
     public void sendContact(){

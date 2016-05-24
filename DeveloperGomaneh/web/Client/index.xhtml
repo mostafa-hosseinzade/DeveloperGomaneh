@@ -107,77 +107,19 @@
                 <div>
                     <div class="row mbr-gallery-row">
                         <c:forEach var="item" items="#{mainController.portFolio}">
-                            <a href="#{item.url}" title="#{item.title}" >#{item.title}</a>
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 mbr-gallery-item">
+
+                                <figcaption class="mbr-figure__caption mbr-figure__caption--std-grid">
+                                    <div class="mbr-caption-background"></div>
+                                    <small class="mbr-figure__caption-small"><span class="pull-right">#{item.title}</span> <span class="pull-left">#{item.percent}%</span></small>
+                                </figcaption>
+
+                                <a href="/Client?id=#{item.id}" data-slide-to="0" data-toggle="modal">
+                                    <img alt="" src="/DeveloperGomaneh/images/portfolio/#{item.img[0]}" width="363px" height="236px"/>
+                                    <span class="icon glyphicon glyphicon-zoom-in"></span>
+                                </a>              
+                            </div>
                         </c:forEach>
-
-                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 mbr-gallery-item">
-
-                            <figcaption class="mbr-figure__caption mbr-figure__caption--std-grid">
-                                <div class="mbr-caption-background"></div>
-                                <small class="mbr-figure__caption-small"><span class="pull-right">طراحی سایت پیرامون</span> <span class="pull-left">100%</span></small>
-                            </figcaption>
-
-                            <a href="#lb-gallery1-10" data-slide-to="0" data-toggle="modal">
-                                <img alt="" src="../resources/images/slide1-small.jpg"/>
-                                <span class="icon glyphicon glyphicon-zoom-in"></span>
-                            </a>              
-                        </div><div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 mbr-gallery-item">
-
-                            <figcaption class="mbr-figure__caption mbr-figure__caption--std-grid">
-                                <div class="mbr-caption-background"></div>
-                                <small class="mbr-figure__caption-small">Type caption here</small>
-                            </figcaption>
-
-                            <a href="#lb-gallery1-10" data-slide-to="1" data-toggle="modal">
-                                <img alt="" src="../resources/images/slide2-small.jpg"/>
-                                <span class="icon glyphicon glyphicon-zoom-in"></span>
-                            </a>              
-                        </div><div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 mbr-gallery-item">
-
-                            <figcaption class="mbr-figure__caption mbr-figure__caption--std-grid">
-                                <div class="mbr-caption-background"></div>
-                                <small class="mbr-figure__caption-small">Type caption here</small>
-                            </figcaption>
-
-                            <a href="#lb-gallery1-10" data-slide-to="2" data-toggle="modal">
-                                <img alt="" src="../resources/images/slide3-small.jpg"/>
-                                <span class="icon glyphicon glyphicon-zoom-in"></span>
-                            </a>              
-                        </div><div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 mbr-gallery-item">
-
-                            <figcaption class="mbr-figure__caption mbr-figure__caption--std-grid">
-                                <div class="mbr-caption-background"></div>
-                                <small class="mbr-figure__caption-small">Type caption here</small>
-                            </figcaption>
-
-                            <a href="#lb-gallery1-10" data-slide-to="3" data-toggle="modal">
-                                <img alt="" src="../resources/images/slide4-small.jpg"/>
-                                <span class="icon glyphicon glyphicon-zoom-in"></span>
-                            </a>              
-                        </div><div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 mbr-gallery-item">
-
-                            <figcaption class="mbr-figure__caption mbr-figure__caption--std-grid">
-                                <div class="mbr-caption-background"></div>
-                                <small class="mbr-figure__caption-small">Type caption here</small>
-                            </figcaption>
-
-                            <a href="#lb-gallery1-10" data-slide-to="4" data-toggle="modal">
-                                <img alt="" src="../resources/images/slide5-small.jpg"/>
-                                <span class="icon glyphicon glyphicon-zoom-in"></span>
-                            </a>              
-                        </div><div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 mbr-gallery-item">
-
-                            <figcaption class="mbr-figure__caption mbr-figure__caption--std-grid">
-                                <div class="mbr-caption-background"></div>
-                                <small class="mbr-figure__caption-small">Type caption here</small>
-                            </figcaption>
-
-                            <a href="#lb-gallery1-10" data-slide-to="5" data-toggle="modal">
-                                <img alt="" src="../resources/images/slide6-small.jpg"/>
-                                <span class="icon glyphicon glyphicon-zoom-in"></span>
-                            </a>              
-                        </div>
-
                     </div>
                 </div>
                 <div class="clearfix"></div>

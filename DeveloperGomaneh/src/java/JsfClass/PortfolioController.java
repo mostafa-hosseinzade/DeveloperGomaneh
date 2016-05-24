@@ -100,6 +100,7 @@ public class PortfolioController implements Serializable {
         if (!JsfUtil.isValidationFailed()) {
             items = null;    // Invalidate list of items to trigger re-query.
         }
+        this.mapFile.clear();
     }
 
     public void update() {
