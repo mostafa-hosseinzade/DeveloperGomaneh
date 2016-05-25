@@ -6,17 +6,20 @@
 .dropdown-test-d{
     display: none;
     position: absolute;
-    background-color: #1999ac;
-    width: 400px;
-    height: 100px;
-    
+    background-color: rgba(0,0,0,0.5);
+    min-height: 120px;
+    min-width: 240px;
 }
 
 @media(max-width:460px){
- .dropdown-test-d{
-     height: 150px;
-     width: 200px
- }
+    .dropdown-test-d{
+        position: relative;
+        background-color: rgba(0,0,0,0.1);
+        height: auto;
+        width: auto; 
+        min-height: auto;
+        min-width: auto;         
+    }
 }
 
 .testd:hover > .dropdown-test-d{
