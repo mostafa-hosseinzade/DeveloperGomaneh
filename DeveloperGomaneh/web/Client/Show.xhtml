@@ -5,7 +5,6 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-
     <ui:composition template="/Client/layouts.xhtml">
         <ui:define name="body">
 
@@ -30,9 +29,9 @@
                                                     <div class=" col-md-6 col-md-offset-5">  
 
                                                         <div class="mbr-hero">
-                                                            <h1 class="mbr-hero__text">Slide 1</h1>
+                                                            <h1 class="mbr-hero__text">#{title}</h1>
 
-                                                            <p class="mbr-hero__subtext">Develop fully responsive, mobile-optimized websites that look amazing on any devices and browsers. Preview how your website will appear on phones, tablets and desktops directly in the visual editor.</p>
+                                                            <p class="mbr-hero__subtext">#{describtion}</p>
                                                         </div>
                                                         <div class="mbr-buttons btn-inverse mbr-buttons--left mbr-buttons--right"> <a class="mbr-buttons__btn btn btn-lg btn-default" href="page1.html#msg-box4-14">FOR MAC</a></div>
                                                     </div>
@@ -77,26 +76,46 @@
                 </div>
             </section>
 
-            <section class="mbr-section mbr-section--relative" id="msg-box4-14" style="background-color: rgb(249, 115, 82);">
+            <section class="mbr-section mbr-section--relative" id="msg-box4-14" style="background-color: rgb(0, 168, 133);">
 
                 <div class="mbr-section__container mbr-section__container--isolated container" style="padding-top: 93px; padding-bottom: 93px;">
                     <div class="row">
                         <div class="mbr-box mbr-box--fixed mbr-box--adapted">
                             <div class="mbr-box__magnet mbr-box__magnet--top-right mbr-section__left col-sm-6">
-                                <figure class="mbr-figure mbr-figure--adapted mbr-figure--caption-inside-bottom mbr-figure--full-width"><img src="../resources/images/iphone.png" class="mbr-figure__img"/></figure>
+                                <style type="text/css">
+                                    .special{
+                                        background-color: #DCD9D9;
+                                        height: 400px;
+                                        direction: rtl;
+                                        box-shadow: 0 0 5px;
+                                        background-image: url(/DeveloperGomaneh/images/portfolio/#{NavigationPage.InfoPortfolio().img[0]});
+                                        background-size: 100%;
+                                    }
+                                </style>
+                                <figure class="special mbr-figure mbr-figure--adapted mbr-figure--caption-inside-bottom mbr-figure--full-width">
+                                    <h3 class="h3"> 
+                                        <p class="p">مشخصات وب سایت</p>
+                                        <p class="bo">
+                                            <span> آدرس وب سایت  </span> : <span>#{NavigationPage.InfoPortfolio().url}</span><br/>
+                                            <span>  درصد پیشرفت </span> : <span> #{NavigationPage.InfoPortfolio().percent}%</span><br/>
+                                            <span>  تاریخ اتمام </span> : <span><h:outputFormat value="#{NavigationPage.InfoPortfolio().finished}" ><f:convertDateTime pattern="Y-m-d"></f:convertDateTime></h:outputFormat></span><br/>
+                                            <span>  تعداد نمایش </span> : <span>#{NavigationPage.InfoPortfolio().visit}</span> <br/>
+                                        </p>
+                                    </h3>
+                                </figure>
                             </div>
                             <div class="mbr-box__magnet mbr-class-mbr-box__magnet--center-left col-sm-6 mbr-section__right">
                                 <div class="mbr-section__container mbr-section__container--middle">
                                     <div class="mbr-header mbr-header--auto-align mbr-header--wysiwyg">
-                                        <h3 class="mbr-header__text">DRAG AND DROP WEBSITE BUILDER</h3>
+                                        <h3 class="mbr-header__text">"#{NavigationPage.InfoPortfolio().title}</h3>
 
                                     </div>
                                 </div>
                                 <div class="mbr-section__container mbr-section__container--middle">
-                                    <div class="mbr-article mbr-article--auto-align mbr-article--wysiwyg"><p>Make your own website in a few clicks! Mobirise helps you cut down development time by providing you with a flexible website editor with a drag and drop interface.</p></div>
+                                    <div class="mbr-article mbr-article--auto-align mbr-article--wysiwyg"><p>"#{NavigationPage.InfoPortfolio().describtion}</p></div>
                                 </div>
                                 <div class="mbr-section__container">
-                                    <div class="mbr-buttons mbr-buttons--auto-align btn-inverse"><a class="mbr-buttons__btn btn btn-lg btn-default" href="https://mobirise.com">LEARN MORE</a></div>
+                                    <div class="mbr-buttons mbr-buttons--auto-align btn-inverse"><a class="mbr-buttons__btn btn btn-lg btn-default" href="#">Gomaneh</a></div>
                                 </div>
                             </div>
 
@@ -105,101 +124,27 @@
                 </div>
             </section>
 
-            <section class="mbr-gallery mbr-section mbr-section--no-padding" id="gallery1-15" style="background-color: rgb(76, 105, 114);">
+            <section class="mbr-gallery mbr-section mbr-section--no-padding" id="gallery1-15" style="background-color: rgb(239, 239, 239);">
                 <!-- Gallery -->
                 <div class=" container mbr-gallery-layout-default" style="padding-top: 31px; padding-bottom: 31px;">
                     <div>
                         <div class="row mbr-gallery-row">
+                            <h:form>
+                                <c:forEach var="item" items="#{mainController.portFolio}">
+                                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 mbr-gallery-item">
+                                        <figcaption class="mbr-figure__caption mbr-figure__caption--std-grid">
+                                            <div class="mbr-caption-background"></div>
+                                            <small class="mbr-figure__caption-small"><span class="pull-right">#{item.title}</span> <span class="pull-left">#{item.percent}%</span></small>
+                                        </figcaption>
 
-                            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mbr-gallery-item">
-
-                                <figcaption class="mbr-figure__caption mbr-figure__caption--std-grid">
-                                    <div class="mbr-caption-background"></div>
-                                    <small class="mbr-figure__caption-small">Type caption here</small>
-                                </figcaption>
-
-                                <a href="#lb-gallery1-15" data-slide-to="0" data-toggle="modal">
-                                    <img alt="" src="../resources/images/slide1-small.jpg"/>
-                                    <span class="icon glyphicon glyphicon-zoom-in"></span>
-                                </a>              
-                            </div><div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mbr-gallery-item">
-
-                                <figcaption class="mbr-figure__caption mbr-figure__caption--std-grid">
-                                    <div class="mbr-caption-background"></div>
-                                    <small class="mbr-figure__caption-small">Type caption here</small>
-                                </figcaption>
-
-                                <a href="#lb-gallery1-15" data-slide-to="1" data-toggle="modal">
-                                    <img alt="" src="../resources/images/slide2-small.jpg"/>
-                                    <span class="icon glyphicon glyphicon-zoom-in"></span>
-                                </a>              
-                            </div><div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mbr-gallery-item">
-
-                                <figcaption class="mbr-figure__caption mbr-figure__caption--std-grid">
-                                    <div class="mbr-caption-background"></div>
-                                    <small class="mbr-figure__caption-small">Type caption here</small>
-                                </figcaption>
-
-                                <a href="#lb-gallery1-15" data-slide-to="2" data-toggle="modal">
-                                    <img alt="" src="../resources/images/slide3-small.jpg"/>
-                                    <span class="icon glyphicon glyphicon-zoom-in"></span>
-                                </a>              
-                            </div><div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mbr-gallery-item">
-
-                                <figcaption class="mbr-figure__caption mbr-figure__caption--std-grid">
-                                    <div class="mbr-caption-background"></div>
-                                    <small class="mbr-figure__caption-small">Type caption here</small>
-                                </figcaption>
-
-                                <a href="#lb-gallery1-15" data-slide-to="3" data-toggle="modal">
-                                    <img alt="" src="../resources/images/slide4-small.jpg"/>
-                                    <span class="icon glyphicon glyphicon-zoom-in"></span>
-                                </a>              
-                            </div><div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mbr-gallery-item">
-
-                                <figcaption class="mbr-figure__caption mbr-figure__caption--std-grid">
-                                    <div class="mbr-caption-background"></div>
-                                    <small class="mbr-figure__caption-small">Type caption here</small>
-                                </figcaption>
-
-                                <a href="#lb-gallery1-15" data-slide-to="4" data-toggle="modal">
-                                    <img alt="" src="../resources/images/slide5-small.jpg"/>
-                                    <span class="icon glyphicon glyphicon-zoom-in"></span>
-                                </a>              
-                            </div><div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mbr-gallery-item">
-
-                                <figcaption class="mbr-figure__caption mbr-figure__caption--std-grid">
-                                    <div class="mbr-caption-background"></div>
-                                    <small class="mbr-figure__caption-small">Type caption here</small>
-                                </figcaption>
-
-                                <a href="#lb-gallery1-15" data-slide-to="5" data-toggle="modal">
-                                    <img alt="" src="../resources/images/slide6-small.jpg"/>
-                                    <span class="icon glyphicon glyphicon-zoom-in"></span>
-                                </a>              
-                            </div><div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mbr-gallery-item">
-
-                                <figcaption class="mbr-figure__caption mbr-figure__caption--std-grid">
-                                    <div class="mbr-caption-background"></div>
-                                    <small class="mbr-figure__caption-small">Type caption here</small>
-                                </figcaption>
-
-                                <a href="#lb-gallery1-15" data-slide-to="6" data-toggle="modal">
-                                    <img alt="" src="../resources/images/slide7-small.jpg"/>
-                                    <span class="icon glyphicon glyphicon-zoom-in"></span>
-                                </a>              
-                            </div><div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mbr-gallery-item">
-
-                                <figcaption class="mbr-figure__caption mbr-figure__caption--std-grid">
-                                    <div class="mbr-caption-background"></div>
-                                    <small class="mbr-figure__caption-small">Type caption here</small>
-                                </figcaption>
-
-                                <a href="#lb-gallery1-15" data-slide-to="7" data-toggle="modal">
-                                    <img alt="" src="../resources/images/slide8-small.jpg"/>
-                                    <span class="icon glyphicon glyphicon-zoom-in"></span>
-                                </a>              
-                            </div>
+                                        <h:commandLink action="#{NavigationPage.showPage()}">
+                                            <f:param name="pageId" value="#{item.id}" />
+                                            <img alt="" src="/DeveloperGomaneh/images/portfolio/#{item.img[0]}" width="363px" height="236px"/>
+                                            <span class="icon glyphicon glyphicon-zoom-in"></span>
+                                        </h:commandLink>
+                                    </div>
+                                </c:forEach>
+                            </h:form>
                         </div>
                     </div>
                     <div class="clearfix"></div>

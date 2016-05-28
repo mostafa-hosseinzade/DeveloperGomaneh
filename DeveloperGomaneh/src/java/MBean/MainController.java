@@ -26,7 +26,8 @@ public class MainController {
     private String message;
 
     public List<Portfolio> getPortFolio(){
-        return ejbPortF.findRange(new int[]{0,5});
+        System.out.println("MBean.MainController.getPortFolio()");
+        return ejbPortF.getLast();
     }
 
     public void sendContact(){

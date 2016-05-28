@@ -29,3 +29,36 @@
 .dropdown-test-d:hover{
     display: block;
 }
+
+
+.h3{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    margin-top: 0px;
+    padding-top: 10px;
+    color: white;
+    letter-spacing: 1px;
+    line-height: 39px;
+    padding-right: 10px;
+}
+.p{
+    text-align: center;
+    font-size: x-large;
+    background-color: #2C2C2C;
+    margin-right: -10px;
+    margin-top: -10px;
+}
+.bo{
+    bottom: -10px;
+    position: absolute;
+    background-color: #2C2C2C;
+    right: 0;
+    left: 0;
+    padding-right: 5px;
+}
+
+.btn-warning{
+    background-color: #166056 !important;
+    border-color: #166056 !important;
+}

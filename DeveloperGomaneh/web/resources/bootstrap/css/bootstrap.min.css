@@ -1555,7 +1555,7 @@ h2,
 .h2,
 h3,
 .h3 {
-  letter-spacing: 6px;
+  letter-spacing: 1px;
   font-weight: bold;
 }
 h1.cut-letter-spacing,
@@ -3347,9 +3347,9 @@ fieldset[disabled] .btn-default.active {
 }
 .btn-primary {
   border-color: #425b63;
-  color: #ffffff;
-  background-color: #4c6972;
-  border-color: #4c6972;
+  color: #ffffff !important;
+  background-color: #166056;
+  border-color: #166056;
 }
 .btn-primary:hover,
 .btn-primary:focus,
@@ -3605,9 +3605,9 @@ fieldset[disabled] .btn-info.active {
 }
 .btn-warning {
   border-color: #f9a527;
-  color: #ffffff;
-  background-color: #faaf40;
-  border-color: #faaf40;
+  color: #ffffff !important;
+  background-color: #166056;
+  border-color: #166056;
 }
 .btn-warning:hover,
 .btn-warning:focus,
@@ -3690,10 +3690,10 @@ fieldset[disabled] .btn-warning.active {
   background-color: #ffffff;
 }
 .btn-danger {
-  border-color: #f85f39;
-  color: #ffffff;
-  background-color: #f97352;
-  border-color: #f97352;
+  border-color: #166056;
+  color: #ffffff !important;
+  background-color: #166056;
+  border-color: #166056;
 }
 .btn-danger:hover,
 .btn-danger:focus,
@@ -3702,8 +3702,8 @@ fieldset[disabled] .btn-warning.active {
 .btn-danger.active,
 .open > .dropdown-toggle.btn-danger {
   color: #ffffff;
-  background-color: #f74b21;
-  border-color: #ec3508;
+  background-color: #166056;
+  border-color: #166056;
 }
 .btn-danger:active,
 .btn-danger.active,
