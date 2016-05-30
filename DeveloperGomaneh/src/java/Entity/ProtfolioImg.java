@@ -20,7 +20,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -34,11 +33,11 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "ProtfolioImg.findAll", query = "SELECT p FROM ProtfolioImg p"),
     @NamedQuery(name = "ProtfolioImg.findById", query = "SELECT p FROM ProtfolioImg p WHERE p.id = :id"),
-    @NamedQuery(name = "ProtfolioImg.findByTitle", query = "SELECT p FROM ProtfolioImg p WHERE p.title = :title"),
-    @NamedQuery(name = "ProtfolioImg.findByUrl", query = "SELECT p FROM ProtfolioImg p WHERE p.url = :url"),
-    @NamedQuery(name = "ProtfolioImg.findByType", query = "SELECT p FROM ProtfolioImg p WHERE p.type = :type"),
     @NamedQuery(name = "ProtfolioImg.findByCreatedAt", query = "SELECT p FROM ProtfolioImg p WHERE p.createdAt = :createdAt"),
-    @NamedQuery(name = "ProtfolioImg.findByUpdatedAt", query = "SELECT p FROM ProtfolioImg p WHERE p.updatedAt = :updatedAt")})
+    @NamedQuery(name = "ProtfolioImg.findByTitle", query = "SELECT p FROM ProtfolioImg p WHERE p.title = :title"),
+    @NamedQuery(name = "ProtfolioImg.findByType", query = "SELECT p FROM ProtfolioImg p WHERE p.type = :type"),
+    @NamedQuery(name = "ProtfolioImg.findByUpdatedAt", query = "SELECT p FROM ProtfolioImg p WHERE p.updatedAt = :updatedAt"),
+    @NamedQuery(name = "ProtfolioImg.findByUrl", query = "SELECT p FROM ProtfolioImg p WHERE p.url = :url")})
 public class ProtfolioImg implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -47,28 +46,20 @@ public class ProtfolioImg implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 255)
-    @Column(name = "title")
-    private String title;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 255)
-    @Column(name = "url")
-    private String url;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "type")
-    private int type;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "created_at")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
+    @Size(max = 255)
+    @Column(name = "title")
+    private String title;
+    @Column(name = "type")
+    private Integer type;
     @Column(name = "updated_at")
     @Temporal(TemporalType.TIMESTAMP)
     private Date updatedAt;
+    @Size(max = 255)
+    @Column(name = "url")
+    private String url;
     @JoinColumn(name = "Potfolio_id", referencedColumnName = "id")
     @ManyToOne
     private Portfolio potfolioid;
@@ -80,44 +71,12 @@ public class ProtfolioImg implements Serializable {
         this.id = id;
     }
 
-    public ProtfolioImg(Integer id, String title, String url, int type, Date createdAt) {
-        this.id = id;
-        this.title = title;
-        this.url = url;
-        this.type = type;
-        this.createdAt = createdAt;
-    }
-
     public Integer getId() {
         return id;
     }
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    public int getType() {
-        return type;
-    }
-
-    public void setType(int type) {
-        this.type = type;
     }
 
     public Date getCreatedAt() {
@@ -128,12 +87,36 @@ public class ProtfolioImg implements Serializable {
         this.createdAt = createdAt;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
+    }
+
     public Date getUpdatedAt() {
         return updatedAt;
     }
 
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public Portfolio getPotfolioid() {

@@ -13,10 +13,23 @@
                         <div class="mbr-box mbr-box--stretched"><div class="mbr-box__magnet mbr-box__magnet--center-center">
                                 <div class="row"><div class=" col-sm-8 col-sm-offset-2">
                                         <div class="mbr-hero animated fadeInUp">
-                                            <h1 class="mbr-hero__text">MOBIRISE WEBSITE BUILDER</h1>
-                                            <p class="mbr-hero__subtext">Create awesome mobile-friendly websites. No coding and free.</p>
+                                            <div class="col-lg-12">
+                                                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" style="font-weight: bold ">
+                                                    <hr style="border: solid 3px;"/>
+                                                    طراحی حرفه ای
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <h4 class="mbr-hero__text">طراحی سایت بهینه سازی سایت گمانه </h4>
+                                                </div>
+                                                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" style="font-weight: bold">
+                                                    <hr style="border: solid 3px"/>
+                                                    طراحی اختصاصی
+                                                </div>
+                                            </div>
+                                            
+                                            <p class="mbr-hero__subtext">مسیر ورود به دنیای اینترنت را هموار کردیم</p>
                                         </div>
-                                        <div class="mbr-buttons btn-inverse mbr-buttons--center"><a class="mbr-buttons__btn buttons_special btn btn-lg btn-danger animated fadeInUp delay" href="index.html#msg-box4-14">FOR WINDOWS</a> <a class="mbr-buttons__btn btn btn-lg btn-default animated fadeInUp delay" href="index.html#header2-5">FOR MAC</a></div>
+                                        <div class="mbr-buttons btn-inverse mbr-buttons--center"><a class="mbr-buttons__btn buttons_special btn btn-lg btn-danger animated fadeInUp delay" href="index.html#msg-box4-14">سئو سایت</a> <a class="mbr-buttons__btn btn btn-lg btn-default animated fadeInUp delay" href="index.html#header2-5">درباره ما</a></div>
                                     </div></div>
                             </div></div>
                     </div>
@@ -34,16 +47,16 @@
                             <div class="mbr-box__magnet mbr-box__magnet--top-left mbr-section__left col-sm-8">
                                 <div class="mbr-section__container mbr-section__container--middle">
                                     <div class="mbr-header mbr-header--auto-align mbr-header--wysiwyg">
-                                        <h3 class="mbr-header__text">PRE MADE BLOCKS</h3>
+                                        <h3 class="mbr-header__text">پیاده سازی ایده های شما</h3>
                                     </div>
                                 </div>
                                 <div class="mbr-section__container">
-                                    <div class="mbr-article mbr-article--auto-align mbr-article--wysiwyg"><p>Mobirise comes with huge collection of pre made layouts to help make your development faster.</p></div>
+                                    <div class="mbr-article mbr-article--auto-align mbr-article--wysiwyg"><p><span>شما ایده پردازی کنید اجرا را به گمانه بسپارید .</span><span>رضایت بیش از ۱۰۰ مشتری ضامن کار ماست</span></p></div>
                                 </div>
                             </div>
                             <div class="mbr-box__magnet mbr-box__magnet--top-left mbr-section__right col-sm-4">
                                 <div class="mbr-section__container">
-                                    <div class="mbr-buttons mbr-buttons--auto-align mbr-buttons--top mbr-buttons--left"><a class="mbr-buttons__btn btn btn-lg btn-danger" href="https://mobirise.com">START A JOURNEY</a></div>
+                                    <div class="mbr-buttons mbr-buttons--auto-align mbr-buttons--top mbr-buttons--left"><a class="mbr-buttons__btn btn btn-lg btn-danger" href="#">شروع کنید</a></div>
                                 </div>
                             </div>
                         </div>
@@ -67,7 +80,9 @@
 
                                         <h:commandLink action="#{NavigationPage.showPage()}" >
                                             <f:param name="pageId" value="#{item.id}" />
-                                            <img alt="" src="/DeveloperGomaneh/images/portfolio/#{item.img[0]}" width="363px" height="236px"/>
+                                            <c:if test="#{item.img[0] != null}">
+                                                <img alt="" src="/DeveloperGomaneh/images/portfolio/#{item.img[0]}" width="363px" height="236px"/>
+                                            </c:if>
                                             <span class="icon glyphicon glyphicon-zoom-in"></span>
                                         </h:commandLink>
                                     </div>

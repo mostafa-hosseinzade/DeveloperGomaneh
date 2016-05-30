@@ -3848,7 +3848,7 @@ input[type="button"].btn-block {
   border-width: 2px;
   font-size: 13px;
   font-weight: bold;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   text-decoration: none;
   word-spacing: 1px;
 }

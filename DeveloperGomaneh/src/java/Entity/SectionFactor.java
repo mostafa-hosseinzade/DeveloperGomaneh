@@ -20,7 +20,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -35,9 +34,9 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "SectionFactor.findAll", query = "SELECT s FROM SectionFactor s"),
     @NamedQuery(name = "SectionFactor.findById", query = "SELECT s FROM SectionFactor s WHERE s.id = :id"),
-    @NamedQuery(name = "SectionFactor.findByTitle", query = "SELECT s FROM SectionFactor s WHERE s.title = :title"),
-    @NamedQuery(name = "SectionFactor.findByDescribtion", query = "SELECT s FROM SectionFactor s WHERE s.describtion = :describtion"),
     @NamedQuery(name = "SectionFactor.findByCreatedAt", query = "SELECT s FROM SectionFactor s WHERE s.createdAt = :createdAt"),
+    @NamedQuery(name = "SectionFactor.findByDescribtion", query = "SELECT s FROM SectionFactor s WHERE s.describtion = :describtion"),
+    @NamedQuery(name = "SectionFactor.findByTitle", query = "SELECT s FROM SectionFactor s WHERE s.title = :title"),
     @NamedQuery(name = "SectionFactor.findByUpdatedAt", query = "SELECT s FROM SectionFactor s WHERE s.updatedAt = :updatedAt")})
 public class SectionFactor implements Serializable {
 
@@ -47,19 +46,15 @@ public class SectionFactor implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 255)
-    @Column(name = "title")
-    private String title;
-    @Size(max = 3000)
-    @Column(name = "describtion")
-    private String describtion;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "created_at")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
+    @Size(max = 255)
+    @Column(name = "describtion")
+    private String describtion;
+    @Size(max = 255)
+    @Column(name = "title")
+    private String title;
     @Column(name = "updated_at")
     @Temporal(TemporalType.TIMESTAMP)
     private Date updatedAt;
@@ -73,12 +68,6 @@ public class SectionFactor implements Serializable {
         this.id = id;
     }
 
-    public SectionFactor(Integer id, String title, Date createdAt) {
-        this.id = id;
-        this.title = title;
-        this.createdAt = createdAt;
-    }
-
     public Integer getId() {
         return id;
     }
@@ -87,12 +76,12 @@ public class SectionFactor implements Serializable {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public Date getCreatedAt() {
+        return createdAt;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 
     public String getDescribtion() {
@@ -103,12 +92,12 @@ public class SectionFactor implements Serializable {
         this.describtion = describtion;
     }
 
-    public Date getCreatedAt() {
-        return createdAt;
+    public String getTitle() {
+        return title;
     }
 
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public Date getUpdatedAt() {

@@ -21,7 +21,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -35,11 +34,11 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Content.findAll", query = "SELECT c FROM Content c"),
     @NamedQuery(name = "Content.findById", query = "SELECT c FROM Content c WHERE c.id = :id"),
-    @NamedQuery(name = "Content.findByTitle", query = "SELECT c FROM Content c WHERE c.title = :title"),
-    @NamedQuery(name = "Content.findByOrderList", query = "SELECT c FROM Content c WHERE c.orderList = :orderList"),
-    @NamedQuery(name = "Content.findByMeta", query = "SELECT c FROM Content c WHERE c.meta = :meta"),
-    @NamedQuery(name = "Content.findBySlug", query = "SELECT c FROM Content c WHERE c.slug = :slug"),
     @NamedQuery(name = "Content.findByCreatedAt", query = "SELECT c FROM Content c WHERE c.createdAt = :createdAt"),
+    @NamedQuery(name = "Content.findByMeta", query = "SELECT c FROM Content c WHERE c.meta = :meta"),
+    @NamedQuery(name = "Content.findByOrderList", query = "SELECT c FROM Content c WHERE c.orderList = :orderList"),
+    @NamedQuery(name = "Content.findBySlug", query = "SELECT c FROM Content c WHERE c.slug = :slug"),
+    @NamedQuery(name = "Content.findByTitle", query = "SELECT c FROM Content c WHERE c.title = :title"),
     @NamedQuery(name = "Content.findByUpdatedAt", query = "SELECT c FROM Content c WHERE c.updatedAt = :updatedAt")})
 public class Content implements Serializable {
 
@@ -49,32 +48,24 @@ public class Content implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 400)
-    @Column(name = "title")
-    private String title;
-    @Basic(optional = false)
-    @NotNull
     @Lob
-    @Size(min = 1, max = 2147483647)
+    @Size(max = 2147483647)
     @Column(name = "content")
     private String content;
-    @Column(name = "order_list")
-    private Integer orderList;
-    @Size(max = 255)
-    @Column(name = "meta")
-    private String meta;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 255)
-    @Column(name = "slug")
-    private String slug;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "created_at")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
+    @Size(max = 255)
+    @Column(name = "meta")
+    private String meta;
+    @Column(name = "order_list")
+    private Integer orderList;
+    @Size(max = 255)
+    @Column(name = "slug")
+    private String slug;
+    @Size(max = 255)
+    @Column(name = "title")
+    private String title;
     @Column(name = "updated_at")
     @Temporal(TemporalType.TIMESTAMP)
     private Date updatedAt;
@@ -92,28 +83,12 @@ public class Content implements Serializable {
         this.id = id;
     }
 
-    public Content(Integer id, String title, String content, String slug, Date createdAt) {
-        this.id = id;
-        this.title = title;
-        this.content = content;
-        this.slug = slug;
-        this.createdAt = createdAt;
-    }
-
     public Integer getId() {
         return id;
     }
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
     }
 
     public String getContent() {
@@ -124,12 +99,12 @@ public class Content implements Serializable {
         this.content = content;
     }
 
-    public Integer getOrderList() {
-        return orderList;
+    public Date getCreatedAt() {
+        return createdAt;
     }
 
-    public void setOrderList(Integer orderList) {
-        this.orderList = orderList;
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 
     public String getMeta() {
@@ -140,6 +115,14 @@ public class Content implements Serializable {
         this.meta = meta;
     }
 
+    public Integer getOrderList() {
+        return orderList;
+    }
+
+    public void setOrderList(Integer orderList) {
+        this.orderList = orderList;
+    }
+
     public String getSlug() {
         return slug;
     }
@@ -148,12 +131,12 @@ public class Content implements Serializable {
         this.slug = slug;
     }
 
-    public Date getCreatedAt() {
-        return createdAt;
+    public String getTitle() {
+        return title;
     }
 
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public Date getUpdatedAt() {

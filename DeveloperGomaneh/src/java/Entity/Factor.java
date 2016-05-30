@@ -6,6 +6,7 @@
 package Entity;
 
 import java.io.Serializable;
+import java.math.BigInteger;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -20,7 +21,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -35,10 +35,10 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Factor.findAll", query = "SELECT f FROM Factor f"),
     @NamedQuery(name = "Factor.findById", query = "SELECT f FROM Factor f WHERE f.id = :id"),
     @NamedQuery(name = "Factor.findByArrayFactorField", query = "SELECT f FROM Factor f WHERE f.arrayFactorField = :arrayFactorField"),
-    @NamedQuery(name = "Factor.findByTotal", query = "SELECT f FROM Factor f WHERE f.total = :total"),
-    @NamedQuery(name = "Factor.findByIpClient", query = "SELECT f FROM Factor f WHERE f.ipClient = :ipClient"),
+    @NamedQuery(name = "Factor.findByCreatedAt", query = "SELECT f FROM Factor f WHERE f.createdAt = :createdAt"),
     @NamedQuery(name = "Factor.findByDate", query = "SELECT f FROM Factor f WHERE f.date = :date"),
-    @NamedQuery(name = "Factor.findByCreatedAt", query = "SELECT f FROM Factor f WHERE f.createdAt = :createdAt")})
+    @NamedQuery(name = "Factor.findByIpClient", query = "SELECT f FROM Factor f WHERE f.ipClient = :ipClient"),
+    @NamedQuery(name = "Factor.findByTotal", query = "SELECT f FROM Factor f WHERE f.total = :total")})
 public class Factor implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -47,28 +47,20 @@ public class Factor implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 400)
+    @Size(max = 255)
     @Column(name = "ArrayFactorField")
     private String arrayFactorField;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "total")
-    private long total;
-    @Size(max = 100)
-    @Column(name = "ip_client")
-    private String ipClient;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "date")
-    @Temporal(TemporalType.DATE)
-    private Date date;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "created_at")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
+    @Column(name = "date")
+    @Temporal(TemporalType.DATE)
+    private Date date;
+    @Size(max = 255)
+    @Column(name = "ip_client")
+    private String ipClient;
+    @Column(name = "total")
+    private BigInteger total;
     @JoinColumn(name = "User_id", referencedColumnName = "id")
     @ManyToOne
     private User userid;
@@ -78,14 +70,6 @@ public class Factor implements Serializable {
 
     public Factor(Integer id) {
         this.id = id;
-    }
-
-    public Factor(Integer id, String arrayFactorField, long total, Date date, Date createdAt) {
-        this.id = id;
-        this.arrayFactorField = arrayFactorField;
-        this.total = total;
-        this.date = date;
-        this.createdAt = createdAt;
     }
 
     public Integer getId() {
@@ -104,20 +88,12 @@ public class Factor implements Serializable {
         this.arrayFactorField = arrayFactorField;
     }
 
-    public long getTotal() {
-        return total;
+    public Date getCreatedAt() {
+        return createdAt;
     }
 
-    public void setTotal(long total) {
-        this.total = total;
-    }
-
-    public String getIpClient() {
-        return ipClient;
-    }
-
-    public void setIpClient(String ipClient) {
-        this.ipClient = ipClient;
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 
     public Date getDate() {
@@ -128,12 +104,20 @@ public class Factor implements Serializable {
         this.date = date;
     }
 
-    public Date getCreatedAt() {
-        return createdAt;
+    public String getIpClient() {
+        return ipClient;
     }
 
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
+    public void setIpClient(String ipClient) {
+        this.ipClient = ipClient;
+    }
+
+    public BigInteger getTotal() {
+        return total;
+    }
+
+    public void setTotal(BigInteger total) {
+        this.total = total;
     }
 
     public User getUserid() {

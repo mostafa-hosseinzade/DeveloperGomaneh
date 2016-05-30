@@ -20,7 +20,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -35,14 +34,14 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "ContentCategory.findAll", query = "SELECT c FROM ContentCategory c"),
     @NamedQuery(name = "ContentCategory.findById", query = "SELECT c FROM ContentCategory c WHERE c.id = :id"),
-    @NamedQuery(name = "ContentCategory.findByTitle", query = "SELECT c FROM ContentCategory c WHERE c.title = :title"),
+    @NamedQuery(name = "ContentCategory.findByCreatedAt", query = "SELECT c FROM ContentCategory c WHERE c.createdAt = :createdAt"),
     @NamedQuery(name = "ContentCategory.findByDescribtion", query = "SELECT c FROM ContentCategory c WHERE c.describtion = :describtion"),
+    @NamedQuery(name = "ContentCategory.findByEnable", query = "SELECT c FROM ContentCategory c WHERE c.enable = :enable"),
     @NamedQuery(name = "ContentCategory.findByMeta", query = "SELECT c FROM ContentCategory c WHERE c.meta = :meta"),
     @NamedQuery(name = "ContentCategory.findBySlug", query = "SELECT c FROM ContentCategory c WHERE c.slug = :slug"),
-    @NamedQuery(name = "ContentCategory.findByEnable", query = "SELECT c FROM ContentCategory c WHERE c.enable = :enable"),
-    @NamedQuery(name = "ContentCategory.findByVisible", query = "SELECT c FROM ContentCategory c WHERE c.visible = :visible"),
-    @NamedQuery(name = "ContentCategory.findByCreatedAt", query = "SELECT c FROM ContentCategory c WHERE c.createdAt = :createdAt"),
-    @NamedQuery(name = "ContentCategory.findByUpdatedAt", query = "SELECT c FROM ContentCategory c WHERE c.updatedAt = :updatedAt")})
+    @NamedQuery(name = "ContentCategory.findByTitle", query = "SELECT c FROM ContentCategory c WHERE c.title = :title"),
+    @NamedQuery(name = "ContentCategory.findByUpdatedAt", query = "SELECT c FROM ContentCategory c WHERE c.updatedAt = :updatedAt"),
+    @NamedQuery(name = "ContentCategory.findByVisible", query = "SELECT c FROM ContentCategory c WHERE c.visible = :visible")})
 public class ContentCategory implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -51,40 +50,28 @@ public class ContentCategory implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 255)
-    @Column(name = "title")
-    private String title;
-    @Size(max = 900)
-    @Column(name = "describtion")
-    private String describtion;
-    @Size(max = 255)
-    @Column(name = "meta")
-    private String meta;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 255)
-    @Column(name = "slug")
-    private String slug;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "enable")
-    private boolean enable;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "visible")
-    private boolean visible;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "created_at")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
-    @Basic(optional = false)
-    @NotNull
+    @Size(max = 255)
+    @Column(name = "describtion")
+    private String describtion;
+    @Column(name = "enable")
+    private Boolean enable;
+    @Size(max = 255)
+    @Column(name = "meta")
+    private String meta;
+    @Size(max = 255)
+    @Column(name = "slug")
+    private String slug;
+    @Size(max = 255)
+    @Column(name = "title")
+    private String title;
     @Column(name = "updated_at")
     @Temporal(TemporalType.TIMESTAMP)
     private Date updatedAt;
+    @Column(name = "visible")
+    private Boolean visible;
     @OneToMany(mappedBy = "contentCategoryid")
     private Collection<Content> contentCollection;
 
@@ -95,16 +82,6 @@ public class ContentCategory implements Serializable {
         this.id = id;
     }
 
-    public ContentCategory(Integer id, String title, String slug, boolean enable, boolean visible, Date createdAt, Date updatedAt) {
-        this.id = id;
-        this.title = title;
-        this.slug = slug;
-        this.enable = enable;
-        this.visible = visible;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
-    }
-
     public Integer getId() {
         return id;
     }
@@ -113,12 +90,12 @@ public class ContentCategory implements Serializable {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public Date getCreatedAt() {
+        return createdAt;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 
     public String getDescribtion() {
@@ -127,6 +104,14 @@ public class ContentCategory implements Serializable {
 
     public void setDescribtion(String describtion) {
         this.describtion = describtion;
+    }
+
+    public Boolean getEnable() {
+        return enable;
+    }
+
+    public void setEnable(Boolean enable) {
+        this.enable = enable;
     }
 
     public String getMeta() {
@@ -145,28 +130,12 @@ public class ContentCategory implements Serializable {
         this.slug = slug;
     }
 
-    public boolean getEnable() {
-        return enable;
+    public String getTitle() {
+        return title;
     }
 
-    public void setEnable(boolean enable) {
-        this.enable = enable;
-    }
-
-    public boolean getVisible() {
-        return visible;
-    }
-
-    public void setVisible(boolean visible) {
-        this.visible = visible;
-    }
-
-    public Date getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public Date getUpdatedAt() {
@@ -175,6 +144,14 @@ public class ContentCategory implements Serializable {
 
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public Boolean getVisible() {
+        return visible;
+    }
+
+    public void setVisible(Boolean visible) {
+        this.visible = visible;
     }
 
     @XmlTransient

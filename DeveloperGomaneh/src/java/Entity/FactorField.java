@@ -6,6 +6,7 @@
 package Entity;
 
 import java.io.Serializable;
+import java.math.BigInteger;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -20,7 +21,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -34,10 +34,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "FactorField.findAll", query = "SELECT f FROM FactorField f"),
     @NamedQuery(name = "FactorField.findById", query = "SELECT f FROM FactorField f WHERE f.id = :id"),
-    @NamedQuery(name = "FactorField.findByTitle", query = "SELECT f FROM FactorField f WHERE f.title = :title"),
-    @NamedQuery(name = "FactorField.findByPrice", query = "SELECT f FROM FactorField f WHERE f.price = :price"),
-    @NamedQuery(name = "FactorField.findByDescribtion", query = "SELECT f FROM FactorField f WHERE f.describtion = :describtion"),
     @NamedQuery(name = "FactorField.findByCreatedAt", query = "SELECT f FROM FactorField f WHERE f.createdAt = :createdAt"),
+    @NamedQuery(name = "FactorField.findByDescribtion", query = "SELECT f FROM FactorField f WHERE f.describtion = :describtion"),
+    @NamedQuery(name = "FactorField.findByPrice", query = "SELECT f FROM FactorField f WHERE f.price = :price"),
+    @NamedQuery(name = "FactorField.findByTitle", query = "SELECT f FROM FactorField f WHERE f.title = :title"),
     @NamedQuery(name = "FactorField.findByUpdatedAt", query = "SELECT f FROM FactorField f WHERE f.updatedAt = :updatedAt")})
 public class FactorField implements Serializable {
 
@@ -47,23 +47,17 @@ public class FactorField implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 255)
-    @Column(name = "title")
-    private String title;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "price")
-    private long price;
-    @Size(max = 3000)
-    @Column(name = "describtion")
-    private String describtion;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "created_at")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
+    @Size(max = 255)
+    @Column(name = "describtion")
+    private String describtion;
+    @Column(name = "price")
+    private BigInteger price;
+    @Size(max = 255)
+    @Column(name = "title")
+    private String title;
     @Column(name = "updated_at")
     @Temporal(TemporalType.TIMESTAMP)
     private Date updatedAt;
@@ -81,13 +75,6 @@ public class FactorField implements Serializable {
         this.id = id;
     }
 
-    public FactorField(Integer id, String title, long price, Date createdAt) {
-        this.id = id;
-        this.title = title;
-        this.price = price;
-        this.createdAt = createdAt;
-    }
-
     public Integer getId() {
         return id;
     }
@@ -96,20 +83,12 @@ public class FactorField implements Serializable {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public Date getCreatedAt() {
+        return createdAt;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public long getPrice() {
-        return price;
-    }
-
-    public void setPrice(long price) {
-        this.price = price;
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 
     public String getDescribtion() {
@@ -120,12 +99,20 @@ public class FactorField implements Serializable {
         this.describtion = describtion;
     }
 
-    public Date getCreatedAt() {
-        return createdAt;
+    public BigInteger getPrice() {
+        return price;
     }
 
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
+    public void setPrice(BigInteger price) {
+        this.price = price;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public Date getUpdatedAt() {

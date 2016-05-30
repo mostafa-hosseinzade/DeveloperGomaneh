@@ -6,6 +6,7 @@
 package Entity;
 
 import java.io.Serializable;
+import java.math.BigInteger;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -21,7 +22,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -35,11 +35,11 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Seo.findAll", query = "SELECT s FROM Seo s"),
     @NamedQuery(name = "Seo.findById", query = "SELECT s FROM Seo s WHERE s.id = :id"),
-    @NamedQuery(name = "Seo.findByTitle", query = "SELECT s FROM Seo s WHERE s.title = :title"),
-    @NamedQuery(name = "Seo.findByPrice", query = "SELECT s FROM Seo s WHERE s.price = :price"),
-    @NamedQuery(name = "Seo.findByMeta", query = "SELECT s FROM Seo s WHERE s.meta = :meta"),
-    @NamedQuery(name = "Seo.findBySlug", query = "SELECT s FROM Seo s WHERE s.slug = :slug"),
     @NamedQuery(name = "Seo.findByCreatedAt", query = "SELECT s FROM Seo s WHERE s.createdAt = :createdAt"),
+    @NamedQuery(name = "Seo.findByMeta", query = "SELECT s FROM Seo s WHERE s.meta = :meta"),
+    @NamedQuery(name = "Seo.findByPrice", query = "SELECT s FROM Seo s WHERE s.price = :price"),
+    @NamedQuery(name = "Seo.findBySlug", query = "SELECT s FROM Seo s WHERE s.slug = :slug"),
+    @NamedQuery(name = "Seo.findByTitle", query = "SELECT s FROM Seo s WHERE s.title = :title"),
     @NamedQuery(name = "Seo.findByUpdatedAt", query = "SELECT s FROM Seo s WHERE s.updatedAt = :updatedAt")})
 public class Seo implements Serializable {
 
@@ -49,34 +49,24 @@ public class Seo implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 255)
-    @Column(name = "title")
-    private String title;
-    @Basic(optional = false)
-    @NotNull
-    @Lob
-    @Size(min = 1, max = 2147483647)
-    @Column(name = "describtion")
-    private String describtion;
-    @Column(name = "price")
-    private Long price;
-    @Size(max = 255)
-    @Column(name = "meta")
-    private String meta;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 255)
-    @Column(name = "slug")
-    private String slug;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "created_at")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
-    @Basic(optional = false)
-    @NotNull
+    @Lob
+    @Size(max = 2147483647)
+    @Column(name = "describtion")
+    private String describtion;
+    @Size(max = 255)
+    @Column(name = "meta")
+    private String meta;
+    @Column(name = "price")
+    private BigInteger price;
+    @Size(max = 255)
+    @Column(name = "slug")
+    private String slug;
+    @Size(max = 255)
+    @Column(name = "title")
+    private String title;
     @Column(name = "updated_at")
     @Temporal(TemporalType.TIMESTAMP)
     private Date updatedAt;
@@ -91,15 +81,6 @@ public class Seo implements Serializable {
         this.id = id;
     }
 
-    public Seo(Integer id, String title, String describtion, String slug, Date createdAt, Date updatedAt) {
-        this.id = id;
-        this.title = title;
-        this.describtion = describtion;
-        this.slug = slug;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
-    }
-
     public Integer getId() {
         return id;
     }
@@ -108,12 +89,12 @@ public class Seo implements Serializable {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public Date getCreatedAt() {
+        return createdAt;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 
     public String getDescribtion() {
@@ -124,20 +105,20 @@ public class Seo implements Serializable {
         this.describtion = describtion;
     }
 
-    public Long getPrice() {
-        return price;
-    }
-
-    public void setPrice(Long price) {
-        this.price = price;
-    }
-
     public String getMeta() {
         return meta;
     }
 
     public void setMeta(String meta) {
         this.meta = meta;
+    }
+
+    public BigInteger getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigInteger price) {
+        this.price = price;
     }
 
     public String getSlug() {
@@ -148,12 +129,12 @@ public class Seo implements Serializable {
         this.slug = slug;
     }
 
-    public Date getCreatedAt() {
-        return createdAt;
+    public String getTitle() {
+        return title;
     }
 
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public Date getUpdatedAt() {

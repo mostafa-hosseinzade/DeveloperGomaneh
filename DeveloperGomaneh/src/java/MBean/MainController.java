@@ -7,9 +7,7 @@ package MBean;
 
 import Bean.PortfolioFacade;
 import Entity.Portfolio;
-import java.io.File;
 import java.util.List;
-import java.util.Map;
 import javax.annotation.ManagedBean;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
@@ -26,7 +24,6 @@ public class MainController {
     private String message;
 
     public List<Portfolio> getPortFolio(){
-        System.out.println("MBean.MainController.getPortFolio()");
         return ejbPortF.getLast();
     }
 

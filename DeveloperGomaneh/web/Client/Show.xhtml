@@ -7,18 +7,18 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <ui:composition template="/Client/layouts.xhtml">
         <ui:define name="body">
-
+            <c:set var="PortFolio" value="#{NavigationPage.p}"></c:set>
             <section class="engine"><a rel="external" href="https://mobirise.com">windows website builder</a></section><section class="mbr-slider mbr-section mbr-section--no-padding carousel slide" data-ride="carousel" data-wrap="true" data-interval="5000" id="slider-13" style="background-color: rgb(255, 255, 255);">
                 <div class="mbr-section__container">
                     <div>
                         <ol class="carousel-indicators">
-                            <c:forEach var="item" items="#{NavigationPage.InfoPortfolio().img}" varStatus="myIndex">
+                            <c:forEach var="item" items="#{PortFolio.img}" varStatus="myIndex">
                                 <li data-app-prevent-settings="" data-target="#slider-#{myIndex.index}" class="active" data-slide-to="#{myIndex.index}"></li>
                             </c:forEach>
                         </ol>
 
                         <div class="carousel-inner" role="listbox">
-                            <c:forEach var="item" items="#{NavigationPage.InfoPortfolio().img}" varStatus="myIndex">
+                            <c:forEach var="item" items="#{PortFolio.img}" varStatus="myIndex">
                                 <c:if test="#{myIndex.index == 0}">
                                     <div class="mbr-box mbr-section mbr-section--relative mbr-section--fixed-size mbr-section--bg-adapted item dark center mbr-section--full-height active" style="background-image: url(/DeveloperGomaneh/images/portfolio/#{item});">
                                         <div class="mbr-box__magnet mbr-box__magnet--center-right mbr-box__magnet--sm-padding mbr-after-navbar">
@@ -88,7 +88,7 @@
                                         height: 400px;
                                         direction: rtl;
                                         box-shadow: 0 0 5px;
-                                        background-image: url(/DeveloperGomaneh/images/portfolio/#{NavigationPage.InfoPortfolio().img[0]});
+                                        background-image: url(/DeveloperGomaneh/images/portfolio/#{PortFolio.img[0]});
                                         background-size: 100%;
                                     }
                                 </style>
@@ -96,10 +96,10 @@
                                     <h3 class="h3"> 
                                         <p class="p">مشخصات وب سایت</p>
                                         <p class="bo">
-                                            <span> آدرس وب سایت  </span> : <span>#{NavigationPage.InfoPortfolio().url}</span><br/>
-                                            <span>  درصد پیشرفت </span> : <span> #{NavigationPage.InfoPortfolio().percent}%</span><br/>
-                                            <span>  تاریخ اتمام </span> : <span><h:outputFormat value="#{NavigationPage.InfoPortfolio().finished}" ><f:convertDateTime pattern="Y-m-d"></f:convertDateTime></h:outputFormat></span><br/>
-                                            <span>  تعداد نمایش </span> : <span>#{NavigationPage.InfoPortfolio().visit}</span> <br/>
+                                            <span> آدرس وب سایت  </span> : <span>#{PortFolio.url}</span><br/>
+                                            <span>  درصد پیشرفت </span> : <span> #{PortFolio.percent}%</span><br/>
+                                            <span>  تاریخ اتمام </span> : <span><h:outputFormat value="#{PortFolio.finished}" ><f:convertDateTime pattern="Y-m-d"></f:convertDateTime></h:outputFormat></span><br/>
+                                            <span>  تعداد نمایش </span> : <span>#{PortFolio.visit}</span> <br/>
                                         </p>
                                     </h3>
                                 </figure>
@@ -107,12 +107,12 @@
                             <div class="mbr-box__magnet mbr-class-mbr-box__magnet--center-left col-sm-6 mbr-section__right">
                                 <div class="mbr-section__container mbr-section__container--middle">
                                     <div class="mbr-header mbr-header--auto-align mbr-header--wysiwyg">
-                                        <h3 class="mbr-header__text">"#{NavigationPage.InfoPortfolio().title}</h3>
+                                        <h3 class="mbr-header__text">"#{PortFolio.title}</h3>
 
                                     </div>
                                 </div>
                                 <div class="mbr-section__container mbr-section__container--middle">
-                                    <div class="mbr-article mbr-article--auto-align mbr-article--wysiwyg"><p>"#{NavigationPage.InfoPortfolio().describtion}</p></div>
+                                    <div class="mbr-article mbr-article--auto-align mbr-article--wysiwyg"><p>"#{PortFolio.describtion}</p></div>
                                 </div>
                                 <div class="mbr-section__container">
                                     <div class="mbr-buttons mbr-buttons--auto-align btn-inverse"><a class="mbr-buttons__btn btn btn-lg btn-default" href="#">Gomaneh</a></div>
