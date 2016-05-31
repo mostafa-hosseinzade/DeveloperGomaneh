@@ -234,6 +234,14 @@ html {
   width: 100%;
   z-index: 9999;
 }
+.mbr-navbar--collapsed .mbr-navbar__menu a{
+  margin-top: 26px;
+}
+@media(max-width : 600px){
+    .mbr-navbar--collapsed .mbr-navbar__menu a{
+    margin-top: 0px;
+    }
+}
 .mbr-navbar--collapsed .mbr-navbar__menu-box {
   display: table-cell;
   vertical-align: middle;
@@ -1132,7 +1140,7 @@ html {
   transition: all 0.2s ease-in-out 0s;
   color: #fff;
   cursor: pointer;
-  display: inline-block;
+  display: grid;
   font-size: 29px;
   height: 56px;
   line-height: 61px;
@@ -1140,6 +1148,7 @@ html {
   position: relative;
   text-align: center;
   width: 56px;
+  padding: 15px;
 }
 .mbr-social-icons__icon:hover {
   color: #fff;

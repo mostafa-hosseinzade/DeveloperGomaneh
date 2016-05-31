@@ -6,6 +6,8 @@
 package Bean;
 
 import Entity.Content;
+import Entity.ContentCategory;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -28,5 +30,16 @@ public class ContentFacade extends AbstractFacade<Content> {
     public ContentFacade() {
         super(Content.class);
     }
-    
+
+    public ContentCategory getServices() {
+        ContentCategory CC = null;
+        javax.persistence.Query q = em.createQuery("select u from ContentCategory u where u.title = :title");
+        q.setParameter("title", "Service");
+        if (q.getResultList().isEmpty()) {
+            return CC;
+        }
+        CC = (ContentCategory) q.getSingleResult();
+        return CC;
+    }
+
 }

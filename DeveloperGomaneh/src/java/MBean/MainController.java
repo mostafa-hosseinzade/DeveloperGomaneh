@@ -5,7 +5,10 @@
  */
 package MBean;
 
+import Bean.ContentCategoryFacade;
+import Bean.ContentFacade;
 import Bean.PortfolioFacade;
+import Entity.Content;
 import Entity.Portfolio;
 import java.util.List;
 import javax.annotation.ManagedBean;
@@ -13,38 +16,30 @@ import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
-
 @Named
 @ManagedBean
 @RequestScoped
 public class MainController {
+
     @EJB
     private PortfolioFacade ejbPortF;
-    private String name;
-    private String message;
 
-    public List<Portfolio> getPortFolio(){
+    @EJB
+    private ContentFacade ejbContent;
+    @EJB
+    private ContentCategoryFacade ejbContentCategory;
+
+    private List<Content> Services;
+
+    public List<Portfolio> getPortFolio() {
         return ejbPortF.getLast();
     }
 
-    public void sendContact(){
-        System.out.println("saved");
+    public List<Content> getServices() {
+        List<Content> l = null;
+        if (ejbContent.getServices() != null) {
+            l = (List<Content>) ejbContent.getServices().getContentCollection();
+        }
+        return l;
     }
-    
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-    
 }

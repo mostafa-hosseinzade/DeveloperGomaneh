@@ -62,3 +62,16 @@
     background-color: #166056 !important;
     border-color: #166056 !important;
 }
+
+.list-show{
+    max-height: 400px;
+}
+
+.list-show .list li{
+    display: inline-block;
+    position: relative;
+    width: 25%;
+    text-decoration: none;
+    list-style: none;
+    line-height: 35px;
+}
