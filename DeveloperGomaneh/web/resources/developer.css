@@ -68,10 +68,27 @@
 }
 
 .list-show .list li{
+    color: aliceblue;
     display: inline-block;
     position: relative;
     width: 25%;
     text-decoration: none;
     list-style: none;
     line-height: 35px;
+}
+.list-show .list li a{
+    color: aliceblue;
+    text-decoration: blink;
+}
+
+.list-show .list li a:hover{
+    border-bottom: dotted #166056;
+    border-width: 3px;
+}
+
+.mbr-gallery-row-special{
+    margin-bottom: -30px;
+}
+.ui-datascroller-content{
+    background-color : #EFEFEF !important;
 }

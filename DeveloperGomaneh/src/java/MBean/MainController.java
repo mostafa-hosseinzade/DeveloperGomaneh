@@ -10,6 +10,7 @@ import Bean.ContentFacade;
 import Bean.PortfolioFacade;
 import Entity.Content;
 import Entity.Portfolio;
+import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.ManagedBean;
 import javax.ejb.EJB;
@@ -33,6 +34,26 @@ public class MainController {
 
     public List<Portfolio> getPortFolio() {
         return ejbPortF.getLast();
+    }
+
+    public List getAllPortFolio() {
+        List<Portfolio> l = ejbPortF.findAll();
+        List<List<Portfolio>> o = new ArrayList<>();
+        int i = 1;
+         List<Portfolio> e=new ArrayList<>();
+        for (Portfolio p : l) {
+            e.add(p);
+            if (i % 3 == 0) {
+                o.add(e);
+                e = new ArrayList<>(); 
+            }
+            i++;
+        }
+        o.stream().forEach((a) -> {
+            System.out.println(a);
+        });
+
+        return o;
     }
 
     public List<Content> getServices() {

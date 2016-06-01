@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="/Client/layouts.xhtml">
+        <ui:define name="body">
+            <section class="engine"><a rel="external" href="https://mobirise.com">mobile site creator</a></section>
+            <section class="mbr-section mbr-section--relative mbr-section--fixed-size mbr-parallax-background mbr-after-navbar" id="msg-box3-20" style="background-image: url(../resources/images/shutterstock-131753615-1000x660-93.jpg);">
+                <div class="mbr-overlay" style="opacity: 0.5; background-color: rgb(34, 34, 34);"></div>
+                <div class="mbr-section__container container mbr-section__container--first" style="padding-top: 93px;">
+                    <div class="mbr-header mbr-header--wysiwyg row">
+                        <div class="col-sm-8 col-sm-offset-2" style="text-align: right;color: white !important">
+                            <h3 class="mbr-header__text">#{NavigationPage.content.title}</h3>
+                            <p class="mbr-header__subtext" style="color: white">#{NavigationPage.content.createdAt}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="mbr-section__container container mbr-section__container--middle">
+                    <div class="row">
+                        <div class="mbr-article mbr-article--wysiwyg col-sm-8 col-sm-offset-2" style="text-align: right;color: white">#{NavigationPage.content.content}</div>
+                    </div>
+                </div>
+                <div class="mbr-section__container container mbr-section__container--last" style="padding-bottom: 93px;">
+                    <div class="row">
+                        <div class="col-sm-8 col-sm-offset-2">
+                            <div class="mbr-buttons mbr-buttons--center"><a class="mbr-buttons__btn btn btn-lg btn-default" href="#" style="color: white;border-color: white">#{NavigationPage.content.meta}</a></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </ui:define>
+    </ui:composition>
+</html>

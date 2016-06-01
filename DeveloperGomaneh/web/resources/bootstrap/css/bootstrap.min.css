@@ -1149,7 +1149,7 @@ hr {
   margin-top: 20px;
   margin-bottom: 20px;
   border: 0;
-  border-top: 1px solid #eeeeee;
+  border-top: 1px solid #166056;
 }
 .sr-only {
   position: absolute;
@@ -1549,6 +1549,8 @@ a,
 a:hover {
   text-decoration: underline;
 }
+
+a {}
 h1,
 .h1,
 h2,
