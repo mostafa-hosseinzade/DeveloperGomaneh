@@ -1,6 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scene Scope="Project" version="2">
     <Scope Scope="Faces Configuration Only"/>
-    <Scope Scope="Project"/>
+    <Scope Scope="Project">
+        <Node id="Admin/factorField/List.xhtml" x="150" y="1050" zoom="true"/>
+        <Node id="welcomePrimefaces.xhtml" x="400" y="900" zoom="true"/>
+        <Node id="Admin/factorField/View.xhtml" x="900" y="750" zoom="true"/>
+        <Node id="Admin/faq/View.xhtml" x="650" y="750" zoom="true"/>
+        <Node id="Admin/seo/Edit.xhtml" x="400" y="1050" zoom="true"/>
+        <Node id="Admin/portfolio/List.xhtml" x="1150" y="450" zoom="true"/>
+        <Node id="Admin/portfolioCategory/View.xhtml" x="1400" y="750" zoom="true"/>
+        <Node id="Admin/faq/Edit.xhtml" x="150" y="450" zoom="true"/>
+        <Node id="Admin/contentCategory/Create.xhtml" x="2150" y="150" zoom="true"/>
+        <Node id="Admin/factorField/Create.xhtml" x="150" y="300" zoom="true"/>
+        <Node id="Admin/portfolioCategory/Edit.xhtml" x="150" y="150" zoom="true"/>
+        <Node id="Admin/seo/List.xhtml" x="2650" y="150" zoom="true"/>
+        <Node id="Admin/faq/List.xhtml" x="150" y="750" zoom="true"/>
+        <Node id="Client/seo.xhtml" x="1150" y="600" zoom="true"/>
+        <Node id="index.xhtml" x="900" y="900" zoom="true"/>
+        <Node id="Admin/user/Edit.xhtml" x="1400" y="150" zoom="true"/>
+        <Node id="Admin/factor/Create.xhtml" x="1650" y="300" zoom="true"/>
+        <Node id="Admin/portfolioCategory/List.xhtml" x="1650" y="150" zoom="true"/>
+        <Node id="Admin/portfolio/Edit.xhtml" x="150" y="1200" zoom="true"/>
+        <Node id="Admin/seo/View.xhtml" x="1900" y="300" zoom="true"/>
+        <Node id="Admin/content/Edit.xhtml" x="1900" y="450" zoom="true"/>
+        <Node id="Admin/contentCategory/List.xhtml" x="650" y="1200" zoom="true"/>
+        <Node id="Client/layouts.xhtml" x="900" y="150" zoom="true"/>
+        <Node id="Admin/factorField/Edit.xhtml" x="650" y="300" zoom="true"/>
+        <Node id="Admin/factor/Edit.xhtml" x="1400" y="300" zoom="true"/>
+        <Node id="Client/Services.xhtml" x="1650" y="600" zoom="true"/>
+        <Node id="login.jsp" x="1150" y="750" zoom="true"/>
+        <Node id="Admin/seo/Create.xhtml" x="650" y="1050" zoom="true"/>
+        <Node id="Admin/contentCategory/View.xhtml" x="400" y="450" zoom="true"/>
+        <Node id="contact/List.xhtml" x="900" y="1050" zoom="true"/>
+        <Node id="Admin/protfolioImg/Edit.xhtml" x="150" y="900" zoom="true"/>
+        <Node id="loginError.jsp" x="2150" y="450" zoom="true"/>
+        <Node id="Client/PortFolio.xhtml" x="1650" y="450" zoom="true"/>
+        <Node id="Client/index.xhtml" x="150" y="600" zoom="true"/>
+        <Node id="contact/View.xhtml" x="150" y="1350" zoom="true"/>
+        <Node id="Admin/sectionFactor/List.xhtml" x="1150" y="150" zoom="true"/>
+        <Node id="Admin/portfolioCategory/Create.xhtml" x="650" y="450" zoom="true"/>
+        <Node id="contact/Create.xhtml" x="400" y="600" zoom="true"/>
+        <Node id="Admin/protfolioImg/List.xhtml" x="650" y="150" zoom="true"/>
+        <Node id="Admin/user/View.xhtml" x="400" y="1200" zoom="true"/>
+        <Node id="Admin/sectionFactor/View.xhtml" x="1900" y="600" zoom="true"/>
+        <Node id="Admin/protfolioImg/Create.xhtml" x="1150" y="300" zoom="true"/>
+        <Node id="Admin/protfolioImg/View.xhtml" x="2400" y="300" zoom="true"/>
+        <Node id="template.xhtml" x="900" y="600" zoom="true"/>
+        <Node id="Admin/sectionFactor/Edit.xhtml" x="2150" y="300" zoom="true"/>
+        <Node id="Admin/user/List.xhtml" x="650" y="600" zoom="true"/>
+        <Node id="Client/Show.xhtml" x="2400" y="150" zoom="true"/>
+        <Node id="Admin/sectionFactor/Create.xhtml" x="1400" y="450" zoom="true"/>
+        <Node id="Admin/content/View.xhtml" x="900" y="300" zoom="true"/>
+        <Node id="Admin/portfolio/View.xhtml" x="1400" y="600" zoom="true"/>
+        <Node id="Admin/user/Create.xhtml" x="400" y="300" zoom="true"/>
+        <Node id="Admin/faq/Create.xhtml" x="400" y="150" zoom="true"/>
+        <Node id="Admin/factor/View.xhtml" x="1150" y="900" zoom="true"/>
+        <Node id="contact/Edit.xhtml" x="150" y="1500" zoom="true"/>
+        <Node id="Admin/content/List.xhtml" x="1900" y="150" zoom="true"/>
+        <Node id="Admin/contentCategory/Edit.xhtml" x="650" y="900" zoom="true"/>
+        <Node id="Admin/content/Create.xhtml" x="400" y="1350" zoom="true"/>
+        <Node id="Admin/portfolio/Create.xhtml" x="900" y="450" zoom="true"/>
+        <Node id="Admin/factor/List.xhtml" x="400" y="750" zoom="true"/>
+    </Scope>
     <Scope Scope="All Faces Configurations"/>
 </Scene>

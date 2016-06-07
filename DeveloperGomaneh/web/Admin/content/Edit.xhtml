@@ -12,8 +12,7 @@
             <h:form id="ContentEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{contentController.selected != null}">
-                        <p:outputLabel value="#{bundle.EditContentLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{contentController.selected.id}" title="#{bundle.EditContentTitle_id}" required="true" requiredMessage="#{bundle.EditContentRequiredMessage_id}"/>
+                        
                         <p:outputLabel value="#{bundle.EditContentLabel_title}" for="title" />
                         <p:inputText id="title" value="#{contentController.selected.title}" title="#{bundle.EditContentTitle_title}" required="true" requiredMessage="#{bundle.EditContentRequiredMessage_title}"/>
                         <p:outputLabel value="#{bundle.EditContentLabel_content}" for="content" />
@@ -23,11 +22,7 @@
                         <p:outputLabel value="#{bundle.EditContentLabel_meta}" for="meta" />
                         <p:inputText id="meta" value="#{contentController.selected.meta}" title="#{bundle.EditContentTitle_meta}" />
                         <p:outputLabel value="#{bundle.EditContentLabel_slug}" for="slug" />
-                        <p:inputText id="slug" value="#{contentController.selected.slug}" title="#{bundle.EditContentTitle_slug}" required="true" requiredMessage="#{bundle.EditContentRequiredMessage_slug}"/>
-                        <p:outputLabel value="#{bundle.EditContentLabel_createdAt}" for="createdAt" />
-                        <p:calendar id="createdAt" pattern="MM/dd/yyyy HH:mm:ss" value="#{contentController.selected.createdAt}" title="#{bundle.EditContentTitle_createdAt}" required="true" requiredMessage="#{bundle.EditContentRequiredMessage_createdAt}" showOn="button"/>
-                        <p:outputLabel value="#{bundle.EditContentLabel_updatedAt}" for="updatedAt" />
-                        <p:calendar id="updatedAt" pattern="MM/dd/yyyy HH:mm:ss" value="#{contentController.selected.updatedAt}" title="#{bundle.EditContentTitle_updatedAt}"  showOn="button"/>
+                        <p:inputText id="slug" value="#{contentController.selected.slug}" title="#{bundle.EditContentTitle_slug}" required="true" requiredMessage="#{bundle.EditContentRequiredMessage_slug}"/>                       
                         <p:outputLabel value="#{bundle.EditContentLabel_contentCategoryid}" for="contentCategoryid" />
                         <p:selectOneMenu id="contentCategoryid" value="#{contentController.selected.contentCategoryid}" >
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
@@ -36,12 +31,6 @@
                                            itemValue="#{contentCategoryidItem}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.EditContentLabel_userid}" for="userid" />
-                        <p:selectOneMenu id="userid" value="#{contentController.selected.userid}" >
-                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
-                            <f:selectItems value="#{userController.itemsAvailableSelectOne}"
-                                           var="useridItem"
-                                           itemValue="#{useridItem}"/>
-                        </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{contentController.update}" value="#{bundle.Save}" update="display,:ContentListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ContentEditDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="ContentEditDialog.hide()"/>

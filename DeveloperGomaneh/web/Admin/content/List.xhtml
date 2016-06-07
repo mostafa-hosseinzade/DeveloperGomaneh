@@ -85,12 +85,6 @@
                             </f:facet>
                             <h:outputText value="#{item.contentCategoryid}"/>
                         </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListContentTitle_userid}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.userid}"/>
-                        </p:column>
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{contentController.prepareCreate}" update=":ContentCreateForm" oncomplete="PF('ContentCreateDialog').show()"/>
                             <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":ContentViewForm" oncomplete="PF('ContentViewDialog').show()" disabled="#{empty contentController.selected}"/>

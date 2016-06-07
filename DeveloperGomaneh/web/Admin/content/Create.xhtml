@@ -12,8 +12,6 @@
             <h:form id="ContentCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{contentController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateContentLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{contentController.selected.id}" title="#{bundle.CreateContentTitle_id}" required="true" requiredMessage="#{bundle.CreateContentRequiredMessage_id}"/>
                         <p:outputLabel value="#{bundle.CreateContentLabel_title}" for="title" />
                         <p:inputText id="title" value="#{contentController.selected.title}" title="#{bundle.CreateContentTitle_title}" required="true" requiredMessage="#{bundle.CreateContentRequiredMessage_title}"/>
                         <p:outputLabel value="#{bundle.CreateContentLabel_content}" for="content" />
@@ -24,21 +22,11 @@
                         <p:inputText id="meta" value="#{contentController.selected.meta}" title="#{bundle.CreateContentTitle_meta}" />
                         <p:outputLabel value="#{bundle.CreateContentLabel_slug}" for="slug" />
                         <p:inputText id="slug" value="#{contentController.selected.slug}" title="#{bundle.CreateContentTitle_slug}" required="true" requiredMessage="#{bundle.CreateContentRequiredMessage_slug}"/>
-                        <p:outputLabel value="#{bundle.CreateContentLabel_createdAt}" for="createdAt" />
-                        <p:calendar id="createdAt" pattern="MM/dd/yyyy HH:mm:ss" value="#{contentController.selected.createdAt}" title="#{bundle.EditContentTitle_createdAt}" required="true" requiredMessage="#{bundle.EditContentRequiredMessage_createdAt}" showOn="button"/>
-                        <p:outputLabel value="#{bundle.CreateContentLabel_updatedAt}" for="updatedAt" />
-                        <p:calendar id="updatedAt" pattern="MM/dd/yyyy HH:mm:ss" value="#{contentController.selected.updatedAt}" title="#{bundle.EditContentTitle_updatedAt}"  showOn="button"/>
                         <p:outputLabel value="#{bundle.CreateContentLabel_contentCategoryid}" for="contentCategoryid" />
                         <p:selectOneMenu id="contentCategoryid" value="#{contentController.selected.contentCategoryid}" >
                             <f:selectItems value="#{contentCategoryController.itemsAvailableSelectOne}"
                                            var="contentCategoryidItem"
                                            itemValue="#{contentCategoryidItem}"/>
-                        </p:selectOneMenu>
-                        <p:outputLabel value="#{bundle.CreateContentLabel_userid}" for="userid" />
-                        <p:selectOneMenu id="userid" value="#{contentController.selected.userid}" >
-                            <f:selectItems value="#{userController.itemsAvailableSelectOne}"
-                                           var="useridItem"
-                                           itemValue="#{useridItem}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{contentController.create}" value="#{bundle.Save}" update="display,:ContentListForm:datalist,:growl" oncomplete="handleSubmit(args,'ContentCreateDialog');"/>

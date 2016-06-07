@@ -18,6 +18,7 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -45,7 +46,6 @@ public class Content implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
     @Lob
@@ -186,6 +186,11 @@ public class Content implements Serializable {
     @Override
     public String toString() {
         return "Entity.Content[ id=" + id + " ]";
+    }
+    
+    @PrePersist
+    public void prep(){
+        this.createdAt = new Date();
     }
     
 }

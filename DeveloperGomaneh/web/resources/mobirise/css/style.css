@@ -986,6 +986,7 @@ html {
 .mbr-reviews__item {
   position: relative;
   margin-top: 39px;
+  direction: rtl;
 }
 .mbr-reviews__text {
   background: #fafafa;
@@ -996,6 +997,7 @@ html {
   line-height: 26px;
   padding: 20px;
   position: relative;
+  text-align: right;
 }
 .mbr-reviews__text:before {
   -webkit-transform: rotate(45deg);
@@ -1492,6 +1494,7 @@ html {
   line-height: 40px;
   padding: 0 15px;
   text-align: center;
+  padding: 5px;
 }
 .mbr-plan__buttons {
   overflow: hidden;

@@ -12,8 +12,6 @@
             <h:form id="ContentViewForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{contentController.selected != null}">
-                        <h:outputText value="#{bundle.ViewContentLabel_id}"/>
-                        <h:outputText value="#{contentController.selected.id}" title="#{bundle.ViewContentTitle_id}"/>
                         <h:outputText value="#{bundle.ViewContentLabel_title}"/>
                         <h:outputText value="#{contentController.selected.title}" title="#{bundle.ViewContentTitle_title}"/>
                         <h:outputText value="#{bundle.ViewContentLabel_content}"/>
@@ -34,9 +32,7 @@
                         </h:outputText>
                         <h:outputText value="#{bundle.ViewContentLabel_contentCategoryid}"/>
                         <h:outputText value="#{contentController.selected.contentCategoryid}" title="#{bundle.ViewContentTitle_contentCategoryid}"/>
-                        <h:outputText value="#{bundle.ViewContentLabel_userid}"/>
-                        <h:outputText value="#{contentController.selected.userid}" title="#{bundle.ViewContentTitle_userid}"/>
-                    </p:panelGrid>
+                      </p:panelGrid>
                     <p:commandButton value="#{bundle.Close}" onclick="ContentViewDialog.hide()"/>
                 </h:panelGroup>
             </h:form>
