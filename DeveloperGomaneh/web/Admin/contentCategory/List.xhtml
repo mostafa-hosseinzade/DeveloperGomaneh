@@ -85,6 +85,12 @@
                                 <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
                             </h:outputText>
                         </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListContentCategoryTitle_subctg}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.slug}"/>
+                        </p:column>
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{contentCategoryController.prepareCreate}" update=":ContentCategoryCreateForm" oncomplete="PF('ContentCategoryCreateDialog').show()"/>
                             <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":ContentCategoryViewForm" oncomplete="PF('ContentCategoryViewDialog').show()" disabled="#{empty contentCategoryController.selected}"/>

@@ -26,10 +26,12 @@
                         <p:selectBooleanCheckbox id="enable" value="#{contentCategoryController.selected.enable}" required="true" requiredMessage="#{bundle.EditContentCategoryRequiredMessage_enable}"/>
                         <p:outputLabel value="#{bundle.CreateContentCategoryLabel_visible}" for="visible" />
                         <p:selectBooleanCheckbox id="visible" value="#{contentCategoryController.selected.visible}" required="true" requiredMessage="#{bundle.EditContentCategoryRequiredMessage_visible}"/>
-                        <p:outputLabel value="#{bundle.CreateContentCategoryLabel_createdAt}" for="createdAt" />
-                        <p:calendar id="createdAt" pattern="MM/dd/yyyy HH:mm:ss" value="#{contentCategoryController.selected.createdAt}" title="#{bundle.EditContentCategoryTitle_createdAt}" required="true" requiredMessage="#{bundle.EditContentCategoryRequiredMessage_createdAt}" showOn="button"/>
-                        <p:outputLabel value="#{bundle.CreateContentCategoryLabel_updatedAt}" for="updatedAt" />
-                        <p:calendar id="updatedAt" pattern="MM/dd/yyyy HH:mm:ss" value="#{contentCategoryController.selected.updatedAt}" title="#{bundle.EditContentCategoryTitle_updatedAt}" required="true" requiredMessage="#{bundle.EditContentCategoryRequiredMessage_updatedAt}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateContentLabel_contentCategoryid}" for="subctg" />
+                        <p:selectOneMenu id="subctg" value="#{contentCategoryController.selected.subctg}" >
+                            <f:selectItems value="#{contentCategoryController.itemsAvailableSelectOne}"
+                                           var="subctgItem"
+                                           itemValue="#{subctgItem}"/>
+                        </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{contentCategoryController.create}" value="#{bundle.Save}" update="display,:ContentCategoryListForm:datalist,:growl" oncomplete="handleSubmit(args,'ContentCategoryCreateDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="ContentCategoryCreateDialog.hide()"/>

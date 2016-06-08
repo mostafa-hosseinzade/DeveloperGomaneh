@@ -12,8 +12,6 @@
             <h:form id="FaqCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{faqController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateFaqLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{faqController.selected.id}" title="#{bundle.CreateFaqTitle_id}" required="true" requiredMessage="#{bundle.CreateFaqRequiredMessage_id}"/>
                         <p:outputLabel value="#{bundle.CreateFaqLabel_faq}" for="faq" />
                         <p:inputText id="faq" value="#{faqController.selected.faq}" title="#{bundle.CreateFaqTitle_faq}" required="true" requiredMessage="#{bundle.CreateFaqRequiredMessage_faq}"/>
                         <p:outputLabel value="#{bundle.CreateFaqLabel_slug}" for="slug" />
@@ -28,16 +26,6 @@
                         <p:inputText id="answer" value="#{faqController.selected.answer}" title="#{bundle.CreateFaqTitle_answer}" />
                         <p:outputLabel value="#{bundle.CreateFaqLabel_meta}" for="meta" />
                         <p:inputText id="meta" value="#{faqController.selected.meta}" title="#{bundle.CreateFaqTitle_meta}" />
-                        <p:outputLabel value="#{bundle.CreateFaqLabel_createdAt}" for="createdAt" />
-                        <p:calendar id="createdAt" pattern="MM/dd/yyyy HH:mm:ss" value="#{faqController.selected.createdAt}" title="#{bundle.EditFaqTitle_createdAt}" required="true" requiredMessage="#{bundle.EditFaqRequiredMessage_createdAt}" showOn="button"/>
-                        <p:outputLabel value="#{bundle.CreateFaqLabel_updatedAt}" for="updatedAt" />
-                        <p:calendar id="updatedAt" pattern="MM/dd/yyyy HH:mm:ss" value="#{faqController.selected.updatedAt}" title="#{bundle.EditFaqTitle_updatedAt}"  showOn="button"/>
-                        <p:outputLabel value="#{bundle.CreateFaqLabel_userid}" for="userid" />
-                        <p:selectOneMenu id="userid" value="#{faqController.selected.userid}" >
-                            <f:selectItems value="#{userController.itemsAvailableSelectOne}"
-                                           var="useridItem"
-                                           itemValue="#{useridItem}"/>
-                        </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{faqController.create}" value="#{bundle.Save}" update="display,:FaqListForm:datalist,:growl" oncomplete="handleSubmit(args,'FaqCreateDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="FaqCreateDialog.hide()"/>

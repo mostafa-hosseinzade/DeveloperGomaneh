@@ -191,6 +191,9 @@ public class Content implements Serializable {
     @PrePersist
     public void prep(){
         this.createdAt = new Date();
+        String str = this.slug;
+        str = str.replace(" ", "-");
+        this.slug = str;
     }
     
 }

@@ -91,12 +91,6 @@
                                 <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
                             </h:outputText>
                         </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListFaqTitle_userid}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.userid}"/>
-                        </p:column>
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{faqController.prepareCreate}" update=":FaqCreateForm" oncomplete="PF('FaqCreateDialog').show()"/>
                             <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":FaqViewForm" oncomplete="PF('FaqViewDialog').show()" disabled="#{empty faqController.selected}"/>

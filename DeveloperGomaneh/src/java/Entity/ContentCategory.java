@@ -14,9 +14,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -41,7 +45,9 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "ContentCategory.findBySlug", query = "SELECT c FROM ContentCategory c WHERE c.slug = :slug"),
     @NamedQuery(name = "ContentCategory.findByTitle", query = "SELECT c FROM ContentCategory c WHERE c.title = :title"),
     @NamedQuery(name = "ContentCategory.findByUpdatedAt", query = "SELECT c FROM ContentCategory c WHERE c.updatedAt = :updatedAt"),
+    @NamedQuery(name = "ContentCategory.findBySubctg", query = "SELECT c FROM ContentCategory c WHERE c.subctg = :subctg"),
     @NamedQuery(name = "ContentCategory.findByVisible", query = "SELECT c FROM ContentCategory c WHERE c.visible = :visible")})
+
 public class ContentCategory implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -74,7 +80,19 @@ public class ContentCategory implements Serializable {
     private Boolean visible;
     @OneToMany(mappedBy = "contentCategoryid")
     private Collection<Content> contentCollection;
+    
+    @OneToOne
+    @JoinColumn(name="subctg",referencedColumnName = "id")
+    private ContentCategory subctg;
 
+    public ContentCategory getSubctg() {
+        return subctg;
+    }
+
+    public void setSubctg(ContentCategory subctg) {
+        this.subctg = subctg;
+    }
+    
     public ContentCategory() {
     }
 
@@ -186,6 +204,19 @@ public class ContentCategory implements Serializable {
     @Override
     public String toString() {
         return "Entity.ContentCategory[ id=" + id + " ]";
+    }
+    
+    @PrePersist
+    public void ChangeSlug(){
+        String str = this.slug;
+        str = str.replace(" ", "-");
+        this.slug = str;
+        this.createdAt = new Date();
+    }
+    
+    @PreUpdate
+    public void PreUpdate(){
+        this.updatedAt = new Date();
     }
     
 }

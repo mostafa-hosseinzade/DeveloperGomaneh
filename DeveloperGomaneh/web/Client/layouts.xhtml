@@ -47,6 +47,20 @@
                                                     <a href="#" class="btn btn-primary">Test send</a>
                                                 </div>
                                             </li>
+                                            <li class="mbr-navbar__item testd">
+                                                <a class="mbr-buttons__link btn text-white" href="#"  >مقاله ها</a>
+                                                <div class="dropdown-test-d">
+                                                    <p style="padding-top: 10px;padding-right: 10px;color: white;">گروه بندی مقالات</p>
+                                                    <hr/>
+                                                    <c:forEach var="item" items="#{content.message}">
+                                                        <h:commandLink value="#{item.title}" styleClass="btn btn-primary ContentLink" action="#{content.showAllContnet()}">
+                                                            <f:param name="ctgId" value="#{item.id}"/>
+                                                            <span class="badge">#{item.contentCollection.size()}</span>
+                                                        </h:commandLink>
+                                                    </c:forEach>
+                                                </div>
+                                            </li>
+
                                             <li class="mbr-navbar__item"><a class="mbr-buttons__link btn text-white" href="#">سرویس ها</a></li>
                                             <li class="mbr-navbar__item"><h:commandLink styleClass="mbr-buttons__link btn text-white" action="seo.xhtml"><b>سئو</b></h:commandLink></li>
                                             <li class="mbr-navbar__item"><h:commandLink styleClass="mbr-buttons__link btn text-white" action="index.xhtml" ><b>صفحه اصلی </b></h:commandLink></li>

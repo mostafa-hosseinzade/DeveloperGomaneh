@@ -73,12 +73,6 @@
                             </f:facet>
                             <h:outputText value="#{item.sectionFactorid}"/>
                         </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListFactorFieldTitle_userid}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.userid}"/>
-                        </p:column>
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{factorFieldController.prepareCreate}" update=":FactorFieldCreateForm" oncomplete="PF('FactorFieldCreateDialog').show()"/>
                             <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":FactorFieldViewForm" oncomplete="PF('FactorFieldViewDialog').show()" disabled="#{empty factorFieldController.selected}"/>

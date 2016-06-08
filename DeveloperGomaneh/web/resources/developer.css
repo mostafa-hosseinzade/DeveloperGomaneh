@@ -3,7 +3,7 @@
     src : url(font-yekan/Yekan.woff);
 }
 
-h1,h2,h3,div,h4,h5,h6,p,span,strong,b{
+h1,h2,h3,div,h4,h5,h6,p,strong,b{
     font-family: B-yekan !important;
 }
 .testd{
@@ -144,4 +144,8 @@ h1,h2,h3,div,h4,h5,h6,p,span,strong,b{
 }
 .mbr-plan__box .mbr-plan__details ul li{
     direction: rtl;
+}
+
+.ContentLink{
+    font-size: 10px;
 }

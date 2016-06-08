@@ -6,9 +6,11 @@
 package Bean;
 
 import Entity.ContentCategory;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -24,7 +26,14 @@ public class ContentCategoryFacade extends AbstractFacade<ContentCategory> {
     protected EntityManager getEntityManager() {
         return em;
     }
-
+    
+    public List<ContentCategory> findBySubctg(Integer subctgid){
+        ContentCategory c = this.find(subctgid);
+         Query q = em.createNamedQuery("ContentCategory.findBySubctg");
+         q.setParameter("subctg",c);
+         return q.getResultList();
+    }
+    
     public ContentCategoryFacade() {
         super(ContentCategory.class);
     }

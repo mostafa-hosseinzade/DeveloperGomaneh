@@ -18,6 +18,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -164,4 +166,12 @@ public class FactorField implements Serializable {
         return "Entity.FactorField[ id=" + id + " ]";
     }
     
+    @PrePersist
+    public void PrePersisit(){
+        this.createdAt = new Date();
+    }
+    @PreUpdate
+    public void PreUpdate(){
+        this.updatedAt = new Date();
+    }
 }
