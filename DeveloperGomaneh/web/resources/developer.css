@@ -149,3 +149,21 @@ h1,h2,h3,div,h4,h5,h6,p,strong,b{
 .ContentLink{
     font-size: 10px;
 }
+
+.headcontent .head-befor{
+    border: solid 3px #166056;
+    width: 13%;
+    display: inline-block;
+    margin-top: 16px;
+    margin-left: -120px;
+    transform: skewX(-28deg);
+}
+.headcontent .head-after{
+    border: solid 3px #166056;
+    width: 13%;
+    display: inline-block;
+    position: absolute;
+    margin-top: 16px;
+    transform: skewX(-28deg);
+    margin-left: 20px;
+}

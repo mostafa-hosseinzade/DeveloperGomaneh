@@ -40,6 +40,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Content.findByOrderList", query = "SELECT c FROM Content c WHERE c.orderList = :orderList"),
     @NamedQuery(name = "Content.findBySlug", query = "SELECT c FROM Content c WHERE c.slug = :slug"),
     @NamedQuery(name = "Content.findByTitle", query = "SELECT c FROM Content c WHERE c.title = :title"),
+    @NamedQuery(name = "Content.findBycontentCategoryid", query = "SELECT c FROM Content c WHERE c.contentCategoryid = :contentCategoryid"),
     @NamedQuery(name = "Content.findByUpdatedAt", query = "SELECT c FROM Content c WHERE c.updatedAt = :updatedAt")})
 public class Content implements Serializable {
 

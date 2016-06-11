@@ -30,7 +30,7 @@
                                            var="contentCategoryidItem"
                                            itemValue="#{contentCategoryidItem}"/>
                         </p:selectOneMenu>
-                        <p:outputLabel value="#{bundle.EditContentLabel_userid}" for="userid" />
+                        
                     </p:panelGrid>
                     <p:commandButton actionListener="#{contentController.update}" value="#{bundle.Save}" update="display,:ContentListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ContentEditDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="ContentEditDialog.hide()"/>

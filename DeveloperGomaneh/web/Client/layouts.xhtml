@@ -53,7 +53,7 @@
                                                     <p style="padding-top: 10px;padding-right: 10px;color: white;">گروه بندی مقالات</p>
                                                     <hr/>
                                                     <c:forEach var="item" items="#{content.message}">
-                                                        <h:commandLink value="#{item.title}" styleClass="btn btn-primary ContentLink" action="#{content.showAllContnet()}">
+                                                        <h:commandLink value="#{item.title}" styleClass="btn btn-primary ContentLink" action="#{content.showContent()}">
                                                             <f:param name="ctgId" value="#{item.id}"/>
                                                             <span class="badge">#{item.contentCollection.size()}</span>
                                                         </h:commandLink>

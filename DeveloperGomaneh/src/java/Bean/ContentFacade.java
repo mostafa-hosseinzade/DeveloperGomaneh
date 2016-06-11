@@ -8,6 +8,7 @@ package Bean;
 import Entity.Content;
 import Entity.ContentCategory;
 import java.util.List;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -21,7 +22,10 @@ public class ContentFacade extends AbstractFacade<Content> {
 
     @PersistenceContext(unitName = "DeveloperPU")
     private EntityManager em;
-
+    
+    @EJB
+    ContentCategoryFacade CCF;
+    
     @Override
     protected EntityManager getEntityManager() {
         return em;
@@ -40,6 +44,11 @@ public class ContentFacade extends AbstractFacade<Content> {
         }
         CC = (ContentCategory) q.getSingleResult();
         return CC;
+    }
+    
+    public List<Content> getISI(Integer id){
+        ContentCategory CC = CCF.find(id);
+        return em.createNamedQuery("Content.findBycontentCategoryid").setParameter("contentCategoryid", CC).getResultList();
     }
 
 }
