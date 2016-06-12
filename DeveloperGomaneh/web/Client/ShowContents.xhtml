@@ -67,9 +67,9 @@
                                                                 </div>
                                                                 <div class="mbr-section__container">
                                                                     <div class="mbr-buttons mbr-buttons--auto-align btn-inverse">
-                                                                        <h:commandButton  styleClass="mbr-buttons__btn btn btn-lg btn-default"  style="position: absolute;bottom: -120px;" action="#{content.showInfoContent()}" value=" اطلاعات بیشتر"> 
-                                                                            <f:param name="#{content.contentShowId}" value="#{item.id}"/>
-                                                                        </h:commandButton>
+                                                                        <h:link  styleClass="mbr-buttons__btn btn btn-lg btn-default"  style="position: absolute;bottom: -120px;" outcome="#{content.showInfoContent()}" value=" اطلاعات بیشتر "> 
+                                                                            <f:param name="contentShowId" value="#{item.id}" />
+                                                                        </h:link>
                                                                     </div>
                                                                 </div>
 

@@ -8,10 +8,12 @@ import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import Entity.Content;
+
 
 @ManagedBean(name = "content")
 @RequestScoped
-public class Content {
+public class Contents {
 
     @EJB
     private ContentCategoryFacade CCF;
@@ -24,7 +26,7 @@ public class Content {
 
     @ManagedProperty(value = "#{param.contentShowId}")
     private Integer contentShowId;
-
+    
     public Integer getContentShowId() {
         return contentShowId;
     }
@@ -61,9 +63,15 @@ public class Content {
     }
 
     public String showInfoContent() {
-        if (this.contentShowId == null) {
-            return "index";
-        }
         return "ShowIsi";
+    }
+    
+    public Content InfoContentSelect(){
+        Content c = CF.find(this.contentShowId);
+//       if(this.contentShowId != null){
+        System.out.println(c);
+           return c;
+//       }
+//       return c;
     }
 }
