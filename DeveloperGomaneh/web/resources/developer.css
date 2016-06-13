@@ -17,6 +17,11 @@ h1,h2,h3,div,h4,h5,h6,p,strong,b{
     background-color: rgba(0,0,0,0.5);
     min-height: 120px;
     min-width: 240px;
+    background-clip: content-box;
+    list-style: none;
+}
+.dropdown-test-d li{
+    border-bottom: solid 1px;
 }
 
 @media(max-width:460px){
@@ -166,4 +171,16 @@ h1,h2,h3,div,h4,h5,h6,p,strong,b{
     margin-top: 16px;
     transform: skewX(-28deg);
     margin-left: 20px;
+}
+
+.content .mbr-buttons__btn {
+ position: absolute;
+ bottom: -120px;   
+}
+
+@media(max-width:768px){
+   .content .mbr-buttons__btn {
+        position: relative;
+        bottom: 0px;
+    }
 }

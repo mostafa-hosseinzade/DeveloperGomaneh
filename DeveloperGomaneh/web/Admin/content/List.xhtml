@@ -43,7 +43,7 @@
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListContentTitle_content}"/>
                             </f:facet>
-                            <h:outputText value="#{item.content}"/>
+                            <h:outputText value="#{item.content.length() gt 50 ? item.content.substring(0,47).concat('...') : item.content}" escape="false"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">

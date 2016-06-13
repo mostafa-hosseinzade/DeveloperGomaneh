@@ -15,9 +15,9 @@
                         <h:outputText value="#{bundle.ViewContentLabel_title}"/>
                         <h:outputText value="#{contentController.selected.title}" title="#{bundle.ViewContentTitle_title}"/>
                         <h:outputText value="#{bundle.ViewContentLabel_content}"/>
-                        <h:outputText value="#{contentController.selected.content}" title="#{bundle.ViewContentTitle_content}"/>
+                        <h:outputText value="#{contentController.selected.content}" title="#{bundle.ViewContentTitle_content}" escape="false"/>
                         <h:outputText value="#{bundle.ViewContentLabel_orderList}"/>
-                        <h:outputText value="#{contentController.selected.orderList}" title="#{bundle.ViewContentTitle_orderList}"/>
+                        <h:outputText value="#{contentController.selected.orderList}" title="#{bundle.ViewContentTitle_orderList}" />
                         <h:outputText value="#{bundle.ViewContentLabel_meta}"/>
                         <h:outputText value="#{contentController.selected.meta}" title="#{bundle.ViewContentTitle_meta}"/>
                         <h:outputText value="#{bundle.ViewContentLabel_slug}"/>

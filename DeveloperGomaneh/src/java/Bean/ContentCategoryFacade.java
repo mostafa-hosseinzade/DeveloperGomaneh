@@ -26,16 +26,22 @@ public class ContentCategoryFacade extends AbstractFacade<ContentCategory> {
     protected EntityManager getEntityManager() {
         return em;
     }
-    
-    public List<ContentCategory> findBySubctg(Integer subctgid){
-        ContentCategory c = this.find(subctgid);
-         Query q = em.createNamedQuery("ContentCategory.findBySubctg");
-         q.setParameter("subctg",c);
-         return q.getResultList();
+
+    public void remove(ContentCategory c) {
+        if (c.getId() != 1 || c.getId() != 2 || c.getId() != 3 || c.getId() != 4) {
+            getEntityManager().remove(c);
+        }
     }
-    
+
+    public List<ContentCategory> findBySubctg(Integer subctgid) {
+        ContentCategory c = this.find(subctgid);
+        Query q = em.createNamedQuery("ContentCategory.findBySubctg");
+        q.setParameter("subctg", c);
+        return q.getResultList();
+    }
+
     public ContentCategoryFacade() {
         super(ContentCategory.class);
     }
-    
+
 }

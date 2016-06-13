@@ -36,14 +36,7 @@ public class ContentFacade extends AbstractFacade<Content> {
     }
 
     public ContentCategory getServices() {
-        ContentCategory CC = null;
-        javax.persistence.Query q = em.createQuery("select u from ContentCategory u where u.title = :title");
-        q.setParameter("title", "Service");
-        if (q.getResultList().isEmpty()) {
-            return CC;
-        }
-        CC = (ContentCategory) q.getSingleResult();
-        return CC;
+        return CCF.find(2);
     }
     
     public List<Content> getISI(Integer id){

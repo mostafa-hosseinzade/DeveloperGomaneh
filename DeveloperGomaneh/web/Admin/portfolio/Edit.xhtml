@@ -12,8 +12,6 @@
             <h:form id="PortfolioEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{portfolioController.selected != null}">
-                        <p:outputLabel value="#{bundle3.EditPortfolioLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{portfolioController.selected.id}" title="#{bundle3.EditPortfolioTitle_id}" required="true" requiredMessage="#{bundle3.EditPortfolioRequiredMessage_id}"/>
                         <p:outputLabel value="#{bundle3.EditPortfolioLabel_title}" for="title" />
                         <p:inputText id="title" value="#{portfolioController.selected.title}" title="#{bundle3.EditPortfolioTitle_title}" required="true" requiredMessage="#{bundle3.EditPortfolioRequiredMessage_title}"/>
                         <p:outputLabel value="#{bundle3.EditPortfolioLabel_describtion}" for="describtion" />
@@ -28,10 +26,6 @@
                         <p:inputText id="portfolioCategoryid" value="#{portfolioController.selected.portfolioCategoryid}" title="#{bundle3.EditPortfolioTitle_portfolioCategoryid}" />
                         <p:outputLabel value="#{bundle3.EditPortfolioLabel_percent}" for="percent" />
                         <p:inputText id="percent" value="#{portfolioController.selected.percent}" title="#{bundle3.EditPortfolioTitle_percent}" required="true" requiredMessage="#{bundle3.EditPortfolioRequiredMessage_percent}"/>
-                        <p:outputLabel value="#{bundle3.EditPortfolioLabel_createdAt}" for="createdAt" />
-                        <p:calendar id="createdAt" pattern="MM/dd/yyyy HH:mm:ss" value="#{portfolioController.selected.createdAt}" title="#{bundle3.EditPortfolioTitle_createdAt}" required="true" requiredMessage="#{bundle3.EditPortfolioRequiredMessage_createdAt}" showOn="button"/>
-                        <p:outputLabel value="#{bundle3.EditPortfolioLabel_updatedAt}" for="updatedAt" />
-                        <p:calendar id="updatedAt" pattern="MM/dd/yyyy HH:mm:ss" value="#{portfolioController.selected.updatedAt}" title="#{bundle3.EditPortfolioTitle_updatedAt}"  showOn="button"/>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{portfolioController.update}" value="#{bundle3.Save}" update="display,:PortfolioListForm:datalist,:growl" oncomplete="handleSubmit(args, 'PortfolioEditDialog');"/>
                     <p:commandButton value="#{bundle3.Cancel}" onclick="PortfolioEditDialog.hide()"/>

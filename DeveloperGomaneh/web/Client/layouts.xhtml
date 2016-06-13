@@ -43,25 +43,23 @@
                                         <ul class="mbr-navbar__items mbr-navbar__items--right float-left mbr-buttons mbr-buttons--freeze mbr-buttons--right btn-decorator mbr-buttons--active mbr-buttons--only-links">
                                             <li class="mbr-navbar__item testd">
                                                 <h:commandLink styleClass="mbr-buttons__link btn text-white" action="PortFolio.xhtml" >نمونه کارها</h:commandLink>
-                                                <div class="dropdown-test-d">
-                                                    <a href="#" class="btn btn-primary">Test send</a>
-                                                </div>
+             
                                             </li>
                                             <li class="mbr-navbar__item testd">
                                                 <a class="mbr-buttons__link btn text-white" href="#"  >مقاله ها</a>
-                                                <div class="dropdown-test-d">
+                                                <ul class="dropdown-test-d">
                                                     <p style="padding-top: 10px;padding-right: 10px;color: white;">گروه بندی مقالات</p>
                                                     <hr/>
                                                     <c:forEach var="item" items="#{content.message}">
-                                                        <h:commandLink value="#{item.title}" styleClass="btn btn-primary ContentLink" action="#{content.showContent()}">
-                                                            <f:param name="ctgId" value="#{item.id}"/>
-                                                            <span class="badge">#{item.contentCollection.size()}</span>
-                                                        </h:commandLink>
-                                                    </c:forEach>
-                                                </div>
+                                                        <li>
+                                                            <h:commandLink value="#{item.title}" style="display: block" styleClass="btn btn-primary ContentLink" action="#{content.showContent()}">
+                                                                <f:param name="ctgId" value="#{item.id}"/>
+                                                                <span class="badge">#{item.contentCollection.size()}</span>
+                                                            </h:commandLink>
+                                                        </li>
+                                                    </c:forEach>                                    
+                                                </ul>
                                             </li>
-
-                                            <li class="mbr-navbar__item"><a class="mbr-buttons__link btn text-white" href="#">سرویس ها</a></li>
                                             <li class="mbr-navbar__item"><h:commandLink styleClass="mbr-buttons__link btn text-white" action="seo.xhtml"><b>سئو</b></h:commandLink></li>
                                             <li class="mbr-navbar__item"><h:commandLink styleClass="mbr-buttons__link btn text-white" action="index.xhtml" ><b>صفحه اصلی </b></h:commandLink></li>
                                         </ul>                            

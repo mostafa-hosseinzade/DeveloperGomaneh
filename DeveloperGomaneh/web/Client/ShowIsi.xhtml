@@ -7,7 +7,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <ui:composition template="/Client/layouts.xhtml">
         <ui:define name="body">
-
+            
             <section class="mbr-section mbr-section--relative mbr-after-navbar" id="msg-box5-27" style="background-color: rgb(15, 125, 114);">
 
                 <div class="mbr-section__container mbr-section__container--isolated container" style="padding-top: 31px; padding-bottom: 31px;">
@@ -17,14 +17,12 @@
                                 <div class="mbr-section__container mbr-section__container--middle">
                                     <div class="mbr-header mbr-header--auto-align mbr-header--wysiwyg" style="text-align: right;direction: rtl;color: white">
                                         <h3 class="mbr-header__text">#{content.InfoContentSelect().title}</h3>
-
                                     </div>
                                 </div>
                                 <div class="mbr-section__container mbr-section__container--middle">
-                                    <div class="mbr-article mbr-article--auto-align mbr-article--wysiwyg" style="text-align: right;direction: rtl;color: white"><p>#{content.InfoContentSelect().content}</p></div>
+                                    <div class="mbr-article mbr-article--auto-align mbr-article--wysiwyg" style="text-align: right;direction: rtl;color: white"><h:outputText value="#{content.InfoContentSelect().content}" escape="false"/></div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>

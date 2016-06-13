@@ -15,7 +15,7 @@
                         <p:outputLabel value="#{bundle.CreateContentLabel_title}" for="title" />
                         <p:inputText id="title" value="#{contentController.selected.title}" title="#{bundle.CreateContentTitle_title}" required="true" requiredMessage="#{bundle.CreateContentRequiredMessage_title}"/>
                         <p:outputLabel value="#{bundle.CreateContentLabel_content}" for="content" />
-                        <p:inputTextarea rows="4" cols="30" id="content" value="#{contentController.selected.content}" title="#{bundle.CreateContentTitle_content}" required="true" requiredMessage="#{bundle.CreateContentRequiredMessage_content}"/>
+                        <p:editor id="content" value="#{contentController.selected.content}"  />
                         <p:outputLabel value="#{bundle.CreateContentLabel_orderList}" for="orderList" />
                         <p:inputText id="orderList" value="#{contentController.selected.orderList}" title="#{bundle.CreateContentTitle_orderList}" />
                         <p:outputLabel value="#{bundle.CreateContentLabel_meta}" for="meta" />

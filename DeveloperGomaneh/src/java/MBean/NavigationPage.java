@@ -23,8 +23,8 @@ public class NavigationPage {
     //this managed property will read value from request parameter pageId
     @ManagedProperty(value = "#{param.pageId}")
     private Integer pageId;
-    
-    @ManagedProperty(value ="#{param.serviceId}")
+
+    @ManagedProperty(value = "#{param.serviceId}")
     private Integer serviceId;
 
     public Integer getServiceId() {
@@ -34,7 +34,7 @@ public class NavigationPage {
     public void setServiceId(Integer serviceId) {
         this.serviceId = serviceId;
     }
-    
+
     private Portfolio portfolio;
 
     public Portfolio getportfolio() {
@@ -43,10 +43,10 @@ public class NavigationPage {
 
     @EJB
     private PortfolioFacade PF;
-    
+
     @EJB
     private ContentFacade CF;
-    
+
     private Content content;
 
     public Content getContent() {
@@ -56,6 +56,7 @@ public class NavigationPage {
     public void setContent(Content content) {
         this.content = content;
     }
+
     public Integer getPageId() {
         return pageId;
     }
@@ -70,25 +71,24 @@ public class NavigationPage {
         }
         return "Show";
     }
-    
-    public String showServices(){
-        if(serviceId == null){
+
+    public String showServices() {
+        if (serviceId == null) {
             return "index";
         }
         return "Services";
     }
 
     @PostConstruct
-    public void getAction(){
+    public void getAction() {
         if (pageId != null) {
             this.InfoPortfolio();
         }
-        if(serviceId != null){
+        if (serviceId != null) {
             this.InfoServices();
         }
     }
-    
-    
+
     public void InfoPortfolio() {
         if (pageId != null) {
             Portfolio p = PF.find(pageId);
@@ -99,12 +99,12 @@ public class NavigationPage {
             PF.edit(p);
         }
     }
-    
-    public void InfoServices(){
-        if(serviceId != null){
+
+    public void InfoServices() {
+        if (serviceId != null) {
             content = CF.find(serviceId);
         }
     }
-   
-    
+
+
 }

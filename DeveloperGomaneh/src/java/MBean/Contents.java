@@ -68,10 +68,6 @@ public class Contents {
     
     public Content InfoContentSelect(){
         Content c = CF.find(this.contentShowId);
-//       if(this.contentShowId != null){
-        System.out.println(c);
            return c;
-//       }
-//       return c;
     }
 }
