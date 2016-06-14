@@ -42,8 +42,10 @@
                                     <div class="mbr-navbar__column">
                                         <ul class="mbr-navbar__items mbr-navbar__items--right float-left mbr-buttons mbr-buttons--freeze mbr-buttons--right btn-decorator mbr-buttons--active mbr-buttons--only-links">
                                             <li class="mbr-navbar__item testd">
+                                                <h:commandLink styleClass="mbr-buttons__link btn text-white" action="Proforma-Invoice.xhtml" >پیش فاکتور</h:commandLink>
+                                            </li>
+                                            <li class="mbr-navbar__item testd">
                                                 <h:commandLink styleClass="mbr-buttons__link btn text-white" action="PortFolio.xhtml" >نمونه کارها</h:commandLink>
-             
                                             </li>
                                             <li class="mbr-navbar__item testd">
                                                 <a class="mbr-buttons__link btn text-white" href="#"  >مقاله ها</a>
@@ -185,5 +187,12 @@
 
         <script src="../resources/mobirise/js/script.js"></script>
         <script src="../resources/mobirise-gallery/script.js"></script>       
+        <script>
+            $('#myTabs a').click(function (e) {
+                e.preventDefault();
+                 e.stopImmediatePropagation();
+                $(this).tab('show');
+            })
+        </script>
     </h:body>
 </html>

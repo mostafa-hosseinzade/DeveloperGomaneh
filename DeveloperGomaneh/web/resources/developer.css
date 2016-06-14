@@ -184,3 +184,11 @@ h1,h2,h3,div,h4,h5,h6,p,strong,b{
         bottom: 0px;
     }
 }
+
+.nav-tabs {
+    border-bottom: 0px !important;
+}
+
+.nav-tabs li{
+    float: right !important;
+}

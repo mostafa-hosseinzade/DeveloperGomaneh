@@ -15,9 +15,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
@@ -52,11 +54,12 @@ public class FactorField implements Serializable {
     @Column(name = "created_at")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
-    @Size(max = 255)
+    @Lob
+    @Size(max = 2147483647)
     @Column(name = "describtion")
     private String describtion;
     @Column(name = "price")
-    private BigInteger price;
+    private double price;
     @Size(max = 255)
     @Column(name = "title")
     private String title;
@@ -69,6 +72,19 @@ public class FactorField implements Serializable {
     @JoinColumn(name = "User_id", referencedColumnName = "id")
     @ManyToOne
     private User userid;
+
+    @OneToOne
+    @JoinColumn(name = "sub_feild", referencedColumnName = "id")
+    private FactorField subFeild;
+
+    public FactorField getSubFeild() {
+        return subFeild;
+    }
+
+    public void setSubFeild(FactorField subFeild) {
+        this.subFeild = subFeild;
+    }
+
 
     public FactorField() {
     }
@@ -101,11 +117,11 @@ public class FactorField implements Serializable {
         this.describtion = describtion;
     }
 
-    public BigInteger getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(BigInteger price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
@@ -165,13 +181,14 @@ public class FactorField implements Serializable {
     public String toString() {
         return "Entity.FactorField[ id=" + id + " ]";
     }
-    
+
     @PrePersist
-    public void PrePersisit(){
+    public void PrePersisit() {
         this.createdAt = new Date();
     }
+
     @PreUpdate
-    public void PreUpdate(){
+    public void PreUpdate() {
         this.updatedAt = new Date();
     }
 }

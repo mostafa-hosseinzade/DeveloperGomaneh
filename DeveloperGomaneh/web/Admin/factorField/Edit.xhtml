@@ -12,7 +12,6 @@
             <h:form id="FactorFieldEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{factorFieldController.selected != null}">
-                        <p:inputText id="id" value="#{factorFieldController.selected.id}" title="#{bundle.EditFactorFieldTitle_id}" required="true" requiredMessage="#{bundle.EditFactorFieldRequiredMessage_id}"/>
                         <p:outputLabel value="#{bundle.EditFactorFieldLabel_title}" for="title" />
                         <p:inputText id="title" value="#{factorFieldController.selected.title}" title="#{bundle.EditFactorFieldTitle_title}" required="true" requiredMessage="#{bundle.EditFactorFieldRequiredMessage_title}"/>
                         <p:outputLabel value="#{bundle.EditFactorFieldLabel_price}" for="price" />
@@ -25,6 +24,13 @@
                             <f:selectItems value="#{sectionFactorController.itemsAvailableSelectOne}"
                                            var="sectionFactoridItem"
                                            itemValue="#{sectionFactoridItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="SubFeild" for="SubFeild" />
+                        <p:selectOneMenu id="SubFeild" value="#{factorFieldController.selected.subFeild}" >
+                            <f:selectItem itemLabel="Select a Server..." />
+                            <f:selectItems value="#{factorFieldController.itemsAvailableSelectOne}"
+                                           var="subFeildItem"
+                                           itemValue="#{subFeildItem}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{factorFieldController.update}" value="#{bundle.Save}" update="display,:FactorFieldListForm:datalist,:growl" oncomplete="handleSubmit(args, 'FactorFieldEditDialog');"/>
