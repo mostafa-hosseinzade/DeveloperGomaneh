@@ -7,7 +7,9 @@ package Entity;
 
 import java.io.Serializable;
 import java.math.BigInteger;
+import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,6 +21,7 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
@@ -76,6 +79,18 @@ public class FactorField implements Serializable {
     @OneToOne
     @JoinColumn(name = "sub_feild", referencedColumnName = "id")
     private FactorField subFeild;
+    
+    @OneToMany(mappedBy = "subFeild")
+    private Collection<FactorField> ChildFeildCollection;
+
+    public Collection<FactorField> getChildFeildCollection() {
+        return ChildFeildCollection;
+    }
+
+    public void setChildFeildCollection(Collection<FactorField> ChildFeildCollection) {
+        this.ChildFeildCollection = ChildFeildCollection;
+    }
+
 
     public FactorField getSubFeild() {
         return subFeild;

@@ -190,9 +190,12 @@
         <script>
             $('#myTabs a').click(function (e) {
                 e.preventDefault();
-                 e.stopImmediatePropagation();
+                e.stopImmediatePropagation();
                 $(this).tab('show');
-            })
+            });
+            $(function () {
+                $('[data-toggle="tooltip"]').tooltip()
+            });
         </script>
     </h:body>
 </html>
