@@ -7,114 +7,118 @@
     xmlns:f="http://xmlns.jcp.org/jsf/core">
     <ui:composition template="/Client/layouts.xhtml">
         <ui:define name="body">
-            <div class="col-lg-12" style="margin-top: 100px">
-                <div class="">
-                    <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12" style="direction: rtl">
-                        <div class="panel panel-primary">
-                            <div class="panel-heading" id="myTabs" style="padding: 0px">
-                                <a href="#home" class="btn btn-primary" aria-controls="home" role="tab" data-toggle="tab"><span>1-</span> <span>راهنمایی</span></a>
-                                <a href="#type" aria-controls="type" onclick="#{factor.setSectionId(1)}" role="tab" data-toggle="tab">
-                                    <h:commandButton id="type_button" styleClass="btn btn-primary" action="#{factor.setSectionId(1)}" value="2- نوع وب سایت">
-                                        <f:ajax execute="type_button" render="TypeSite"/>
-                                    </h:commandButton>
-                                </a>
-                                <a href="#base" aria-controls="base"  role="tab" data-toggle="tab">
-                                    <h:commandButton id="base_button" styleClass="btn btn-primary" action="#{factor.setSectionId(2)}" value="2- امکانات پایه">
-                                        <f:ajax execute="base_button" render="BaseOptions"/>
-                                    </h:commandButton>
-                                </a>
-                                <a href="#share" aria-controls="share" role="tab" data-toggle="tab">
-                                    <h:commandButton id="share_button" styleClass="btn btn-primary" action="#{factor.setSectionId(3)}" value="2- امکانات مشترک">
-                                        <f:ajax execute="share_button" render="ShareOptions"/>
-                                    </h:commandButton>
-                                </a>
-                                <a href="#special" aria-controls="special" role="tab" data-toggle="tab">
-                                    <h:commandButton id="special_button" styleClass="btn btn-primary" action="#{factor.setSectionId(4)}" value="2- امکانات تخصصی">
-                                        <f:ajax execute="special_button" render="SpecialOptions"/>
-                                    </h:commandButton>
-                                </a>
-                                <a href="#guess" class="btn btn-primary" aria-controls="guess" role="tab" data-toggle="tab"><span>6-</span> <span>امکانات پیشنهادی</span></a>
-                                <a href="#user" class="btn btn-primary" aria-controls="user" role="tab" data-toggle="tab"><span>7-</span> <span>اطلاعات شخصی</span></a>
-                            </div>
-                            <div class="panel-body">
-                                <div class="tab-content">
-                                    <div role="tabpanel" class="tab-pane active" id="home">
-                                        <h4 style="text-align: center">به نکات زیر توجه نمایید ...</h4>
-                                        <p><span class="glyphicon glyphicon-ok"></span> <span>در طراحی تمام وب سایت ها از سی ام اس های آماده مانند جوملا و وردپرس استفاده <code>نمی شود</code></span></p>
-                                        <p><span class="glyphicon glyphicon-ok"></span> <span>مراحلی که در بخش بالا به صورت شماره 1 تا 7 قرار دارد را به خوبی دنبال نمایید</span></p>
-                                        <p><span class="glyphicon glyphicon-ok"></span> <span>اطلاعات شخصی خود را با دقت وارد نمایید</span></p>
-                                        <p><span class="glyphicon glyphicon-ok"></span> <span>پیشنهاد ما این است که برای بهتر دیده شدن وب سایت در موبایل و تبلت, از بخش شماره 6 استفاده نمایید</span></p>
-                                        <p><span class="glyphicon glyphicon-ok"></span> <span>لازم به ذکر است که این بخش فقط در نهایت به صدور پیش فاکتور منتهی خواهد شد. لزومی ندارد که هزینه ای را در این مراحل پرداخت نمایید</span></p>
-                                        <p><span class="glyphicon glyphicon-ok"></span> <span>در صورت امکان میتوانید از شماره هایی که در بالای وب سایت قرار دارد ارتباط برقرار نمایید</span></p>
-                                    </div>
-                                    <div role="tabpanel" class="tab-pane" id="type">
-                                        <p>نوع وب سایت :</p>
-                                        <div class="col-lg-5 pull-right">
-                                            <h:form>
-                                                <h:selectOneMenu value="#{factor.typeSite}" id="TypeSite" styleClass="form-control" style="font-size: 0.8em;">
-                                                    <f:selectItems value="#{factor.SF.factorFieldCollection}" itemValue="#{item}" var="item"  itemLabel="#{item.title}" />
-                                                    <f:ajax render="priceSite allPriceSite" execute="TypeSite"/>
-                                                </h:selectOneMenu>
-                                            </h:form>
+            <h:form>
+                <div class="col-lg-12" style="margin-top: 100px">
+                    <div class="">
+                        <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12" style="direction: rtl">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading" id="myTabs" style="padding: 0px">
+                                    <a href="#home" class="btn btn-primary" aria-controls="home" role="tab" data-toggle="tab"><span>1-</span> <span>راهنمایی</span></a>
+                                    <a href="#type" aria-controls="type" onclick="#{factor.setSectionId(1)}" role="tab" data-toggle="tab">
+                                        <h:commandButton id="type_button" styleClass="btn btn-primary" action="#{factor.setSectionId(1)}" value="2- نوع وب سایت">
+                                            <f:ajax execute="type_button" render="TypeSite"/>
+                                        </h:commandButton>
+                                    </a>
+                                    <a href="#base" aria-controls="base"  role="tab" data-toggle="tab">
+                                        <h:commandButton id="base_button" styleClass="btn btn-primary" action="#{factor.setSectionId(2)}" value="2- امکانات پایه">
+                                            <f:ajax execute="base_button" render="BaseOptions"/>
+                                        </h:commandButton>
+                                    </a>
+                                    <a href="#share" aria-controls="share" role="tab" data-toggle="tab">
+                                        <h:commandButton id="share_button" styleClass="btn btn-primary" action="#{factor.setSectionId(3)}" value="2- امکانات مشترک">
+                                            <f:ajax execute="share_button" render="ShareOptions"/>
+                                        </h:commandButton>
+                                    </a>
+                                    <a href="#special" aria-controls="special" role="tab" data-toggle="tab">
+                                        <h:commandButton id="special_button" styleClass="btn btn-primary" action="#{factor.setSectionId(4)}" value="2- امکانات تخصصی">
+                                            <f:ajax execute="special_button" render="SpecialOptions"/>
+                                        </h:commandButton>
+                                    </a>
+                                    <a href="#guess" class="btn btn-primary" aria-controls="guess" role="tab" data-toggle="tab"><span>6-</span> <span>امکانات پیشنهادی</span></a>
+                                    <a href="#user" class="btn btn-primary" aria-controls="user" role="tab" data-toggle="tab"><span>7-</span> <span>اطلاعات شخصی</span></a>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="tab-content">
+                                        <div role="tabpanel" class="tab-pane active" id="home">
+                                            <h4 style="text-align: center">به نکات زیر توجه نمایید ...</h4>
+                                            <p><span class="glyphicon glyphicon-ok"></span> <span>در طراحی تمام وب سایت ها از سی ام اس های آماده مانند جوملا و وردپرس استفاده <code>نمی شود</code></span></p>
+                                            <p><span class="glyphicon glyphicon-ok"></span> <span>مراحلی که در بخش بالا به صورت شماره 1 تا 7 قرار دارد را به خوبی دنبال نمایید</span></p>
+                                            <p><span class="glyphicon glyphicon-ok"></span> <span>اطلاعات شخصی خود را با دقت وارد نمایید</span></p>
+                                            <p><span class="glyphicon glyphicon-ok"></span> <span>پیشنهاد ما این است که برای بهتر دیده شدن وب سایت در موبایل و تبلت, از بخش شماره 6 استفاده نمایید</span></p>
+                                            <p><span class="glyphicon glyphicon-ok"></span> <span>لازم به ذکر است که این بخش فقط در نهایت به صدور پیش فاکتور منتهی خواهد شد. لزومی ندارد که هزینه ای را در این مراحل پرداخت نمایید</span></p>
+                                            <p><span class="glyphicon glyphicon-ok"></span> <span>در صورت امکان میتوانید از شماره هایی که در بالای وب سایت قرار دارد ارتباط برقرار نمایید</span></p>
                                         </div>
+                                        <div role="tabpanel" class="tab-pane" id="type">
+                                            <p>نوع وب سایت :</p>
+                                            <div class="col-lg-5 pull-right">
+                                                <h:form>
+                                                    <h:selectOneMenu value="#{factor.typeSite}" id="TypeSite" styleClass="form-control" style="font-size: 0.8em;">
+                                                        <f:selectItems value="#{factor.SF.factorFieldCollection}" itemValue="#{item}" var="item"  itemLabel="#{item.title}" />
+                                                        <f:ajax render="priceSite allPriceSite" execute="TypeSite"/>
+                                                    </h:selectOneMenu>
+                                                </h:form>
+                                            </div>
+                                        </div>
+                                        <div role="tabpanel" class="tab-pane" id="base">
+                                            <h:panelGrid id="BaseOptions">
+                                                <ui:repeat var="item"  value="#{factor.SF.factorFieldCollection}">
+                                                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                                        <span><input type="checkbox" class="form-control" checked="true" disabled="true" /> #{item.title} </span> 
+                                                        <span>(#{item.price})</span>
+                                                        <span><i class="glyphicon glyphicon-question-sign"  data-toggle="tooltip" data-placement="top" title="#{factor.filterhtml(item.describtion)}"></i></span>
+                                                    </div>
+                                                </ui:repeat>
+                                            </h:panelGrid>
+                                        </div>
+                                        <div role="tabpanel" class="tab-pane" id="share">
+                                            <p:selectManyCheckbox  id="ShareOptions" layout="grid" columns="4"  value="#{factor.addId}" >
+                                                <f:selectItems value="#{factor.SF.factorFieldCollection}" itemValue="#{item.id}" var="item" itemLabel="#{item.title}"/>
+                                                <f:selectItem  itemValue="2" itemLabel="Test2"/>
+                                                <f:ajax render="priceSite allPriceSite Faq" execute="ShareOptions"/>
+                                            </p:selectManyCheckbox>
+                                            <h:outputText value="#{factor.addId}" id="Faq"></h:outputText>
+                                        </div>
+                                        <div role="tabpanel" class="tab-pane" id="special">
+                                            <h:panelGrid id="SpecialOptions" style="width: 100%">
+                                                <ui:repeat var="item"  value="#{factor.typeSite.childFeildCollection}">
+                                                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                                        <span><input type="checkbox" class="form-control" /> #{item.title} </span> 
+                                                        <span>(#{item.price})</span>
+                                                        <span><i class="glyphicon glyphicon-question-sign"  data-toggle="tooltip" data-placement="top" title="#{factor.filterhtml(item.describtion)}"></i></span>
+                                                    </div>
+                                                </ui:repeat>
+                                            </h:panelGrid>
+                                        </div>
+                                        <div role="tabpanel" class="tab-pane" id="guess">guess</div>
+                                        <div role="tabpanel" class="tab-pane" id="user">user</div>
                                     </div>
-                                    <div role="tabpanel" class="tab-pane" id="base">
-                                        <h:panelGrid id="BaseOptions">
-                                            <ui:repeat var="item"  value="#{factor.SF.factorFieldCollection}">
-                                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                                    <span><input type="checkbox" class="form-control" checked="true" disabled="true" /> #{item.title} </span> 
-                                                    <span>(#{item.price})</span>
-                                                    <span><i class="glyphicon glyphicon-question-sign"  data-toggle="tooltip" data-placement="top" title="#{factor.filterhtml(item.describtion)}"></i></span>
-                                                </div>
-                                            </ui:repeat>
-                                        </h:panelGrid>
-                                    </div>
-                                    <div role="tabpanel" class="tab-pane" id="share">
-                                        <p:selectManyCheckbox id="ShareOptions" layout="grid" columns="4"  value="#{factor.addId}" >
-                                            <f:selectItems value="#{factor.SF.factorFieldCollection}"  class="form-control" itemValue="#{item.id}" var="item" itemLabel="#{item.title}"/>
-                                            <f:ajax render="priceSite allPriceSite" execute="ShareOptions"/>
-                                        </p:selectManyCheckbox>
-                                    </div>
-                                    <div role="tabpanel" class="tab-pane" id="special">
-                                        <h:panelGrid id="SpecialOptions" style="width: 100%">
-                                            <ui:repeat var="item"  value="#{factor.typeSite.childFeildCollection}">
-                                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                                    <span><input type="checkbox" class="form-control" /> #{item.title} </span> 
-                                                    <span>(#{item.price})</span>
-                                                    <span><i class="glyphicon glyphicon-question-sign"  data-toggle="tooltip" data-placement="top" title="#{factor.filterhtml(item.describtion)}"></i></span>
-                                                </div>
-                                            </ui:repeat>
-                                        </h:panelGrid>
-                                    </div>
-                                    <div role="tabpanel" class="tab-pane" id="guess">guess</div>
-                                    <div role="tabpanel" class="tab-pane" id="user">user</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12" style="direction: rtl;text-align: center">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading" >
+                                    پیش فاکتور
+                                </div>
+                                <div class="panel-body" >
+                                    <p>هزینه وب سایت</p>
+                                    <h:outputText style="color: red" value="#{factor.price}" id="priceSite"/>
+                                    <hr style="border: solid 1px;box-shadow: 0 0 1px #166056;border-top: solid 0px;"/>
+                                    <p>جمع کل</p>
+                                    <h:outputText value="#{factor.allPrice}" style="color: red" id="allPriceSite"/>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12" style="direction: rtl;text-align: center">
-                        <div class="panel panel-primary">
-                            <div class="panel-heading" >
-                                پیش فاکتور
-                            </div>
-                            <div class="panel-body" >
-                                <p>هزینه وب سایت</p>
-                                <h:outputText style="color: red" value="#{factor.price}" id="priceSite"/>
-                                <hr style="border: solid 1px;box-shadow: 0 0 1px #166056;border-top: solid 0px;"/>
-                                <p>جمع کل</p>
-                                <h:outputText value="#{factor.allPrice}" style="color: red" id="allPriceSite"/>
-                            </div>
-                        </div>
-                    </div>
                 </div>
-            </div>
-            <style>
-                .btn-primary{
-                    padding: 8px !important;
-                    margin-left: -3px !important;
-                    border-left: solid 1px !important;
-                }
-            </style>
+                <style>
+                    .btn-primary{
+                        padding: 8px !important;
+                        margin-left: -3px !important;
+                        border-left: solid 1px !important;
+                    }
+                </style>
+            </h:form>
         </ui:define>
     </ui:composition>    
 

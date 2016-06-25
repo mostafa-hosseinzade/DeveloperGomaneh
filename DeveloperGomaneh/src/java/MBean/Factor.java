@@ -26,40 +26,6 @@ public class Factor implements Serializable {
 
     private SectionFactor SF;
 
-    private static FactorField TypeSite;
-
-    private static List<Integer> arrayidfeild;
-
-    public FactorField getTypeSite() {
-        return TypeSite;
-    }
-
-    private static double price = 0;
-
-    private static double allPrice = 0;
-
-    private List<String> addId;
-
-    public List<String> getAddId() {
-        return addId;
-    }
-
-    public void setAddId(List<String> addId) {
-        this.addId = addId;
-        System.out.println("MBean.Factor.setAddId() is : "+addId);
-        for (String f : addId) {
-            System.out.println("MBean.Factor.setAddId() is : "+f);
-        }
-    }
-
-    public double getAllPrice() {
-        return allPrice;
-    }
-
-    public void setAllPrice(double allPrice) {
-        this.allPrice = allPrice;
-    }
-
     public SectionFactor getSF() {
         SF = null;
         if (this.sectionId == null) {
@@ -70,20 +36,10 @@ public class Factor implements Serializable {
         return SF;
     }
 
-    @ManagedProperty(value = "#{param.sectionId}")
-    private Integer sectionId;
+    private static FactorField TypeSite;
 
-    public Integer getSectionId() {
-        return sectionId;
-    }
-
-    public void setSectionId(Integer sectionId) {
-        this.sectionId = sectionId;
-//        if (addId != null) {
-//            for (Integer i : this.addId) {
-//                arrayidfeild.add(i);
-//            }
-//        }
+    public FactorField getTypeSite() {
+        return TypeSite;
     }
 
     public void setTypeSite(FactorField f) {
@@ -96,8 +52,15 @@ public class Factor implements Serializable {
         arrayidfeild.add(f.getId());
     }
 
+    public void setSectionId(Integer sectionId) {
+        this.sectionId = sectionId;
+    }
+
+    private static List<Integer> arrayidfeild;
+
+    private static double price = 0;
+
     public void addPrice(float allPrice) {
-//        arrayidfeild.add(section);
         this.allPrice = this.allPrice + allPrice;
         this.price = this.price + allPrice;
     }
@@ -106,12 +69,39 @@ public class Factor implements Serializable {
         this.price = price;
     }
 
+    private static double allPrice = 0;
+
+    public double getAllPrice() {
+        return allPrice;
+    }
+
+    public void setAllPrice(double allPrice) {
+        this.allPrice = allPrice;
+    }
+
     public double getPrice() {
         return this.price;
+    }
+
+    @ManagedProperty(value = "#{param.sectionId}")
+    private Integer sectionId;
+
+    public Integer getSectionId() {
+        return sectionId;
     }
 
     public String filterhtml(String html) {
         return Jsoup.parse(html).text();
     }
+    
+    private List<Integer> addId;
 
+    public List<Integer> getAddId() {
+        return addId;
+    }
+
+    public void setAddId(List<Integer> addId) {
+        this.addId = addId;
+        System.out.println("MBean.Factor.setAddId() is : " + addId);
+    }
 }
