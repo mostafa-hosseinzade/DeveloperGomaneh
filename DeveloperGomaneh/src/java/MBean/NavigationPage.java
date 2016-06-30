@@ -9,16 +9,19 @@ import Bean.ContentFacade;
 import Bean.PortfolioFacade;
 import Entity.Content;
 import Entity.Portfolio;
+import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.view.ViewScoped;
 
-@ManagedBean(name = "NavigationPage", eager = true)
-@RequestScoped
-public class NavigationPage {
+@ManagedBean(name = "NavigationPage")
+@ViewScoped
+public class NavigationPage implements Serializable{
 
     //this managed property will read value from request parameter pageId
     @ManagedProperty(value = "#{param.pageId}")

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+    xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="/Client/layouts.xhtml">
+        <ui:define name="body">
+            <div class="col-lg-12" style="margin-top: 100px">
+                <div class="">
+                    <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12" style="direction: rtl">
+                        <p:tabView id="tabview">
+                            <p:ajax event="tabChange" update="typeSiteForm ShareOptions"  listener="#{invoiceController.onTabChange}" />
+                            <p:tab  title="راهنما">
+                                <f:attribute name="section" value="0"/>
+                                <h4 style="text-align: center">به نکات زیر توجه نمایید ...</h4>
+                                <p><span class="glyphicon glyphicon-ok"></span> <span>در طراحی تمام وب سایت ها از سی ام اس های آماده مانند جوملا و وردپرس استفاده <code>نمی شود</code></span></p>
+                                <p><span class="glyphicon glyphicon-ok"></span> <span>مراحلی که در بخش بالا به صورت شماره 1 تا 7 قرار دارد را به خوبی دنبال نمایید</span></p>
+                                <p><span class="glyphicon glyphicon-ok"></span> <span>اطلاعات شخصی خود را با دقت وارد نمایید</span></p>
+                                <p><span class="glyphicon glyphicon-ok"></span> <span>پیشنهاد ما این است که برای بهتر دیده شدن وب سایت در موبایل و تبلت, از بخش شماره 6 استفاده نمایید</span></p>
+                                <p><span class="glyphicon glyphicon-ok"></span> <span>لازم به ذکر است که این بخش فقط در نهایت به صدور پیش فاکتور منتهی خواهد شد. لزومی ندارد که هزینه ای را در این مراحل پرداخت نمایید</span></p>
+                                <p><span class="glyphicon glyphicon-ok"></span> <span>در صورت امکان میتوانید از شماره هایی که در بالای وب سایت قرار دارد ارتباط برقرار نمایید</span></p>
+                            </p:tab>
+                            <p:tab  title="نوع وب سایت">
+                                <f:attribute name="section" value="1"/>
+                                <h:form  id="typeSiteForm" >
+                                    <h:selectOneMenu value="#{invoiceController.typeSite}" styleClass="form-control" id="TypeSite">
+                                        <f:selectItems value="#{invoiceController.currentSection.factorFieldCollection}" var="item" itemValue="#{item}"   itemLabel="#{item.title}" />
+                                        <p:ajax update=":tabview:BaseOptions" />
+                                    </h:selectOneMenu>
+                                </h:form>
+                            </p:tab>
+                            <p:tab  title="امکانات جانبی">
+                                <f:attribute name="section" value="2"/>
+                                <h:panelGroup id="BaseOptions">
+                                    <ui:repeat var="item"  value="#{invoiceController.currentSection.factorFieldCollection}">  
+                                        <p>
+                                            <span class="glyphicon glyphicon-ok"></span>
+                                            <h:outputText value="#{item.title} (#{item.price})" />
+                                            <span><i class="glyphicon glyphicon-question-sign"  data-toggle="tooltip" data-placement="top" title="#{factor.filterhtml(item.describtion)}"></i></span>
+                                        </p>
+                                    </ui:repeat>
+                                </h:panelGroup>
+                            </p:tab>
+                            <p:tab title="امکانات مشترک">
+                                <f:attribute name="section" value="3"/>
+                                <h:form id="ShareOptions" >
+                                    <p:messages id="msg" />
+                                    <p:selectManyCheckbox layout="grid" columns="6"  value="#{invoiceController.selectedfactorFieldList}">
+                                        <f:selectItems  value="#{invoiceController.currentSection.factorFieldCollection}" var="myitem" itemValue="#{myitem}" itemLabel="#{myitem.title}"/>
+                                        <p:ajax update="@form"/>
+                                    </p:selectManyCheckbox>
+                                    <p:outputLabel id="Faq" value="#{invoiceController.selectedfactorFieldList}" />
+                                </h:form>
+                            </p:tab>
+                            <p:tab title="امکانات تخصصی">
+                                <f:attribute name="section" value="4"/>
+                            </p:tab>
+                            <p:tab title="امکانات پیشنهادی">
+                                <f:attribute name="section" value="5"/>
+                            </p:tab>
+                            <p:tab title="اطلاعات شخصی">
+                                <f:attribute name="section" value="6"/>
+                            </p:tab>
+                        </p:tabView>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12" style="direction: rtl;text-align: center">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading" >
+                                پیش فاکتور
+                            </div>
+                            <div class="panel-body" >
+                                <p>هزینه وب سایت</p>
+                                <h:outputText style="color: red" value="#{factor.price}" id="priceSite"/>
+                                <hr style="border: solid 1px;box-shadow: 0 0 1px #166056;border-top: solid 0px;"/>
+                                <p>جمع کل</p>
+                                <h:outputText value="#{factor.allPrice}" style="color: red" id="allPriceSite"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <style>
+                .btn-primary{
+                    padding: 8px !important;
+                    margin-left: -3px !important;
+                    border-left: solid 1px !important;
+                }
+                ul{
+                    list-style: none!important;
+                }
+                ul > li{
+                    direction: rtl;text-align: right
+                }
+            </style>
+
+        </ui:define>
+    </ui:composition>
+</html>

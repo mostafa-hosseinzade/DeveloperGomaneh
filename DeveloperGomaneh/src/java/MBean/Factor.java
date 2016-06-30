@@ -7,11 +7,9 @@ import Entity.SectionFactor;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
-import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
+import javax.enterprise.context.SessionScoped;
 import org.jsoup.Jsoup;
 
 @ManagedBean(name = "factor")
@@ -25,14 +23,29 @@ public class Factor implements Serializable {
     private FactorFieldFacade FFF;
 
     private SectionFactor SF;
+    private Integer temp;
+    private List<FactorField> factorFieldId;
+
+
+    public Integer getTemp() {
+        return temp;
+    }
+
+    public void setTemp(Integer temp) {
+        this.temp = temp;
+    }
+
+    public List<Integer> getFactorFieldList() {
+        List<Integer> fl = new ArrayList<>();
+        for (FactorField f : getSF().getFactorFieldCollection()) {
+            fl.add(f.getId());
+        }
+        return fl;
+    }
 
     public SectionFactor getSF() {
-        SF = null;
-        if (this.sectionId == null) {
-            SF = this.SFF.find(1);
-        } else {
-            SF = this.SFF.find(this.sectionId);
-        }
+        SF = this.SFF.find(this.sectionId);
+        System.out.println(SF);
         return SF;
     }
 
@@ -83,8 +96,7 @@ public class Factor implements Serializable {
         return this.price;
     }
 
-    @ManagedProperty(value = "#{param.sectionId}")
-    private Integer sectionId;
+    private Integer sectionId=1;
 
     public Integer getSectionId() {
         return sectionId;
@@ -93,15 +105,13 @@ public class Factor implements Serializable {
     public String filterhtml(String html) {
         return Jsoup.parse(html).text();
     }
-    
-    private List<Integer> addId;
 
-    public List<Integer> getAddId() {
-        return addId;
+    public List<FactorField> getFactorFieldId() {
+        return factorFieldId;
     }
 
-    public void setAddId(List<Integer> addId) {
-        this.addId = addId;
-        System.out.println("MBean.Factor.setAddId() is : " + addId);
+    public void setFactorFieldId(List<FactorField> factorFieldId) {
+        this.factorFieldId = factorFieldId;
     }
+
 }

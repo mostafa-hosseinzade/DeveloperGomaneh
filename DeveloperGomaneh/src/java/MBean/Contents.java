@@ -44,7 +44,7 @@ public class Contents {
     }
 
     public List<ContentCategory> getMessage() {
-        return CCF.findBySubctg(1);
+        return null;
     }
 
     public String showContent() {

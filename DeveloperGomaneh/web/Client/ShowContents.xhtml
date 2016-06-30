@@ -22,29 +22,22 @@
                                         <div class="mbr-box mbr-box--fixed mbr-box--adapted">
                                             <h:form>
                                                 <p:dataScroller value="#{content.infoContent()}" var="item" chunkSize="12">
-                                                        <div class="col-lg-6" >
-                                                            <div class="col-lg-12" style="box-shadow: 0 0 2px black;padding: 15px;height: 300px;margin-top: 5px;background-color: rgb(11, 152, 139);color: white;">
-                                                                <div class="mbr-box__magnet mbr-box__magnet--top-right mbr-section__left" >
-                                                                    <div class="mbr-section__container mbr-section__container--middle">
-                                                                        <div class="mbr-header mbr-header--auto-align mbr-header--wysiwyg" style="left: 51px;border-bottom: solid 1px;">
-                                                                            <h3 class="mbr-header__text"  style="text-align: right;direction: rtl">#{item.title}</h3>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="mbr-section__container mbr-section__container--middle">
-                                                                        <div class="mbr-article mbr-article--auto-align mbr-article--wysiwyg" style="text-align: right;"><h:outputText style="font-size: 13px;font-weight: bold;direction: rtl;max-width: 100%;color: white" value="#{item.content.length() gt 43 ? item.content.substring(0,41).concat('...') : item.content}" escape="false"/></div>
-                                                                    </div>
-                                                                    <div class="mbr-section__container">
-                                                                        <div class="mbr-buttons mbr-buttons--auto-align btn-inverse content">
-                                                                            <h:link  styleClass="mbr-buttons__btn btn btn-lg btn-default" outcome="#{content.showInfoContent()}" value=" اطلاعات بیشتر "> 
-                                                                                <f:param name="contentShowId" value="#{item.id}" />
-                                                                            </h:link>
-                                                                        </div>
-                                                                    </div>
-
-                                                                </div>
+                                                    <div class="col-lg-6" >
+                                                        <div class="panel panel-primary">
+                                                            <div class="panel-heading" style="direction: rtl;text-align: right">
+                                                                #{item.title}
                                                             </div>
-                                                            <br/>
+                                                            <div class="panel-body" style="direction: rtl;text-align: right">
+                                                                #{item.content.length() gt 43 ? item.content.substring(0,41).concat('...') : item.content}
+                                                            </div>
+                                                            <div class="panel-footer">
+                                                                <h:link  styleClass="btn btn-default" outcome="#{content.showInfoContent()}" value=" اطلاعات بیشتر "> 
+                                                                    <f:param name="contentShowId" value="#{item.id}" />
+                                                                </h:link>
+                                                            </div>
                                                         </div>
+                                                        <br/>
+                                                    </div>
                                                 </p:dataScroller>
                                             </h:form>
                                             <div class="clearfix"></div>
@@ -54,12 +47,11 @@
                             </section>
                         </div>
                     </div>
-
                     <div class="col-lg-4 col-md-4 hidden-sm hidden-xs">
                         <div class="col-lg-12 headcontent" style="padding-left: 90px;">
                             <h2 style="text-align: center"><span><p class="head-befor hidden-sm hidden-xs"></p></span> <span> نمونه کارها</span> <span><p class="head-after hidden-sm hidden-xs"></p></span></h2>
                         </div>
-                        <div class="col-lg-12">
+                        <div class="col-lg-12" style="    margin-top: 43px;">
                             <section class="mbr-gallery mbr-section mbr-section--no-padding" id="gallery1-10" style="background-color: rgb(239, 239, 239);">
                                 <!-- Gallery -->
                                 <div>
