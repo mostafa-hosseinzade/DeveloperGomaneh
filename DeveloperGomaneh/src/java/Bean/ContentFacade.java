@@ -36,7 +36,11 @@ public class ContentFacade extends AbstractFacade<Content> {
     }
 
     public ContentCategory getServices() {
-        return CCF.find(2);
+        try{
+            return CCF.find(2);
+        }catch(Exception e){
+            return null;
+        }
     }
     
     public List<Content> getISI(Integer id){

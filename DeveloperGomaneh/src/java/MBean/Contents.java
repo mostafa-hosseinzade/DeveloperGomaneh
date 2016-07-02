@@ -10,7 +10,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import Entity.Content;
 
-
 @ManagedBean(name = "content")
 @RequestScoped
 public class Contents {
@@ -26,7 +25,7 @@ public class Contents {
 
     @ManagedProperty(value = "#{param.contentShowId}")
     private Integer contentShowId;
-    
+
     public Integer getContentShowId() {
         return contentShowId;
     }
@@ -44,7 +43,11 @@ public class Contents {
     }
 
     public List<ContentCategory> getMessage() {
-        return null;
+        try {
+            return CCF.findBySubctg(1);
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     public String showContent() {
@@ -65,9 +68,9 @@ public class Contents {
     public String showInfoContent() {
         return "ShowIsi";
     }
-    
-    public Content InfoContentSelect(){
+
+    public Content InfoContentSelect() {
         Content c = CF.find(this.contentShowId);
-           return c;
+        return c;
     }
 }
