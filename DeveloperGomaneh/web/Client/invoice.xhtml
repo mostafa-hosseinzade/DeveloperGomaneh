@@ -11,7 +11,8 @@ and open the template in the editor.
     xmlns:h="http://xmlns.jcp.org/jsf/html"
     xmlns:p="http://primefaces.org/ui"
     xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
-    xmlns:f="http://xmlns.jcp.org/jsf/core">
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
     <ui:composition template="/Client/layouts.xhtml">
         <ui:define name="body">
             <div class="col-lg-12" style="margin-top: 100px">
@@ -21,6 +22,7 @@ and open the template in the editor.
                             <p:ajax event="tabChange" update="typeSiteForm ShareOptions Specialoptions Bid "  listener="#{invoiceController.onTabChange}" />
                             <p:tab  title="راهنما">
                                 <f:attribute name="section" value="0"/>
+                                <br/>
                                 <h4 style="text-align: center">به نکات زیر توجه نمایید ...</h4>
                                 <p><span class="glyphicon glyphicon-ok"></span> <span>در طراحی تمام وب سایت ها از سی ام اس های آماده مانند جوملا و وردپرس استفاده <code>نمی شود</code></span></p>
                                 <p><span class="glyphicon glyphicon-ok"></span> <span>مراحلی که در بخش بالا به صورت شماره 1 تا 7 قرار دارد را به خوبی دنبال نمایید</span></p>
@@ -31,15 +33,18 @@ and open the template in the editor.
                             </p:tab>
                             <p:tab  title="نوع وب سایت">
                                 <f:attribute name="section" value="1"/>
+                               <br/>
                                 <h:form  id="typeSiteForm" >
                                     <h:selectOneMenu value="#{invoiceController.typeSite}" styleClass="form-control" id="TypeSite">
+                                        <f:selectItem itemValue="#{null}" itemLabel="انتخاب کنید..." />
                                         <f:selectItems value="#{invoiceController.currentSection.factorFieldCollection}" var="item" itemValue="#{item}"   itemLabel="#{item.title}" />
-                                        <p:ajax update=":tabview:BaseOptions :priceSite" />
+                                        <p:ajax update=":tabview:BaseOptions :priceSite :tabview" />
                                     </h:selectOneMenu>
                                 </h:form>
                             </p:tab>
-                            <p:tab  title="امکانات جانبی">
+                            <p:tab disabled="#{invoiceController.typeSite == null}" title="امکانات جانبی">
                                 <f:attribute name="section" value="2"/>
+                                <br/>
                                 <h:panelGroup id="BaseOptions">
                                     <ui:repeat var="item"  value="#{invoiceController.currentSection.factorFieldCollection}">  
                                         <p>
@@ -50,39 +55,107 @@ and open the template in the editor.
                                     </ui:repeat>
                                 </h:panelGroup>
                             </p:tab>
-                            <p:tab title="امکانات مشترک">
+                            <p:tab disabled="#{invoiceController.typeSite == null}" title="امکانات مشترک">
                                 <f:attribute name="section" value="3"/>
+                                <br/>
                                 <h:form id="ShareOptions" >
                                     <p:messages id="msg" />
-                                    <p:selectManyCheckbox layout="grid" columns="6"  value="#{invoiceController.addSelectedfactorFieldList}">
+                                    <p:selectManyCheckbox layout="grid" columns="1"  value="#{invoiceController.addSelectedfactorFieldList}">
                                         <f:selectItems  value="#{invoiceController.currentSection.factorFieldCollection}" var="myitem" itemValue="#{myitem.id}" itemLabel="#{myitem.title}"/>
                                         <p:ajax update="@form :priceSite"/>
                                     </p:selectManyCheckbox>
-                                    <p:outputLabel id="Faq" value="#{invoiceController.selectedfactorFieldList}" />
                                 </h:form>
                             </p:tab>
-                            <p:tab title="امکانات تخصصی">
+                            <p:tab disabled="#{invoiceController.typeSite == null}" title="امکانات تخصصی">
                                 <f:attribute name="section" value="4"/>
+                                <br/>
                                 <h:form id="Specialoptions">
                                     <p:messages id="msg" />
-                                    <p:selectManyCheckbox layout="grid" columns="6" value="#{invoiceController.addSelectedfactorFieldList}">
+                                    <p:selectManyCheckbox layout="grid" columns="1" value="#{invoiceController.addSelectedfactorFieldList}">
                                         <f:selectItems value="#{invoiceController.typeSite.childFeildCollection}" var="SpecialItem" itemValue="#{SpecialItem.id}" itemLabel="#{SpecialItem.title}" /> 
                                         <p:ajax update="@form :priceSite"/>
                                     </p:selectManyCheckbox>
                                 </h:form>
                             </p:tab>
-                            <p:tab title="امکانات پیشنهادی">
+                            <p:tab disabled="#{invoiceController.typeSite == null}" title="امکانات پیشنهادی">
                                 <f:attribute name="section" value="5"/>
+                                <br/>
                                 <h:form id="Bid">
                                     <p:messages id="msg" />
-                                    <p:selectManyCheckbox layout="grid" columns="6" value="#{invoiceController.addSelectedfactorFieldList}">
+                                    <p:selectManyCheckbox layout="grid" columns="1" value="#{invoiceController.addSelectedfactorFieldList}">
                                         <f:selectItems  value="#{invoiceController.currentSection.factorFieldCollection}" var="BidItem" itemValue="#{BidItem.id}" itemLabel="#{BidItem.title}" /> 
                                         <p:ajax update="@form :priceSite"/>
                                     </p:selectManyCheckbox>
                                 </h:form>
                             </p:tab>
-                            <p:tab title="اطلاعات شخصی">
+                            <p:tab disabled="#{invoiceController.typeSite == null}" title="اطلاعات شخصی">
                                 <f:attribute name="section" value="6"/>
+                                <br/>
+                                <h:form id="form_invoice_send">
+                                    <div class="col-lg-12" style="text-align: center">
+                                        <p:selectOneButton id="personal" value="#{invoiceController.personal}">
+                                            <f:selectItem itemValue="1"  itemLabel="حقیقی"/>
+                                            <f:selectItem itemValue="2" itemLabel="حقوقی" />
+                                            <p:ajax update="@form"/>
+                                        </p:selectOneButton>
+                                    </div>
+                                    <c:if test="#{invoiceController.personal == 1}">
+                                        <div class="col-lg-12">
+                                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                                <label for="name" >نام</label>
+                                                <h:inputText  id="name" class="form-control" value="#{invoiceController.order.name}"  maxlength="255" a:placeholder="Name" />
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                                <label for="mobile" >موبایل</label>
+                                                <h:inputText class="form-control" id="mobile" maxlength="255" value="#{invoiceController.order.mobile}" a:placeholder="Mobile" />
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                                <label for="email" >ایمیل</label>
+                                                <h:inputText class="form-control"  id="email" value="#{invoiceController.order.email}" maxlength="255" a:placeholder="Email" />
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                                <label for="phone" >تلفن</label>
+                                                <h:inputText class="form-control" id="phone" maxlength="255" value="#{invoiceController.order.phone}" a:placeholder="Phone" />
+                                            </div>
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                <label for="desc" >توضیحات</label>
+                                                <h:inputTextarea class="form-control" id="desc" value="#{invoiceController.order.desc}" a:placeholder="Describtion" />
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </c:if>
+                                    <c:if test="#{invoiceController.personal == 2}">
+                                        <div class="col-lg-12">
+                                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                                <label for="name" >نام شرکت</label>
+                                                <h:inputText  id="name" class="form-control" value="#{invoiceController.order.name}"  maxlength="255" a:placeholder="Name" />
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                                <label for="email" >ایمیل شرکت</label>
+                                                <h:inputText class="form-control"  id="email" value="#{invoiceController.order.email}" maxlength="255" a:placeholder="Email" />
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                                <label for="phone" >تلفن شرکت</label>
+                                                <h:inputText class="form-control" id="phone" maxlength="255" value="#{invoiceController.order.phone}" a:placeholder="Phone" />
+                                            </div>
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                <label for="desc" >توضیحات</label>
+                                                <h:inputTextarea class="form-control" id="desc" value="#{invoiceController.order.desc}" a:placeholder="Describtion" />
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </c:if>
+                                    <div class="clearfix"></div>
+                                    <div class="col-lg-12">
+                                        <div class="mbr-buttons mbr-buttons--left btn-inverse">
+                                            <h:commandButton action="#{invoiceController.insertInfoUser()}" style="margin-top: 30px" value="CONTACT US" class="mbr-buttons__btn btn buttons_special btn-danger">
+                                                <f:ajax render="@form" execute="form_invoice_send"> </f:ajax> 
+                                            </h:commandButton>    
+                                        </div>
+                                        <p:messages style="margin-top: 20px" id="messagesshow"/>
+                                    </div>
+                                </h:form>
+                                <div class="clearfix"></div>
                             </p:tab>
                         </p:tabView>
                     </div>

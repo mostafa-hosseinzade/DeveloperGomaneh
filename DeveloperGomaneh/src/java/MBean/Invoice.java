@@ -6,11 +6,15 @@
 package MBean;
 
 import Bean.FactorFieldFacade;
+import Bean.OrderFacade;
 import Bean.SectionFactorFacade;
 import Entity.FactorField;
+import Entity.Order;
 import Entity.SectionFactor;
+import JsfClass.util.JsfUtil;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import javax.annotation.PostConstruct;
@@ -31,20 +35,47 @@ public class Invoice implements Serializable {
     private SectionFactorFacade sectionFactorFacade;
     @EJB
     private FactorFieldFacade factorFieldFacad;
-    
+    @EJB
+    private OrderFacade orderFacade;
+
     private Integer section;
     private FactorField typeSite;
     private List<FactorField> factorFieldList;
     private List<SectionFactor> sectionList;
     private List<FactorField> SelectedfactorFieldList;
     private double price = 0;
+    private Integer personal = 1;
+    private Order order;
+
+    public Order getOrder() {
+
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }
+
+    public Integer getPersonal() {
+        return personal;
+    }
+
+    public void setPersonal(Integer personal) {
+        this.personal = personal;
+    }
 
     public double getPrice() {
-//        if(SelectedfactorFieldList != null){
-//            for(FactorField f : SelectedfactorFieldList){
-//                this.price = this.price + f.getPrice();
-//            }
-//        }
+        if (SelectedfactorFieldList != null) {
+            if (typeSite != null) {
+                this.price = typeSite.getPrice();
+            } else {
+                this.price = 0;
+            }
+
+            for (FactorField f : SelectedfactorFieldList) {
+                this.price = this.price + f.getPrice();
+            }
+        }
         return price;
     }
 
@@ -56,6 +87,7 @@ public class Invoice implements Serializable {
         section = 1;
         sectionList = sectionFactorFacade.findAll();
         factorFieldList = factorFieldFacad.findAll();
+        order = new Order();
     }
 
     public Invoice() {
@@ -76,18 +108,20 @@ public class Invoice implements Serializable {
     }
 
     public FactorField getTypeSite() {
-        if (typeSite != null) {
-            for (FactorField t : typeSite.getChildFeildCollection()) {
-                System.err.println("Child is : " + t.getId() + " " + t.getTitle());
-            }
-            System.out.println("MBean.Invoice.getTypeSite() " + this.typeSite.getId() + " " + typeSite.getTitle());
-        }
         return typeSite;
     }
 
     public void setTypeSite(FactorField typeSite) {
-        this.price = this.price + typeSite.getPrice();
-        this.typeSite = typeSite;
+        if (this.typeSite != null) {
+            this.price = typeSite.getPrice();
+            this.typeSite = typeSite;
+            if (this.SelectedfactorFieldList != null) {
+                this.SelectedfactorFieldList = null;
+            }
+        } else {
+            this.price = this.price + typeSite.getPrice();
+            this.typeSite = typeSite;
+        }
     }
 
     public List<FactorField> getSelectedfactorFieldList() {
@@ -109,21 +143,54 @@ public class Invoice implements Serializable {
         if (this.SelectedfactorFieldList == null) {
             this.SelectedfactorFieldList = new ArrayList<>();
         }
-        
-        List<Integer> selected = new ArrayList<>();
-        for(FactorField f : factorFieldList){
-           for(String i:AddSelectedfactorFieldList){
-               if(f.getId()==Integer.valueOf(i)){
-                   if(SelectedfactorFieldList.contains(f) == false){
-                       SelectedfactorFieldList.add(f);
-                       this.price = price+f.getPrice();
-                   }
-                   selected.add(f.getId());
-               }
-           }
+        if (this.section == 4) {
+            for (FactorField r : typeSite.getChildFeildCollection()) {
+                if (this.SelectedfactorFieldList.contains(r)) {
+                    this.SelectedfactorFieldList.remove(r);
+                }
+            }
+        } else {
+            for (FactorField e : getCurrentSection().getFactorFieldCollection()) {
+                if (this.SelectedfactorFieldList.contains(e)) {
+                    this.SelectedfactorFieldList.remove(e);
+                }
+            }
         }
-//        this.SelectedfactorFieldList.addAll(AddSelectedfactorFieldList);
+
+        for (FactorField f : factorFieldList) {
+            for (String i : AddSelectedfactorFieldList) {
+                if (f.getId() == Integer.valueOf(i)) {
+                    if (SelectedfactorFieldList.contains(f) == false) {
+                        SelectedfactorFieldList.add(f);
+                    }
+                }
+            }
+        }
         this.AddSelectedfactorFieldList = AddSelectedfactorFieldList;
     }
 
+    public void insertInfoUser() {
+        if(this.typeSite == null){
+            JsfUtil.addErrorMessage("لطفا نوع سایت را انتخاب نمائید");
+        }else{
+        String field = String.valueOf(this.typeSite.getId());
+        try {
+            if (this.personal == 0) {
+                order.setPersonal(false);
+            } else {
+                order.setPersonal(true);
+            }
+            for (FactorField f : SelectedfactorFieldList) {
+                field = field + "," + String.valueOf(f.getId());
+            }
+            order.setArrayField(field);
+            order.setCreatedAt(new Date());
+            orderFacade.create(order);
+        } catch (Exception e) {
+            e.printStackTrace();
+            JsfUtil.addErrorMessage("مشکل در ثبت اطلاعات لطفا بعدا تلاش کنید");
+        }
+        JsfUtil.addSuccessMessage("اطلاعات با موفقیت ثبت شد");
+        }
+    }
 }

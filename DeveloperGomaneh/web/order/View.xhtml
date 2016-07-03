@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle5.ViewOrderTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle5.ViewOrderLabel_id}"/>
+                    <h:outputText value="#{orderController.selected.id}" title="#{bundle5.ViewOrderTitle_id}"/>
+                    <h:outputText value="#{bundle5.ViewOrderLabel_name}"/>
+                    <h:outputText value="#{orderController.selected.name}" title="#{bundle5.ViewOrderTitle_name}"/>
+                    <h:outputText value="#{bundle5.ViewOrderLabel_mobile}"/>
+                    <h:outputText value="#{orderController.selected.mobile}" title="#{bundle5.ViewOrderTitle_mobile}"/>
+                    <h:outputText value="#{bundle5.ViewOrderLabel_phone}"/>
+                    <h:outputText value="#{orderController.selected.phone}" title="#{bundle5.ViewOrderTitle_phone}"/>
+                    <h:outputText value="#{bundle5.ViewOrderLabel_desc}"/>
+                    <h:outputText value="#{orderController.selected.desc}" title="#{bundle5.ViewOrderTitle_desc}"/>
+                    <h:outputText value="#{bundle5.ViewOrderLabel_email}"/>
+                    <h:outputText value="#{orderController.selected.email}" title="#{bundle5.ViewOrderTitle_email}"/>
+                    <h:outputText value="#{bundle5.ViewOrderLabel_personal}"/>
+                    <h:outputText value="#{orderController.selected.personal}" title="#{bundle5.ViewOrderTitle_personal}"/>
+                    <h:outputText value="#{bundle5.ViewOrderLabel_createdAt}"/>
+                    <h:outputText value="#{orderController.selected.createdAt}" title="#{bundle5.ViewOrderTitle_createdAt}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{orderController.destroyAndView}" value="#{bundle5.ViewOrderDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle5.ViewOrderEditLink}"/>
+                <br />
+                <h:commandLink action="#{orderController.prepareCreate}" value="#{bundle5.ViewOrderCreateLink}" />
+                <br />
+                <h:commandLink action="#{orderController.prepareList}" value="#{bundle5.ViewOrderShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle5.ViewOrderIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

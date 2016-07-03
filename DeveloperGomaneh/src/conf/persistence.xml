@@ -14,6 +14,7 @@
     <class>Entity.SectionFactor</class>
     <class>Entity.Seo</class>
     <class>Entity.User</class>
+    <class>Entity.Order</class>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <validation-mode>NONE</validation-mode>
     <properties>
