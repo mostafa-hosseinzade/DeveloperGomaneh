@@ -12,8 +12,6 @@
             <h:form id="ContentCategoryEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{contentCategoryController.selected != null}">
-                        <p:outputLabel value="#{bundle.EditContentCategoryLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{contentCategoryController.selected.id}" title="#{bundle.EditContentCategoryTitle_id}" required="true" requiredMessage="#{bundle.EditContentCategoryRequiredMessage_id}"/>
                         <p:outputLabel value="#{bundle.EditContentCategoryLabel_title}" for="title" />
                         <p:inputText id="title" value="#{contentCategoryController.selected.title}" title="#{bundle.EditContentCategoryTitle_title}" required="true" requiredMessage="#{bundle.EditContentCategoryRequiredMessage_title}"/>
                         <p:outputLabel value="#{bundle.EditContentCategoryLabel_describtion}" for="describtion" />
@@ -26,7 +24,14 @@
                         <p:selectBooleanCheckbox id="enable" value="#{contentCategoryController.selected.enable}" required="true" requiredMessage="#{bundle.EditContentCategoryRequiredMessage_enable}"/>
                         <p:outputLabel value="#{bundle.EditContentCategoryLabel_visible}" for="visible" />
                         <p:selectBooleanCheckbox id="visible" value="#{contentCategoryController.selected.visible}" required="true" requiredMessage="#{bundle.EditContentCategoryRequiredMessage_visible}"/>
-                       
+                        <p:outputLabel value="زیر شاخه :" for="subctg" />
+                        <p:selectOneMenu id="subctg" value="#{contentCategoryController.selected.subctg}" >
+                            <f:selectItem itemLabel="انتخاب کنید"/>
+                            <f:selectItems value="#{contentCategoryController.itemsAvailableSelectOne}"
+                                           var="subctgItem"
+                                           itemValue="#{subctgItem}"
+                                           itemLabel="#{subctgItem.title}"/>
+                        </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{contentCategoryController.update}" value="#{bundle.Save}" update="display,:ContentCategoryListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ContentCategoryEditDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="ContentCategoryEditDialog.hide()"/>

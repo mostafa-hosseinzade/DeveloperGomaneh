@@ -27,43 +27,43 @@
                         <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
                         <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
 
-                        <p:column>
+                        <p:column sortBy="#{item.id}" filterBy="#{item.id}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListContentTitle_id}"/>
                             </f:facet>
                             <h:outputText value="#{item.id}"/>
                         </p:column>
-                        <p:column>
+                        <p:column sortBy="#{item.title}" filterBy="#{item.title}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListContentTitle_title}"/>
                             </f:facet>
                             <h:outputText value="#{item.title}"/>
                         </p:column>
-                        <p:column>
+                        <p:column sortBy="#{item.content}" filterBy="#{item.content}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListContentTitle_content}"/>
                             </f:facet>
                             <h:outputText value="#{item.content.length() gt 50 ? item.content.substring(0,47).concat('...') : item.content}" escape="false"/>
                         </p:column>
-                        <p:column>
+                        <p:column sortBy="#{item.orderList}" filterBy="#{item.orderList}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListContentTitle_orderList}"/>
                             </f:facet>
                             <h:outputText value="#{item.orderList}"/>
                         </p:column>
-                        <p:column>
+                        <p:column sortBy="#{item.meta}" filterBy="#{item.meta}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListContentTitle_meta}"/>
                             </f:facet>
                             <h:outputText value="#{item.meta}"/>
                         </p:column>
-                        <p:column>
+                        <p:column sortBy="#{item.slug}" filterBy="#{item.slug}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListContentTitle_slug}"/>
                             </f:facet>
                             <h:outputText value="#{item.slug}"/>
                         </p:column>
-                        <p:column>
+                        <p:column sortBy="#{item.createdAt}" filterBy="#{item.createdAt}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListContentTitle_createdAt}"/>
                             </f:facet>
@@ -71,7 +71,7 @@
                                 <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
                             </h:outputText>
                         </p:column>
-                        <p:column>
+                        <p:column sortBy="#{item.updatedAt}" filterBy="#{item.updatedAt}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListContentTitle_updatedAt}"/>
                             </f:facet>
@@ -83,7 +83,7 @@
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListContentTitle_contentCategoryid}"/>
                             </f:facet>
-                            <h:outputText value="#{item.contentCategoryid}"/>
+                            <h:outputText value="#{item.contentCategoryid.title}"/>
                         </p:column>
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{contentController.prepareCreate}" update=":ContentCreateForm" oncomplete="PF('ContentCreateDialog').show()"/>

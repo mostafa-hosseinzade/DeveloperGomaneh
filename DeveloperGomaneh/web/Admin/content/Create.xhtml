@@ -26,6 +26,7 @@
                         <p:selectOneMenu id="contentCategoryid" value="#{contentController.selected.contentCategoryid}" >
                             <f:selectItems value="#{contentCategoryController.itemsAvailableSelectOne}"
                                            var="contentCategoryidItem"
+                                           itemLabel="#{contentCategoryidItem.title}"
                                            itemValue="#{contentCategoryidItem}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>

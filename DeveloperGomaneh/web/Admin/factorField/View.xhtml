@@ -29,8 +29,7 @@
                             <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
                         </h:outputText>
                         <h:outputText value="#{bundle.ViewFactorFieldLabel_sectionFactorid}"/>
-                        <h:outputText value="#{factorFieldController.selected.sectionFactorid}" title="#{bundle.ViewFactorFieldTitle_sectionFactorid}"/>
-                        <h:outputText value="#{bundle.ViewFactorFieldLabel_userid}"/>
+                        <h:outputText value="#{factorFieldController.selected.sectionFactorid.title}" title="#{bundle.ViewFactorFieldTitle_sectionFactorid}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{bundle.Close}" onclick="FactorFieldViewDialog.hide()"/>
                 </h:panelGroup>
