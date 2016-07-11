@@ -60,15 +60,15 @@ public class ContentCategory implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
     @Size(max = 255)
-    @Column(name = "describtion")
+    @Column(name = "`describtion`")
     private String describtion;
-    @Column(name = "enable")
+    @Column(name = "`enable`")
     private Boolean enable;
     @Size(max = 255)
-    @Column(name = "meta")
+    @Column(name = "`meta`")
     private String meta;
     @Size(max = 255)
-    @Column(name = "slug")
+    @Column(name = "`slug`")
     private String slug;
     @Size(max = 255)
     @Column(name = "title")
@@ -76,13 +76,13 @@ public class ContentCategory implements Serializable {
     @Column(name = "updated_at")
     @Temporal(TemporalType.TIMESTAMP)
     private Date updatedAt;
-    @Column(name = "visible")
+    @Column(name = "`visible`")
     private Boolean visible;
     @OneToMany(mappedBy = "contentCategoryid")
     private Collection<Content> contentCollection;
     
     @OneToOne
-    @JoinColumn(name="subctg",referencedColumnName = "id")
+    @JoinColumn(name="`subctg`",referencedColumnName = "id")
     private ContentCategory subctg;
 
     public ContentCategory getSubctg() {

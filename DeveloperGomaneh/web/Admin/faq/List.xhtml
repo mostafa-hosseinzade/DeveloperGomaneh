@@ -22,60 +22,72 @@
                                  rowKey="#{item.id}"
                                  rows="10"
                                  rowsPerPageTemplate="10,20,30,40,50"
+                                 widgetVar="faqTable"
                                  >
-
+                        <f:facet name="header">
+                            <p:panelGrid columns="2">
+                                <p:outputPanel>
+                                    <h:outputText value="جستجو در تمام فیلدها:" />
+                                    <p:inputText id="globalFilter" onkeyup="PF('faqTable').filter()" style="width:150px" placeholder="جستجو..."/>
+                                </p:outputPanel>
+                                <p:outputPanel>
+                                    <p:commandButton id="toggler" type="button" value="انتخاب ستون ها" style="float:left" icon="ui-icon-calculator" />
+                                    <p:columnToggler datasource="datalist" trigger="toggler" /> 
+                                </p:outputPanel>
+                            </p:panelGrid>
+                        </f:facet>
                         <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
                         <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
 
-                        <p:column>
+                        <p:column sortBy="#{item.id}" filterBy="#{item.id}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListFaqTitle_id}"/>
                             </f:facet>
                             <h:outputText value="#{item.id}"/>
                         </p:column>
-                        <p:column>
+                        <p:column sortBy="#{item.faq}" filterBy="#{item.faq}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListFaqTitle_faq}"/>
                             </f:facet>
                             <h:outputText value="#{item.faq}"/>
                         </p:column>
-                        <p:column>
+                        <p:column sortBy="#{item.slug}" filterBy="#{item.slug}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListFaqTitle_slug}"/>
                             </f:facet>
                             <h:outputText value="#{item.slug}"/>
                         </p:column>
-                        <p:column>
+                        <p:column sortBy="#{item.orderList}" filterBy="#{item.orderList}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListFaqTitle_orderList}"/>
                             </f:facet>
                             <h:outputText value="#{item.orderList}"/>
                         </p:column>
-                        <p:column>
+                        <p:column sortBy="#{item.visible}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListFaqTitle_visible}"/>
                             </f:facet>
                             <p:selectBooleanCheckbox value="#{item.visible}" disabled="true"/>
                         </p:column>
-                        <p:column>
+                        <p:column sortBy="#{item.enable}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListFaqTitle_enable}"/>
                             </f:facet>
                             <p:selectBooleanCheckbox value="#{item.enable}" disabled="true"/>
                         </p:column>
-                        <p:column>
+                        <p:column sortBy="#{item.answer}" filterBy="#{item.answer}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListFaqTitle_answer}"/>
                             </f:facet>
                             <h:outputText value="#{item.answer}"/>
                         </p:column>
-                        <p:column>
+                        <p:column sortBy="#{item.meta}" filterBy="#{item.meta}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListFaqTitle_meta}"/>
                             </f:facet>
                             <h:outputText value="#{item.meta}"/>
                         </p:column>
-                        <p:column>
+                        <p:column sortBy="#{item.createdAt}" filterBy="#{item.createdAt}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListFaqTitle_createdAt}"/>
                             </f:facet>
@@ -83,7 +95,7 @@
                                 <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
                             </h:outputText>
                         </p:column>
-                        <p:column>
+                        <p:column sortBy="#{item.updatedAt}" filterBy="#{item.updatedAt}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListFaqTitle_updatedAt}"/>
                             </f:facet>

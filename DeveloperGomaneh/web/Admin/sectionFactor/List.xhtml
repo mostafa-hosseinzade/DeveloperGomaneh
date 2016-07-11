@@ -22,30 +22,42 @@
                                  rowKey="#{item.id}"
                                  rows="10"
                                  rowsPerPageTemplate="10,20,30,40,50"
+                                 widgetVar="sectionFactorTable"
                                  >
-
+                        <f:facet name="header">
+                            <p:panelGrid columns="2">
+                                <p:outputPanel>
+                                    <h:outputText value="جستجو در تمام فیلدها:" />
+                                    <p:inputText id="globalFilter" onkeyup="PF('sectionFactorTable').filter()" style="width:150px" placeholder="جستجو..."/>
+                                </p:outputPanel>
+                                <p:outputPanel>
+                                    <p:commandButton id="toggler" type="button" value="انتخاب ستون ها" style="float:left" icon="ui-icon-calculator" />
+                                    <p:columnToggler datasource="datalist" trigger="toggler" /> 
+                                </p:outputPanel>
+                            </p:panelGrid>
+                        </f:facet>
                         <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
                         <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
 
-                        <p:column>
+                        <p:column sortBy="#{item.id}" filterBy="#{item.id}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListSectionFactorTitle_id}"/>
                             </f:facet>
                             <h:outputText value="#{item.id}"/>
                         </p:column>
-                        <p:column>
+                        <p:column sortBy="#{item.title}" filterBy="#{item.title}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListSectionFactorTitle_title}"/>
                             </f:facet>
                             <h:outputText value="#{item.title}"/>
                         </p:column>
-                        <p:column>
+                        <p:column sortBy="#{item.describtion}" filterBy="#{item.describtion}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListSectionFactorTitle_describtion}"/>
                             </f:facet>
                             <h:outputText value="#{item.describtion}"/>
                         </p:column>
-                        <p:column>
+                        <p:column sortBy="#{item.createdAt}" filterBy="#{item.createdAt}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListSectionFactorTitle_createdAt}"/>
                             </f:facet>
@@ -53,7 +65,7 @@
                                 <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
                             </h:outputText>
                         </p:column>
-                        <p:column>
+                        <p:column sortBy="#{item.updatedAt}" filterBy="#{item.updatedAt}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListSectionFactorTitle_updatedAt}"/>
                             </f:facet>

@@ -25,6 +25,7 @@
                         <p:calendar id="finished" pattern="MM/dd/yyyy HH:mm:ss" value="#{portfolioController.selected.finished}" title="#{bundle3.EditPortfolioTitle_finished}"  showOn="button"/>
                         <p:outputLabel value="#{bundle3.CreatePortfolioLabel_portfolioCategoryid}" for="portfolioCategoryid" />
                         <p:inputText id="portfolioCategoryid" value="#{portfolioController.selected.portfolioCategoryid}" title="#{bundle3.CreatePortfolioTitle_portfolioCategoryid}" />
+                        <p:outputLabel value="انتخاب عکس:" for="img"/>
                         <p:fileUpload  id="img" mode="advanced" multiple="true" fileUploadListener="#{portfolioController.addImage}" >
                         </p:fileUpload>
                         <p:outputLabel value="#{bundle3.CreatePortfolioLabel_percent}" for="percent" />

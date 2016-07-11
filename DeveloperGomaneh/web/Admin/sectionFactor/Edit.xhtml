@@ -12,8 +12,6 @@
             <h:form id="SectionFactorEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{sectionFactorController.selected != null}">
-                        <p:outputLabel value="#{bundle.EditSectionFactorLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{sectionFactorController.selected.id}" title="#{bundle.EditSectionFactorTitle_id}" required="true" requiredMessage="#{bundle.EditSectionFactorRequiredMessage_id}"/>
                         <p:outputLabel value="#{bundle.EditSectionFactorLabel_title}" for="title" />
                         <p:inputText id="title" value="#{sectionFactorController.selected.title}" title="#{bundle.EditSectionFactorTitle_title}" required="true" requiredMessage="#{bundle.EditSectionFactorRequiredMessage_title}"/>
                         <p:outputLabel value="#{bundle.EditSectionFactorLabel_describtion}" for="describtion" />

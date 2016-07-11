@@ -22,8 +22,20 @@
                                  rowKey="#{item.id}"
                                  rows="10"
                                  rowsPerPageTemplate="10,20,30,40,50"
+                                 widgetVar="userTable"
                                  >
-
+                        <f:facet name="header">
+                            <p:panelGrid columns="2">
+                                <p:outputPanel>
+                                    <h:outputText value="جستجو در تمام فیلدها:" />
+                                    <p:inputText id="globalFilter" onkeyup="PF('userTable').filter()" style="width:150px" placeholder="جستجو..."/>
+                                </p:outputPanel>
+                                <p:outputPanel>
+                                    <p:commandButton id="toggler" type="button" value="انتخاب ستون ها" style="float:left" icon="ui-icon-calculator" />
+                                    <p:columnToggler datasource="datalist" trigger="toggler" /> 
+                                </p:outputPanel>
+                            </p:panelGrid>
+                        </f:facet>
                         <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
                         <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
 

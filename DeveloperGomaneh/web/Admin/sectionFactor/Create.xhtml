@@ -12,8 +12,6 @@
             <h:form id="SectionFactorCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{sectionFactorController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateSectionFactorLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{sectionFactorController.selected.id}" title="#{bundle.CreateSectionFactorTitle_id}" required="true" requiredMessage="#{bundle.CreateSectionFactorRequiredMessage_id}"/>
                         <p:outputLabel value="#{bundle.CreateSectionFactorLabel_title}" for="title" />
                         <p:inputText id="title" value="#{sectionFactorController.selected.title}" title="#{bundle.CreateSectionFactorTitle_title}" required="true" requiredMessage="#{bundle.CreateSectionFactorRequiredMessage_title}"/>
                         <p:outputLabel value="#{bundle.CreateSectionFactorLabel_describtion}" for="describtion" />

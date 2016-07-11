@@ -20,16 +20,16 @@
             <p:layoutUnit position="north" size="65" header="#{bundle.AppName}">
                 <h:form id="menuForm">
                     <p:menubar>
-                        <p:menuitem value="#{bundle.Home}" outcome="/index" icon="ui-icon-home"/>
-                        <p:menuitem value="محتوا" outcome="/Admin/content/List.xhtml" icon="ui-icon-document" />
-                        <p:menuitem value="دسته بندی محتوا" outcome="/Admin/contentCategory/List.xhtml" icon="ui-icon-pencil"/>
-                        <p:menuitem value="فاکتورها" outcome="/Admin/factor/List.xhtml" icon="ui-icon-pencil"/>
-                        <p:menuitem value="افزودنی های پیش فاکتور" outcome="/Admin/factorField/List.xhtml" icon="ui-icon-pencil"/>
-                        <p:menuitem value="بخش های پیش فاکتور" outcome="/Admin/sectionFactor/List.xhtml" icon="ui-icon-pencil"/>
-                        <p:menuitem value="سوالات متداول" outcome="/Admin/faq/List.xhtml" icon="ui-icon-pencil"/>
-                        <p:menuitem value="نمونه کارها" outcome="/Admin/portfolio/List.xhtml" icon="ui-icon-pencil"/>
-                        <p:menuitem value="دسته بندی نمونه کارها" outcome="/Admin/portfolioCategory/List.xhtml" icon="ui-icon-pencil"/>
-                        <p:menuitem value="کاربران" outcome="/Admin/user/List.xhtml" icon="ui-icon-pencil"/>
+                        <p:menuitem  value="#{bundle.Home}" outcome="/index" icon="ui-icon-home"/>
+                        <p:menuitem styleClass="#{view.viewId eq '/Admin/content/List.xhtml' ? 'ui-menuitem-active ui-state-hover':''}" value="محتوا" outcome="/Admin/content/List.xhtml" icon="ui-icon-document" />
+                        <p:menuitem styleClass="#{view.viewId eq '/Admin/contentCategory/List.xhtml' ? 'ui-menuitem-active ui-state-hover':''}" value="دسته بندی محتوا" outcome="/Admin/contentCategory/List.xhtml" icon="ui-icon-pencil"/>
+                        <p:menuitem styleClass="#{view.viewId eq '/Admin/factor/List.xhtml' ? 'ui-menuitem-active ui-state-hover':''}" value="فاکتورها" outcome="/Admin/factor/List.xhtml" icon="ui-icon-pencil"/>
+                        <p:menuitem styleClass="#{view.viewId eq '/Admin/factorField/List.xhtml' ? 'ui-menuitem-active ui-state-hover':''}" value="افزودنی های پیش فاکتور" outcome="/Admin/factorField/List.xhtml" icon="ui-icon-pencil"/>
+                        <p:menuitem styleClass="#{view.viewId eq '/Admin/sectionFactor/List.xhtml' ? 'ui-menuitem-active ui-state-hover':''}" value="بخش های پیش فاکتور" outcome="/Admin/sectionFactor/List.xhtml" icon="ui-icon-pencil"/>
+                        <p:menuitem styleClass="#{view.viewId eq '/Admin/faq/List.xhtml' ? 'ui-menuitem-active ui-state-hover':''}" value="سوالات متداول" outcome="/Admin/faq/List.xhtml" icon="ui-icon-pencil"/>
+                        <p:menuitem styleClass="#{view.viewId eq '/Admin/portfolio/List.xhtml' ? 'ui-menuitem-active ui-state-hover':''}" value="نمونه کارها" outcome="/Admin/portfolio/List.xhtml" icon="ui-icon-pencil"/>
+                        <p:menuitem styleClass="#{view.viewId eq '/Admin/portfolioCategory/List.xhtml' ? 'ui-menuitem-active ui-state-hover':''}" value="دسته بندی نمونه کارها" outcome="/Admin/portfolioCategory/List.xhtml" icon="ui-icon-pencil"/>
+                        <p:menuitem styleClass="#{view.viewId eq '/Admin/user/List.xhtml' ? 'ui-menuitem-active ui-state-hover':''}" value="کاربران" outcome="/Admin/user/List.xhtml" icon="ui-icon-pencil"/>
                         <p:menuitem value="ProtfolioImg" outcome="/Admin/protfolioImg/List.xhtml" icon="ui-icon-pencil"/>
                         <p:menuitem value="Seo" outcome="/Admin/seo/List.xhtml" icon="ui-icon-pencil"/>
                     </p:menubar>
@@ -59,6 +59,9 @@
         
         .ui-panel-content{
             margin-top: 12px !important;
+        }
+        .active{
+            background-color: #004e72 !important;
         }
     </style>
 </html>

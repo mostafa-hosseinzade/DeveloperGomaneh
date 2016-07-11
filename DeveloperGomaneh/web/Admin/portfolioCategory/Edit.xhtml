@@ -12,8 +12,6 @@
             <h:form id="PortfolioCategoryEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{portfolioCategoryController.selected != null}">
-                        <p:outputLabel value="#{bundle.EditPortfolioCategoryLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{portfolioCategoryController.selected.id}" title="#{bundle.EditPortfolioCategoryTitle_id}" required="true" requiredMessage="#{bundle.EditPortfolioCategoryRequiredMessage_id}"/>
                         <p:outputLabel value="#{bundle.EditPortfolioCategoryLabel_title}" for="title" />
                         <p:inputText id="title" value="#{portfolioCategoryController.selected.title}" title="#{bundle.EditPortfolioCategoryTitle_title}" required="true" requiredMessage="#{bundle.EditPortfolioCategoryRequiredMessage_title}"/>
                         <p:outputLabel value="#{bundle.EditPortfolioCategoryLabel_describtion}" for="describtion" />

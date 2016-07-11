@@ -12,8 +12,6 @@
             <h:form id="PortfolioCategoryCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{portfolioCategoryController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreatePortfolioCategoryLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{portfolioCategoryController.selected.id}" title="#{bundle.CreatePortfolioCategoryTitle_id}" required="true" requiredMessage="#{bundle.CreatePortfolioCategoryRequiredMessage_id}"/>
                         <p:outputLabel value="#{bundle.CreatePortfolioCategoryLabel_title}" for="title" />
                         <p:inputText id="title" value="#{portfolioCategoryController.selected.title}" title="#{bundle.CreatePortfolioCategoryTitle_title}" required="true" requiredMessage="#{bundle.CreatePortfolioCategoryRequiredMessage_title}"/>
                         <p:outputLabel value="#{bundle.CreatePortfolioCategoryLabel_describtion}" for="describtion" />

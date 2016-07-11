@@ -23,42 +23,54 @@
                                  rowKey="#{item.id}"
                                  rows="10"
                                  rowsPerPageTemplate="10,20,30,40,50"
+                                 widgetVar="portfolioTable"
                                  >
-
+                        <f:facet name="header">
+                            <p:panelGrid columns="2">
+                                <p:outputPanel>
+                                    <h:outputText value="جستجو در تمام فیلدها:" />
+                                    <p:inputText id="globalFilter" onkeyup="PF('portfolioTable').filter()" style="width:150px" placeholder="جستجو..."/>
+                                </p:outputPanel>
+                                <p:outputPanel>
+                                    <p:commandButton id="toggler" type="button" value="انتخاب ستون ها" style="float:left" icon="ui-icon-calculator" />
+                                    <p:columnToggler datasource="datalist" trigger="toggler" /> 
+                                </p:outputPanel>
+                            </p:panelGrid>
+                        </f:facet>
                         <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
                         <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
 
-                        <p:column>
+                        <p:column sortBy="#{item.id}" filterBy="#{item.id}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle3.ListPortfolioTitle_id}"/>
                             </f:facet>
                             <h:outputText value="#{item.id}"/>
                         </p:column>
-                        <p:column>
+                        <p:column sortBy="#{item.title}" filterBy="#{item.title}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle3.ListPortfolioTitle_title}"/>
                             </f:facet>
                             <h:outputText value="#{item.title}"/>
                         </p:column>
-                        <p:column>
+                        <p:column sortBy="#{item.describtion}" filterBy="#{item.describtion}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle3.ListPortfolioTitle_describtion}"/>
                             </f:facet>
                             <h:outputText value="#{item.describtion}"/>
                         </p:column>
-                        <p:column>
+                        <p:column sortBy="#{item.url}" filterBy="#{item.url}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle3.ListPortfolioTitle_url}"/>
                             </f:facet>
                             <h:outputText value="#{item.url}"/>
                         </p:column>
-                        <p:column>
+                        <p:column sortBy="#{item.visit}" filterBy="#{item.visit}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle3.ListPortfolioTitle_visit}"/>
                             </f:facet>
                             <h:outputText value="#{item.visit}"/>
                         </p:column>
-                        <p:column>
+                        <p:column sortBy="#{item.finished}" filterBy="#{item.finished}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle3.ListPortfolioTitle_finished}"/>
                             </f:facet>
@@ -72,7 +84,7 @@
                             </f:facet>
                             <h:outputText value="#{item.portfolioCategoryid}"/>
                         </p:column>
-                        <p:column>
+                        <p:column sortBy="#{item.percent}" filterBy="#{item.percent}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle3.ListPortfolioTitle_percent}"/>
                             </f:facet>
@@ -86,7 +98,7 @@
                                 <h:graphicImage   value='/images/portfolio/#{i}' width="100" ></h:graphicImage>
                             </ui:repeat>
                         </p:column>
-                        <p:column>
+                        <p:column sortBy="#{item.createdAt}" filterBy="#{item.createdAt}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle3.ListPortfolioTitle_createdAt}"/>
                             </f:facet>
@@ -94,7 +106,7 @@
                                 <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
                             </h:outputText>
                         </p:column>
-                        <p:column>
+                        <p:column sortBy="#{item.updatedAt}" filterBy="#{item.updatedAt}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle3.ListPortfolioTitle_updatedAt}"/>
                             </f:facet>
