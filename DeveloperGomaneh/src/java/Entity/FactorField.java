@@ -59,9 +59,9 @@ public class FactorField implements Serializable {
     private Date createdAt;
     @Lob
     @Size(max = 2147483647)
-    @Column(name = "describtion")
+    @Column(name = "`describtion`")
     private String describtion;
-    @Column(name = "price")
+    @Column(name = "`price`")
     private double price;
     @Size(max = 255)
     @Column(name = "title")
@@ -77,7 +77,7 @@ public class FactorField implements Serializable {
     private User userid;
 
     @OneToOne
-    @JoinColumn(name = "sub_feild", referencedColumnName = "id")
+    @JoinColumn(name = "`sub_feild`", referencedColumnName = "id")
     private FactorField subFeild;
     
     @OneToMany(mappedBy = "subFeild")

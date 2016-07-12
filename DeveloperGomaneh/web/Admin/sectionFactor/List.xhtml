@@ -78,6 +78,9 @@
                             <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":SectionFactorViewForm" oncomplete="PF('SectionFactorViewDialog').show()" disabled="#{empty sectionFactorController.selected}"/>
                             <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":SectionFactorEditForm" oncomplete="PF('SectionFactorEditDialog').show()" disabled="#{empty sectionFactorController.selected}"/>
                             <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{sectionFactorController.destroy}" update=":growl,datalist" disabled="#{empty sectionFactorController.selected}"/>
+                            <p:commandButton value="دریافت اکسل اطلاعات" ajax="false" immediate="true">
+                                <p:dataExporter type="xls" target="datalist" pageOnly="true" fileName="OutPut"/>
+                            </p:commandButton>
                         </f:facet>
                     </p:dataTable>
                 </p:panel>

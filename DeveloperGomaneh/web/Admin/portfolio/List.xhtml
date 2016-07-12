@@ -94,9 +94,9 @@
                             <f:facet name="header">
                                 <h:outputText value="تصاویر"/>
                             </f:facet>
-                            <ui:repeat var="i" value="#{item.img}" >
-                                <h:graphicImage   value='/images/portfolio/#{i}' width="100" ></h:graphicImage>
-                            </ui:repeat>
+                            <p:galleria value="#{item.img}" var="i" panelWidth="100" panelHeight="63" showCaption="true">
+                                <h:graphicImage   value='/images/portfolio/#{i}' alt="portfolio" title="Portfolio" width="100" style="width: 100%;height: 100%" ></h:graphicImage>
+                            </p:galleria>  
                         </p:column>
                         <p:column sortBy="#{item.createdAt}" filterBy="#{item.createdAt}">
                             <f:facet name="header">
@@ -114,11 +114,15 @@
                                 <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
                             </h:outputText>
                         </p:column>
+
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle3.Create}" actionListener="#{portfolioController.prepareCreate}" update=":PortfolioCreateForm" oncomplete="PF('PortfolioCreateDialog').show()"/>
                             <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle3.View}" update=":PortfolioViewForm" oncomplete="PF('PortfolioViewDialog').show()" disabled="#{empty portfolioController.selected}"/>
                             <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle3.Edit}" update=":PortfolioEditForm" oncomplete="PF('PortfolioEditDialog').show()" disabled="#{empty portfolioController.selected}"/>
                             <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle3.Delete}" actionListener="#{portfolioController.destroy}" update=":growl,datalist" disabled="#{empty portfolioController.selected}"/>
+                            <p:commandButton value="دریافت اکسل اطلاعات" ajax="false" immediate="true">
+                                <p:dataExporter type="xls" target="datalist" pageOnly="true" fileName="OutPut"/>
+                            </p:commandButton>
                         </f:facet>
                     </p:dataTable>
                 </p:panel>

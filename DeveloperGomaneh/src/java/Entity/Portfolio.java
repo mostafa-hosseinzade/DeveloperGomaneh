@@ -64,16 +64,16 @@ public class Portfolio implements Serializable {
     @Column(name = "title")
     private String title;
     @Size(max = 3000)
-    @Column(name = "describtion")
+    @Column(name = "`describtion`")
     private String describtion;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 300)
-    @Column(name = "url")
+    @Column(name = "`url`")
     private String url;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "visit")
+    @Column(name = "`visit`")
     private int visit;
     @Column(name = "finished")
     @Temporal(TemporalType.TIMESTAMP)
@@ -82,7 +82,7 @@ public class Portfolio implements Serializable {
     private Integer portfolioCategoryid;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "percent")
+    @Column(name = "`percent`")
     private int percent;
     @Basic(optional = false)
     @NotNull

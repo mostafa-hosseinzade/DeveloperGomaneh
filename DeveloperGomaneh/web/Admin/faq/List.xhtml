@@ -108,6 +108,9 @@
                             <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":FaqViewForm" oncomplete="PF('FaqViewDialog').show()" disabled="#{empty faqController.selected}"/>
                             <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":FaqEditForm" oncomplete="PF('FaqEditDialog').show()" disabled="#{empty faqController.selected}"/>
                             <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{faqController.destroy}" update=":growl,datalist" disabled="#{empty faqController.selected}"/>
+                            <p:commandButton value="دریافت اکسل اطلاعات" ajax="false" immediate="true">
+                                <p:dataExporter type="xls" target="datalist" pageOnly="true" fileName="OutPut"/>
+                            </p:commandButton>
                         </f:facet>
                     </p:dataTable>
                 </p:panel>

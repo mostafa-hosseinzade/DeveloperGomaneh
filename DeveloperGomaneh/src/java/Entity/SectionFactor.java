@@ -50,10 +50,10 @@ public class SectionFactor implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
     @Size(max = 255)
-    @Column(name = "describtion")
+    @Column(name = "`describtion`")
     private String describtion;
     @Size(max = 255)
-    @Column(name = "title")
+    @Column(name = "`title`")
     private String title;
     @Column(name = "updated_at")
     @Temporal(TemporalType.TIMESTAMP)

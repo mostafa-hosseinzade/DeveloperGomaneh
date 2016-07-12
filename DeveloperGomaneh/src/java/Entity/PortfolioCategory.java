@@ -49,16 +49,16 @@ public class PortfolioCategory implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
     @Size(max = 255)
-    @Column(name = "describtion")
+    @Column(name = "`describtion`")
     private String describtion;
     @Size(max = 255)
-    @Column(name = "meta")
+    @Column(name = "`meta`")
     private String meta;
     @Size(max = 255)
-    @Column(name = "slug")
+    @Column(name = "`slug`")
     private String slug;
     @Size(max = 255)
-    @Column(name = "title")
+    @Column(name = "`title`")
     private String title;
     @Column(name = "updated_at")
     @Temporal(TemporalType.TIMESTAMP)
