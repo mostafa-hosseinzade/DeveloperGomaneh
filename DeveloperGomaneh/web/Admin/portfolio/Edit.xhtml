@@ -22,6 +22,16 @@
                         <p:inputText id="visit" value="#{portfolioController.selected.visit}" title="#{bundle3.EditPortfolioTitle_visit}" required="true" requiredMessage="#{bundle3.EditPortfolioRequiredMessage_visit}"/>
                         <p:outputLabel value="#{bundle3.EditPortfolioLabel_finished}" for="finished" />
                         <p:calendar id="finished" pattern="MM/dd/yyyy HH:mm:ss" value="#{portfolioController.selected.finished}" title="#{bundle3.EditPortfolioTitle_finished}"  showOn="button"/>
+                        <p:outputLabel for="deletedimg" value="حذف عکس ها" />
+                        <p:outputPanel id="deletedimg">
+                            <ui:repeat value="#{portfolioController.filesEdit}" var="img">
+                                <p:graphicImage  value="/images/portfolio/#{img}" style="width: 100px;height: 70px"  >
+                                    <p:commandButton  value="X" styleClass="CloseImg" action="#{portfolioController.removeImg(img)}" >
+                                        <f:ajax  render="@form deletedimg" />
+                                    </p:commandButton>
+                                </p:graphicImage>
+                            </ui:repeat>
+                        </p:outputPanel>
                         <p:outputLabel value="انتخاب عکس:" for="img"/>
                         <p:fileUpload  id="img" mode="advanced" multiple="true" fileUploadListener="#{portfolioController.addImage}" >
                         </p:fileUpload>
@@ -35,6 +45,28 @@
                 </h:panelGroup>
             </h:form>
         </p:dialog>
-
+        <style>
+            .CloseImg{ 
+                cursor: pointer;
+                position: absolute;
+                color: white !important;
+                font-size: initial !important;
+                margin-top: 0px !important;
+                background-color: rgba(0,0,0,0.3) !important;
+            }
+            .CloseImg:hover{
+                background-color: rgba(0,0,0,0.5) !important;
+            }
+        </style>
+        <script>
+//            $(document).ready(function(){
+//                $(".CloseImg").click(function (){
+//                    alert("ok");
+//                    var id = $(this).attr('alt');
+//                    alert(id);
+//                    $('.'+id).slideUp();
+//                })
+//            })
+        </script>
     </ui:composition>
 </html>

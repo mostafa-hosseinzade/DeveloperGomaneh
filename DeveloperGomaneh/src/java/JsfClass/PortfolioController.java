@@ -48,6 +48,15 @@ public class PortfolioController implements Serializable {
     private Portfolio selected;
     private List<UploadedFile> mapFile = new ArrayList();
     private UploadedFile file;
+    private List<String> FilesEdit = new ArrayList<>();
+
+    public List<String> getFilesEdit() {
+        return FilesEdit;
+    }
+
+    public void setFilesEdit(List<String> FilesEdit) {
+        this.FilesEdit = FilesEdit;
+    }
 
     public PortfolioController() {
     }
@@ -58,6 +67,9 @@ public class PortfolioController implements Serializable {
 
     public void setSelected(Portfolio selected) {
         this.selected = selected;
+        if (selected != null) {
+            this.FilesEdit = (List<String>) selected.getImg();
+        }
     }
 
     protected void setEmbeddableKeys() {
@@ -86,12 +98,12 @@ public class PortfolioController implements Serializable {
         int i = 1;
         for (UploadedFile file : mapFile) {
             String extension = FilenameUtils.getExtension(file.getFileName());
-            String name = i + "_"+System.currentTimeMillis();
-            Path path = Paths.get(folder.toString(),name+"." + extension);
+            String name = i + "_" + System.currentTimeMillis();
+            Path path = Paths.get(folder.toString(), name + "." + extension);
             Path outFile = Files.createFile(path);
             try (InputStream input = file.getInputstream()) {
                 Files.copy(input, outFile, StandardCopyOption.REPLACE_EXISTING);
-                filename += name+"." + extension + ";";
+                filename += name + "." + extension + ";";
             }
             i++;
         }
@@ -103,8 +115,39 @@ public class PortfolioController implements Serializable {
         this.mapFile.clear();
     }
 
-    public void update() {
+    public void update() throws IOException {
+        if (this.mapFile != null) {
+            String filename = "";
+            File dir = new File("/opt/uploads/portfolio");
+            if (!dir.exists()) {
+                dir.mkdirs();
+            }
+            Path folder = Paths.get("/opt/uploads/portfolio");
+            int i = 1;
+            for (UploadedFile file : mapFile) {
+                String extension = FilenameUtils.getExtension(file.getFileName());
+                String name = i + "_" + System.currentTimeMillis();
+                Path path = Paths.get(folder.toString(), name + "." + extension);
+                Path outFile = Files.createFile(path);
+                try (InputStream input = file.getInputstream()) {
+                    Files.copy(input, outFile, StandardCopyOption.REPLACE_EXISTING);
+                    filename += name + "." + extension + ";";
+                }
+                i++;
+            }
+            for (String t : FilesEdit) {
+                filename += t + ";";
+            }
+            selected.setImg(filename);
+            this.mapFile.clear();
+        }
         persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle").getString("PortfolioUpdated"));
+    }
+
+    public void removeImg(String img) {
+        if (FilesEdit.contains(img)) {
+            FilesEdit.remove(img);
+        }
     }
 
     public void destroy() {
