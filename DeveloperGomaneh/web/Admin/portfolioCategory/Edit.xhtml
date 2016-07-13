@@ -20,10 +20,6 @@
                         <p:inputText id="meta" value="#{portfolioCategoryController.selected.meta}" title="#{bundle.EditPortfolioCategoryTitle_meta}" />
                         <p:outputLabel value="#{bundle.EditPortfolioCategoryLabel_slug}" for="slug" />
                         <p:inputText id="slug" value="#{portfolioCategoryController.selected.slug}" title="#{bundle.EditPortfolioCategoryTitle_slug}" required="true" requiredMessage="#{bundle.EditPortfolioCategoryRequiredMessage_slug}"/>
-                        <p:outputLabel value="#{bundle.EditPortfolioCategoryLabel_createdAt}" for="createdAt" />
-                        <p:calendar id="createdAt" pattern="MM/dd/yyyy HH:mm:ss" value="#{portfolioCategoryController.selected.createdAt}" title="#{bundle.EditPortfolioCategoryTitle_createdAt}" required="true" requiredMessage="#{bundle.EditPortfolioCategoryRequiredMessage_createdAt}" showOn="button"/>
-                        <p:outputLabel value="#{bundle.EditPortfolioCategoryLabel_updatedAt}" for="updatedAt" />
-                        <p:calendar id="updatedAt" pattern="MM/dd/yyyy HH:mm:ss" value="#{portfolioCategoryController.selected.updatedAt}" title="#{bundle.EditPortfolioCategoryTitle_updatedAt}"  showOn="button"/>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{portfolioCategoryController.update}" value="#{bundle.Save}" update="display,:PortfolioCategoryListForm:datalist,:growl" oncomplete="handleSubmit(args, 'PortfolioCategoryEditDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="PortfolioCategoryEditDialog.hide()"/>

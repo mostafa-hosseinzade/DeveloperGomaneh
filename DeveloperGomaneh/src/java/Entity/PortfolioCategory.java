@@ -15,6 +15,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -152,4 +154,13 @@ public class PortfolioCategory implements Serializable {
         return "Entity.PortfolioCategory[ id=" + id + " ]";
     }
     
+    @PrePersist
+    public void SetDateTime(){
+        this.createdAt = new Date();
+    }
+    
+    @PreUpdate
+    public void setDateTimeUpdate(){
+        this.updatedAt = new Date();
+    }
 }

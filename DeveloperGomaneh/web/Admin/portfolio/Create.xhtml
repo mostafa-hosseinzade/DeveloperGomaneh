@@ -16,7 +16,7 @@
                         <p:outputLabel value="#{bundle3.CreatePortfolioLabel_title}" for="title" />
                         <p:inputText id="title" value="#{portfolioController.selected.title}" title="#{bundle3.CreatePortfolioTitle_title}" required="true" requiredMessage="#{bundle3.CreatePortfolioRequiredMessage_title}"/>
                         <p:outputLabel value="#{bundle3.CreatePortfolioLabel_describtion}" for="describtion" />
-                        <p:inputText id="describtion" value="#{portfolioController.selected.describtion}" title="#{bundle3.CreatePortfolioTitle_describtion}" />
+                        <p:inputTextarea id="describtion" value="#{portfolioController.selected.describtion}" title="#{bundle3.CreatePortfolioTitle_describtion}" />
                         <p:outputLabel value="#{bundle3.CreatePortfolioLabel_url}" for="url" />
                         <p:inputText id="url" value="#{portfolioController.selected.url}" title="#{bundle3.CreatePortfolioTitle_url}" required="true" requiredMessage="#{bundle3.CreatePortfolioRequiredMessage_url}"/>
                         <p:outputLabel value="#{bundle3.CreatePortfolioLabel_visit}" for="visit" />
@@ -24,7 +24,13 @@
                         <p:outputLabel value="#{bundle3.CreatePortfolioLabel_finished}" for="finished" />
                         <p:calendar id="finished" pattern="MM/dd/yyyy HH:mm:ss" value="#{portfolioController.selected.finished}" title="#{bundle3.EditPortfolioTitle_finished}"  showOn="button"/>
                         <p:outputLabel value="#{bundle3.CreatePortfolioLabel_portfolioCategoryid}" for="portfolioCategoryid" />
-                        <p:inputText id="portfolioCategoryid" value="#{portfolioController.selected.portfolioCategoryid}" title="#{bundle3.CreatePortfolioTitle_portfolioCategoryid}" />
+                        <p:selectOneMenu id="portfolioCategoryid" value="#{portfolioController.selected.portfolioCategoryid}" >
+                            <f:selectItems value="#{portfolioCategoryController.itemsAvailableSelectOne}"
+                                           var="portfolioCategoryidItem"
+                                           itemLabel="#{portfolioCategoryidItem.title}"
+                                           itemValue="#{portfolioCategoryidItem}"/>
+                        </p:selectOneMenu>
+                        
                         <p:outputLabel value="انتخاب عکس:" for="img"/>
                         <p:fileUpload  id="img" mode="advanced" multiple="true" fileUploadListener="#{portfolioController.addImage}" >
                         </p:fileUpload>
