@@ -9,6 +9,9 @@ import javax.enterprise.context.RequestScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import Entity.Content;
+import javax.faces.context.FacesContext;
+import org.jsoup.Jsoup;
+import org.jsoup.safety.Whitelist;
 
 @ManagedBean(name = "content")
 @RequestScoped
@@ -60,7 +63,13 @@ public class Contents {
     public List<Entity.Content> infoContent() {
         List<Entity.Content> c = null;
         if (this.contentId != null) {
+            FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("ctgid", contentId);
             return CF.getISI(contentId);
+        }
+        int sessionId = 0;
+        sessionId = (int) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("ctgid");
+        if (sessionId != 0) {
+            return CF.getISI(sessionId);
         }
         return c;
     }
@@ -72,5 +81,10 @@ public class Contents {
     public Content InfoContentSelect() {
         Content c = CF.find(this.contentShowId);
         return c;
+    }
+
+    public String ShowNoneHtml(String input) {
+        String i = Jsoup.clean(input, Whitelist.simpleText());
+        return i;
     }
 }

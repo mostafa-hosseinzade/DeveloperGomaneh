@@ -88,6 +88,12 @@ public class User implements Serializable {
     @Size(max = 255)
     @Column(name = "username")
     private String username;
+    @Column(name = "last_login")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date lastLogin;
+    @Column(name = "role")
+    private String role;
+
     @OneToMany(mappedBy = "userid")
     private Collection<Content> contentCollection;
     @OneToMany(mappedBy = "userid")
@@ -100,6 +106,22 @@ public class User implements Serializable {
     private Collection<Seo> seoCollection;
 
     public User() {
+    }
+
+    public Date getLastLogin() {
+        return lastLogin;
+    }
+
+    public void setLastLogin(Date lastLogin) {
+        this.lastLogin = lastLogin;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public User(Integer id) {
@@ -271,5 +293,5 @@ public class User implements Serializable {
     public String toString() {
         return "Entity.User[ id=" + id + " ]";
     }
-    
+
 }

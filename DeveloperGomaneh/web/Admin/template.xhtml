@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <title><ui:insert name="title">Default Title</ui:insert></title>
+        <h:outputStylesheet library="css" name="jsfcrud.css"/>
+        <h:outputScript library="js" name="jsfcrud.js"/>
+    </h:head>
+
+    <h:body rendered="#{loginController.checkLogin('SuperAdmin')}">
+
+        <p:growl id="growl" life="3000" />
+
+
+        <h:form>  
+
+            <p:toolbar style="direction: rtl">
+                <f:facet name="right">
+                    <p:commandButton value="سلام #{sessionScope.user.getUsername()}" action="/Admin/index.xhtml" />
+                    <p:commandButton value="خروج" action="#{loginController.logout()}"/>
+                </f:facet>
+                <f:facet name="left">
+
+                    <p:outputLabel for="basic" value="انتخاب تم :" style="margin-top: -20px" /> 
+                    <p:themeSwitcher id="basic" style="width:165px">
+                        <f:selectItem itemLabel="پیشفرض" itemValue="metroui" />
+                        <f:selectItems value="#{themeService.themes}" var="theme" itemLabel="#{theme.displayName}" itemValue="#{theme.name}"/>
+                    </p:themeSwitcher>
+                </f:facet>
+            </p:toolbar>
+        </h:form>
+
+        <ui:insert name="body"/>
+        <ui:insert name="footer"/>
+        <h:form id="menuForm" style="color: #004e72">
+            <p:dock position="bottom" >
+                <p:menuitem  style="color: #004e72" value="#{bundle.Home}" outcome="/index" icon="/resources/images/responsive.png"/>
+                <p:menuitem style="color: #004e72" styleClass="#{view.viewId eq '/Admin/content/List.xhtml' ? 'ui-menuitem-active ui-state-hover':''}" value="محتوا" outcome="/Admin/content/List.xhtml" icon="/resources/images/isi.png" />
+                <p:menuitem style="color: #004e72" styleClass="#{view.viewId eq '/Admin/contentCategory/List.xhtml' ? 'ui-menuitem-active ui-state-hover':''}" value="دسته بندی محتوا" outcome="/Admin/contentCategory/List.xhtml" icon="/resources/images/history.png"/>
+                <p:menuitem style="color: #004e72" styleClass="#{view.viewId eq '/Admin/factor/List.xhtml' ? 'ui-menuitem-active ui-state-hover':''}" value="فاکتورها" outcome="/Admin/factor/List.xhtml" icon="/resources/images/period.png"/>
+                <p:menuitem style="color: #004e72" styleClass="#{view.viewId eq '/Admin/factorField/List.xhtml' ? 'ui-menuitem-active ui-state-hover':''}" value="افزودنی های پیش فاکتور" outcome="/Admin/factorField/List.xhtml" icon="/resources/images/province.png"/>
+                <p:menuitem style="color: #004e72" styleClass="#{view.viewId eq '/Admin/sectionFactor/List.xhtml' ? 'ui-menuitem-active ui-state-hover':''}" value="بخش های پیش فاکتور" outcome="/Admin/sectionFactor/List.xhtml" icon="/resources/images/email.png"/>
+                <p:menuitem style="color: #004e72" styleClass="#{view.viewId eq '/Admin/faq/List.xhtml' ? 'ui-menuitem-active ui-state-hover':''}" value="سوالات متداول" outcome="/Admin/faq/List.xhtml" icon="/resources/images/question.png"/>
+                <p:menuitem style="color: #004e72" styleClass="#{view.viewId eq '/Admin/portfolio/List.xhtml' ? 'ui-menuitem-active ui-state-hover':''}" value="نمونه کارها" outcome="/Admin/portfolio/List.xhtml" icon="/resources/images/portfolio.png"/>
+                <p:menuitem style="color: #004e72" styleClass="#{view.viewId eq '/Admin/portfolioCategory/List.xhtml' ? 'ui-menuitem-active ui-state-hover':''}" value="دسته بندی نمونه کارها" outcome="/Admin/portfolioCategory/List.xhtml" icon="/resources/images/rss.png"/>
+                <p:menuitem style="color: #004e72" styleClass="#{view.viewId eq '/Admin/user/List.xhtml' ? 'ui-menuitem-active ui-state-hover':''}" value="کاربران" outcome="/Admin/user/List.xhtml" icon="/resources/images/users.png"/>
+                <p:menuitem style="color: #004e72" value="ProtfolioImg" outcome="/Admin/protfolioImg/List.xhtml" icon="/resources/images/Logo.png"/>
+                <p:menuitem style="color: #004e72" value="Seo" outcome="/Admin/seo/List.xhtml" icon="/resources/images/google-fonts.png"/>
+            </p:dock>
+        </h:form>
+    </h:body>
+    <style>
+
+        .ui-panel-content{
+            margin-top: 12px !important;
+        }
+        .active{
+            background-color: #004e72 !important;
+        }
+    </style>
+</html>

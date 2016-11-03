@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <title>ورود به سایت</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <h:outputStylesheet library="css"  name="bootstrap.rtl.css" />
+   </h:head>
+    <h:body >
+        <div class="col-lg-4 col-md-4 hidden-sm hidden-xs">
+
+        </div>
+        <div class="col-lg-4 col-md-4 hidden-sm hidden-xs" style="margin-top: 20px">
+            <p:growl id="growl" life="3000" />
+            <h:form >
+                <h4>ورود به ناحیه کاربری</h4>
+                <p:panelGrid columns="2">
+                    <p:outputLabel for="username" value="نام کاربری"  />
+                    <h:inputText id="username" value="#{loginController.username}" required="true" requiredMessage="لطفا نام کاربری خود را وارد نمائید" title="UserName" a:placeholder="User Name" /> 
+                    <p:outputLabel for="password" value="رمز عبور"/>
+                    <h:inputSecret id="password" value="#{loginController.password}" a:placeholder="Password" required="true" requiredMessage="لطفا رمز عبور خود را وارد نمائید" />
+     
+                </p:panelGrid>
+		<!--<p:captcha id="captchaGoogle"  required="true" requiredMessage="لطفا من را ربات نیستم را تائید کنید" language="fa" />--> 
+                <p:commandButton action="#{loginController.login()}" update="@form,:growl,messages" value="ارسال اطلاعات" styleClass="pull-left" />
+                <p:messages id="messages" />
+            </h:form>
+        </div>
+        <div class="col-lg-4 col-md-4 hidden-sm hidden-xs">
+	   		
+        </div>
+    </h:body>
+</html>

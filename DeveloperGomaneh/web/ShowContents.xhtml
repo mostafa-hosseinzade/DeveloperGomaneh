@@ -5,7 +5,7 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <ui:composition template="/Client/layouts.xhtml">
+    <ui:composition template="/layouts.xhtml">
         <ui:define name="body">
 
             <div class="col-lg-12" style="margin-top: 120px;padding-bottom: 20px">
@@ -21,14 +21,17 @@
                                     <div class="row">
                                         <div class="mbr-box mbr-box--fixed mbr-box--adapted">
                                             <h:form>
-                                                <p:dataScroller value="#{content.infoContent()}" var="item" chunkSize="12">
+                                                <p:dataScroller value="#{content.infoContent()}"  rows="6" scrollHeight="200" var="item" chunkSize="6">
+                                                    <f:facet name="loader">
+                                                        <p:commandButton type="button" value="مطالب بیشتر" icon="ui-icon-circle-triangle-s"/>
+                                                    </f:facet>
                                                     <div class="col-lg-6" >
                                                         <div class="panel panel-primary">
                                                             <div class="panel-heading" style="direction: rtl;text-align: right">
                                                                 #{item.title}
                                                             </div>
                                                             <div class="panel-body" style="direction: rtl;text-align: right">
-                                                                #{item.content.length() gt 43 ? item.content.substring(0,41).concat('...') : item.content}
+                                                                #{item.content.length() gt 43 ? content.ShowNoneHtml(item.content).substring(0,41).concat('...') : content.ShowNoneHtml(item.content)}
                                                             </div>
                                                             <div class="panel-footer">
                                                                 <h:link  styleClass="btn btn-default" outcome="#{content.showInfoContent()}" value=" اطلاعات بیشتر "> 
