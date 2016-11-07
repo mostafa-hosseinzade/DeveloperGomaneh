@@ -35,7 +35,7 @@
                             <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
                         </h:outputText>
                     </p:panelGrid>
-                    <p:commandButton value="#{bundle.Close}" onclick="ContentCategoryViewDialog.hide()"/>
+                    <p:commandButton value="#{bundle.Close}" type="button" onclick="PF('ContentCategoryViewDialog').hide()"/>
                 </h:panelGroup>
             </h:form>
         </p:dialog>

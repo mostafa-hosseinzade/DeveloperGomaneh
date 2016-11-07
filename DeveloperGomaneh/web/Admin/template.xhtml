@@ -34,11 +34,17 @@
                 </f:facet>
             </p:toolbar>
         </h:form>
+        <h:form>
+            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                <p:commandButton value="بله" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                <p:commandButton value="خیر" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+            </p:confirmDialog>
+        </h:form>
 
         <ui:insert name="body"/>
         <ui:insert name="footer"/>
-        <h:form id="menuForm" style="color: #004e72">
-            <p:dock position="bottom" >
+        <h:form id="menuForm" style="color: #004e72;margin-top: 50px;">
+            <p:dock position="bottom" proximity="110" >
                 <p:menuitem  style="color: #004e72" value="#{bundle.Home}" outcome="/index" icon="/resources/images/responsive.png"/>
                 <p:menuitem style="color: #004e72" styleClass="#{view.viewId eq '/Admin/content/List.xhtml' ? 'ui-menuitem-active ui-state-hover':''}" value="محتوا" outcome="/Admin/content/List.xhtml" icon="/resources/images/isi.png" />
                 <p:menuitem style="color: #004e72" styleClass="#{view.viewId eq '/Admin/contentCategory/List.xhtml' ? 'ui-menuitem-active ui-state-hover':''}" value="دسته بندی محتوا" outcome="/Admin/contentCategory/List.xhtml" icon="/resources/images/history.png"/>
@@ -53,6 +59,10 @@
                 <p:menuitem style="color: #004e72" value="Seo" outcome="/Admin/seo/List.xhtml" icon="/resources/images/google-fonts.png"/>
             </p:dock>
         </h:form>
+
+        <h:outputScript>
+            var root = "#{request.contextPath}";
+        </h:outputScript>
     </h:body>
     <style>
 
@@ -63,4 +73,5 @@
             background-color: #004e72 !important;
         }
     </style>
+
 </html>

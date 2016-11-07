@@ -24,8 +24,10 @@
                         <p:selectBooleanCheckbox id="enable" value="#{faqController.selected.enable}" required="true" requiredMessage="#{bundle.EditFaqRequiredMessage_enable}"/>
                         <p:outputLabel value="#{bundle.CreateFaqLabel_answer}" for="answer" />
                         <p:inputText id="answer" value="#{faqController.selected.answer}" title="#{bundle.CreateFaqTitle_answer}" />
-                        <p:outputLabel value="#{bundle.CreateFaqLabel_meta}" for="meta" />
-                        <p:inputText id="meta" value="#{faqController.selected.meta}" title="#{bundle.CreateFaqTitle_meta}" />
+                        <p:outputLabel value="#{bundle.CreateFaqLabel_meta}" for="metas" />
+                        <p:autoComplete id="metas"  multiple="true" value="#{faqController.selected.metas}" >
+                            <f:ajax event="blur" execute="metas" render="metas" />
+                        </p:autoComplete>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{faqController.create}" value="#{bundle.Save}" update="display,:FaqListForm:datalist,:growl" oncomplete="handleSubmit(args,'FaqCreateDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="FaqCreateDialog.hide()"/>

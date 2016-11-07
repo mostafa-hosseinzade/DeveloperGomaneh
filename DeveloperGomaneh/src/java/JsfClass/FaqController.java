@@ -30,6 +30,15 @@ public class FaqController implements Serializable {
 
     public FaqController() {
     }
+    private List<String> metas;
+
+    public void setMetas(List<String> metas) {
+        this.metas = metas;
+    }
+
+    public List<String> getMetas() {
+        return metas;
+    }
 
     public Faq getSelected() {
         return selected;

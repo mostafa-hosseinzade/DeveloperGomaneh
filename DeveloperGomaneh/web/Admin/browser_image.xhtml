@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pe="http://primefaces.org/ui/extensions">
+    <h:head>
+        <title>انتخاب تصویر</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body >
+        <style>
+            .image:hover{
+                border:blue 1px solid;
+            }
+            body{
+                direction: rtl;text-align: center;
+                font-family: B Yekan
+            }
+        </style>
+        <script type="text/javascript" charset="utf-8">
+            function selectImage(el) {
+                console.log(el)
+                window.opener.CKEDITOR.tools.callFunction(#{fileBrowser.getCkeditorUrl()} , $(el).attr("src"));
+                        window.close();
+            }
+        </script>
+        <p:outputLabel rendered="#{empty fileBrowser.images}" value="فایلی وجود ندارد" />
+        <pe:fluidGrid value="#{fileBrowser.images}" var="image"  
+                      fitWidth="true" hGutter="10" vGutter="10" hasImages="true">  
+
+            <pe:fluidGridItem >  
+                <h:graphicImage ondblclick="selectImage(this)" styleClass="image" width="220" name="/images/#{image}"/>  
+            </pe:fluidGridItem>  
+        </pe:fluidGrid>  
+        
+    </h:body>
+</html>

@@ -37,7 +37,8 @@
 
                         <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
                         <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
-
+                        <p:ajax event="rowDblselect" oncomplete="PF('ContentViewDialog').show()"/>
+                        
                         <p:column sortBy="#{item.id}" filterBy="#{item.id}">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListContentTitle_id}"/>
@@ -100,7 +101,9 @@
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{contentController.prepareCreate}" update=":ContentCreateForm" oncomplete="PF('ContentCreateDialog').show()"/>
                             <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":ContentViewForm" oncomplete="PF('ContentViewDialog').show()" disabled="#{empty contentController.selected}"/>
                             <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":ContentEditForm" oncomplete="PF('ContentEditDialog').show()" disabled="#{empty contentController.selected}"/>
-                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{contentController.destroy}" update=":growl,datalist" disabled="#{empty contentController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{contentController.destroy}" update=":growl,datalist" disabled="#{empty contentController.selected}">
+                                <p:confirm message="آیا از حذف اطلاعات اطمینان دارید؟" />
+                            </p:commandButton>
                             <p:commandButton value="دریافت اکسل اطلاعات" ajax="false" immediate="true">
                                 <p:dataExporter type="xls" target="datalist" pageOnly="true" fileName="OutPut"/>
                             </p:commandButton>

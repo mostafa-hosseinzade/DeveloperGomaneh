@@ -14,22 +14,23 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{contentController.selected != null}">
                         <p:panelGrid columns="2">
-                        <p:outputLabel value="#{bundle.EditContentLabel_title}" for="title" />
-                        <p:inputText id="title" value="#{contentController.selected.title}" title="#{bundle.EditContentTitle_title}" required="true" requiredMessage="#{bundle.EditContentRequiredMessage_title}"/>
-                        <p:outputLabel value="#{bundle.EditContentLabel_orderList}" for="orderList" />
-                        <p:inputText id="orderList" value="#{contentController.selected.orderList}" title="#{bundle.EditContentTitle_orderList}" />
-                        <p:outputLabel value="#{bundle.EditContentLabel_meta}" for="meta" />
-                        <p:inputText id="meta" value="#{contentController.selected.meta}" title="#{bundle.EditContentTitle_meta}" />
-                        <p:outputLabel value="#{bundle.EditContentLabel_slug}" for="slug" />
-                        <p:inputText id="slug" value="#{contentController.selected.slug}" title="#{bundle.EditContentTitle_slug}" required="true" requiredMessage="#{bundle.EditContentRequiredMessage_slug}"/>                       
-                        <p:outputLabel value="#{bundle.EditContentLabel_contentCategoryid}" for="contentCategoryid" />
-                        <p:selectOneMenu id="contentCategoryid" value="#{contentController.selected.contentCategoryid}" >
-                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
-                            <f:selectItems value="#{contentCategoryController.itemsAvailableSelectOne}"
-                                           var="contentCategoryidItem"
-                                           itemLabel="#{contentCategoryidItem.title}"
-                                           itemValue="#{contentCategoryidItem}"/>
-                        </p:selectOneMenu>
+                            <p:outputLabel value="#{bundle.EditContentLabel_title}" for="title" />
+                            <p:inputText id="title" value="#{contentController.selected.title}" title="#{bundle.EditContentTitle_title}" required="true" requiredMessage="#{bundle.EditContentRequiredMessage_title}"/>
+                            <p:outputLabel value="#{bundle.EditContentLabel_orderList}" for="orderList" />
+                            <p:inputText id="orderList" value="#{contentController.selected.orderList}" title="#{bundle.EditContentTitle_orderList}" />
+                            <p:outputLabel value="#{bundle.CreateContentLabel_meta}" for="metas" />
+                            <p:autoComplete id="metas"  multiple="true" value="#{contentController.selected.metas}" >
+                                <f:ajax event="blur" execute="metas" render="metas" />
+                            </p:autoComplete><p:outputLabel value="#{bundle.EditContentLabel_slug}" for="slug" />
+                            <p:inputText id="slug" value="#{contentController.selected.slug}" title="#{bundle.EditContentTitle_slug}" required="true" requiredMessage="#{bundle.EditContentRequiredMessage_slug}"/>                       
+                            <p:outputLabel value="#{bundle.EditContentLabel_contentCategoryid}" for="contentCategoryid" />
+                            <p:selectOneMenu id="contentCategoryid" value="#{contentController.selected.contentCategoryid}" >
+                                <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                                <f:selectItems value="#{contentCategoryController.itemsAvailableSelectOne}"
+                                               var="contentCategoryidItem"
+                                               itemLabel="#{contentCategoryidItem.title}"
+                                               itemValue="#{contentCategoryidItem}"/>
+                            </p:selectOneMenu>
                         </p:panelGrid>
                         <p:panelGrid>
                             <p:outputLabel value="#{bundle.CreateContentLabel_content}" for="content" />
@@ -38,7 +39,7 @@
                         </p:panelGrid>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{contentController.update}" value="#{bundle.Save}" update="display,:ContentListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ContentEditDialog');"/>
-                    <p:commandButton value="#{bundle.Cancel}" onclick="ContentEditDialog.hide()"/>
+                    <p:commandButton value="#{bundle.Cancel}" type="button" onclick="PF('ContentEditDialog').hide()"/>
                 </h:panelGroup>
             </h:form>
         </p:dialog>

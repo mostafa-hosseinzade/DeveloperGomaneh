@@ -24,16 +24,16 @@
                         <h:outputText value="#{contentController.selected.slug}" title="#{bundle.ViewContentTitle_slug}"/>
                         <h:outputText value="#{bundle.ViewContentLabel_createdAt}"/>
                         <h:outputText value="#{contentController.selected.createdAt}" title="#{bundle.ViewContentTitle_createdAt}">
-                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            <f:converter converterId="persian_date" />
                         </h:outputText>
                         <h:outputText value="#{bundle.ViewContentLabel_updatedAt}"/>
                         <h:outputText value="#{contentController.selected.updatedAt}" title="#{bundle.ViewContentTitle_updatedAt}">
-                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            <f:converter converterId="persian_date" />
                         </h:outputText>
                         <h:outputText value="#{bundle.ViewContentLabel_contentCategoryid}"/>
                         <h:outputText value="#{contentController.selected.contentCategoryid.title}" title="#{bundle.ViewContentTitle_contentCategoryid}"/>
                       </p:panelGrid>
-                    <p:commandButton value="#{bundle.Close}" onclick="ContentViewDialog.hide()"/>
+                    <p:commandButton value="#{bundle.Close}" type="button" onclick="PF('ContentViewDialog').hide()"/>
                 </h:panelGroup>
             </h:form>
         </p:dialog>

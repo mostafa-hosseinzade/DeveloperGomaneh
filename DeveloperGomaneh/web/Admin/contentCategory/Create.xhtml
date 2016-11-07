@@ -16,8 +16,7 @@
                         <p:inputText id="title" value="#{contentCategoryController.selected.title}" title="#{bundle.CreateContentCategoryTitle_title}" required="true" requiredMessage="#{bundle.CreateContentCategoryRequiredMessage_title}"/>
                         <p:outputLabel value="#{bundle.CreateContentCategoryLabel_describtion}" for="describtion" />
                         <p:inputText id="describtion" value="#{contentCategoryController.selected.describtion}" title="#{bundle.CreateContentCategoryTitle_describtion}" />
-                        <p:outputLabel value="#{bundle.CreateContentCategoryLabel_meta}" for="meta" />
-                        <p:inputText id="meta" value="#{contentCategoryController.selected.meta}" title="#{bundle.CreateContentCategoryTitle_meta}" />
+
                         <p:outputLabel value="#{bundle.CreateContentCategoryLabel_slug}" for="slug" />
                         <p:inputText id="slug" value="#{contentCategoryController.selected.slug}" title="#{bundle.CreateContentCategoryTitle_slug}" required="true" requiredMessage="#{bundle.CreateContentCategoryRequiredMessage_slug}"/>
                         <p:outputLabel value="#{bundle.CreateContentCategoryLabel_enable}" for="enable" />
@@ -32,6 +31,10 @@
                                            itemValue="#{subctgItem}"
                                            itemLabel="#{subctgItem.title}"/>
                         </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateContentLabel_meta}" for="metas" />
+                        <p:autoComplete id="metas"  multiple="true" value="#{contentCategoryController.selected.metas}" >
+                            <f:ajax event="blur" execute="metas" render="metas" />
+                        </p:autoComplete>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{contentCategoryController.create}" value="#{bundle.Save}" update="display,:ContentCategoryListForm:datalist,:growl" oncomplete="handleSubmit(args,'ContentCategoryCreateDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="ContentCategoryCreateDialog.hide()"/>

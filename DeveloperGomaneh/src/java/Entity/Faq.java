@@ -6,7 +6,10 @@
 package Entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -22,6 +25,7 @@ import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -79,7 +83,29 @@ public class Faq implements Serializable {
     @JoinColumn(name = "User_id", referencedColumnName = "id")
     @ManyToOne
     private User userid;
+        @Transient
+    private List<String> metas;
 
+    public List<String> getMetas() {
+        List<String> output = new ArrayList<>();
+        if (meta != null && meta.length() != 0) {
+            output.addAll(Arrays.asList(meta.split(",")));
+        }
+        return output;
+    }
+
+    public void setMetas(List<String> metas) {
+        this.meta = "";
+        int i = 0;
+        for (String s : metas) {
+            i++;
+            if (metas.size() != i) {
+                this.meta += s + ",";
+            } else {
+                this.meta += s;
+            }
+        }
+    }
     public Faq() {
     }
 
@@ -130,11 +156,7 @@ public class Faq implements Serializable {
     public String getMeta() {
         return meta;
     }
-
-    public void setMeta(String meta) {
-        this.meta = meta;
-    }
-
+    
     public Integer getOrderList() {
         return orderList;
     }
@@ -148,7 +170,7 @@ public class Faq implements Serializable {
     }
 
     public void setSlug(String slug) {
-        this.slug = slug;
+        this.slug = slug.replace(" ", "-");
     }
 
     public Date getUpdatedAt() {
