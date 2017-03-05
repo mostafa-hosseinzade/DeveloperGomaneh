@@ -35,6 +35,8 @@ public class ContentCategoryFacade extends AbstractFacade<ContentCategory> {
 
     public List<ContentCategory> findBySubctg(Integer subctgid) {
         ContentCategory c = this.find(subctgid);
+        System.out.println("-------------------------");
+        System.out.println(c);
         Query q = em.createNamedQuery("ContentCategory.findBySubctg");
         q.setParameter("subctg", c);
         return q.getResultList();

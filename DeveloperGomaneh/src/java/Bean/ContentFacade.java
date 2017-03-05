@@ -7,6 +7,7 @@ package Bean;
 
 import Entity.Content;
 import Entity.ContentCategory;
+import java.util.LinkedList;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -47,5 +48,8 @@ public class ContentFacade extends AbstractFacade<Content> {
         ContentCategory CC = CCF.find(id);
         return em.createNamedQuery("Content.findBycontentCategoryid").setParameter("contentCategoryid", CC).getResultList();
     }
-
+    
+    public List<Content> getLastIsi(Integer count){
+        return em.createQuery("select c from Content c order by c.createdAt desc").setMaxResults(count).getResultList();
+    }
 }

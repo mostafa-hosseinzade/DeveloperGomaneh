@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <ui:composition>
+        <div id="site-header-wrapper" class="site-header-wrapper-transparent"> 
+            <header id="site-header" class="site-header animated-header" role="banner">
+                <div class="transparent-header-background" style="background-color: rgba(255, 255, 255, 0);">
+                    <div class="container">
+                        <div
+                            class="header-main logo-position-menu_center header-colors-light header-layout-default header-style-1"><div
+                                class="site-title">
+                                <h1> 
+                                    <a href="index.html" rel="home"> <span
+                                            class="logo"><img
+                                                src="#{request.contextPath}/resources/img/logo_4e9f703b9e2b3db6572a4ff232f7ec19_1x.png" srcset="#{request.contextPath}/resources/img/logo_4e9f703b9e2b3db6572a4ff232f7ec19_3x.png 3x" alt="" style="width:164px;" class="default"/><img
+                                                src="#{request.contextPath}/resources/img/logo_60dfdd028ca51e3879636360b2cf4a2f_1x.png" srcset="#{request.contextPath}/resources/img/logo_60dfdd028ca51e3879636360b2cf4a2f_3x.png 3x" alt="" style="width:132px;" class="small"/></span> </a></h1></div> <nav
+                                id="primary-navigation" class="site-navigation primary-navigation responsive" role="navigation"> <button
+                                    class="menu-toggle dl-trigger">Primary Menu<span
+                                        class="menu-line-1"></span><span
+                                        class="menu-line-2"></span><span
+                                        class="menu-line-3"></span></button>
+                                <ul id="primary-menu" class="nav-menu dl-menu styled ">
+                                    <li class="menu-item menu-item-search">
+                                        <a href="#"></a><div
+                                            class="minisearch">
+                                            <form role="search" id="searchform" class="sf" action="http://codex-themes.com/thegem/app-one-pager/" method="GET">
+                                                <input id="searchform-input" class="sf-input" type="text" placeholder="Search..." name="s"/><span
+                                                    class="sf-submit-icon"></span>
+                                                <input id="searchform-submit" class="sf-submit" type="submit" value=""/>
+                                            </form>
+                                        </div>
+                                    </li>
+
+                                    <li id="menu-item-66" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-66 megamenu-first-element">
+                                        <a href="#link7" style="font-size: 19px">#{trans['index.menu.app']}</a></li>
+
+
+
+                                    <li id="menu-item-65" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-65 megamenu-first-element">
+                                        <a  href="#link6" style="font-size: 19px">#{trans['index.menu.works']}</a></li>
+
+                                    <li id="menu-item-64" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-64 megamenu-first-element">
+                                        <a href="#link4" style="font-size: 19px">#{trans['index.menu.our-team']}</a></li>
+
+                                    <li class="menu-item-logo"><h1> 
+                                            <a href="index.html" rel="home"> <span
+                                                    class="logo">
+                                                    <img src="#{request.contextPath}/resources/img/logo_4e9f703b9e2b3db6572a4ff232f7ec19_1x.png" srcset="#{request.contextPath}/resources/img/logo_4e9f703b9e2b3db6572a4ff232f7ec19_3x.png 3x" alt="" style="width:164px;" class="default"/><img
+                                                        src="#{request.contextPath}/resources/img/logo_60dfdd028ca51e3879636360b2cf4a2f_1x.png" srcset="#{request.contextPath}/resources/img/logo_60dfdd028ca51e3879636360b2cf4a2f_3x.png 3x" alt="" style="width:132px;" class="small"/></span> </a></h1></li>
+
+                                    <li  id="menu-item-63" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-63 megamenu-first-element">
+                                        <a href="#link3" style="font-size: 18px">#{trans['index.menu.portfolio']}</a></li>
+
+                                    <li  id="menu-item-62" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-62 megamenu-first-element">
+                                        <a href="#link2" style="font-size: 18px">#{trans['index.menu.feature']} </a></li>
+
+                                    <li
+                                        id="menu-item-60" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-60 megamenu-first-element">
+                                        <a href="#link" style="font-size: 18px">#{trans['index.menu.why-us']} </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </header>
+        </div>
+        <div style="z-index: 9999;    position: absolute;
+             bottom: 2px;
+             padding: 5px;
+             background-color: rgba(0,0,0,0.3);">
+            <h:form>
+                Language : 
+                <h:selectOneMenu value="#{language.localeCode}" onchange="submit()"
+                                 valueChangeListener="#{language.countryLocaleCodeChanged}">
+                    <f:selectItems value="#{language.countriesInMap}" /> 
+                </h:selectOneMenu>
+            </h:form>
+        </div>
+    </ui:composition>
+
+</html>

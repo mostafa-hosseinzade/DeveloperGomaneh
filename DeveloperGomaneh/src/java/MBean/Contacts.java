@@ -31,10 +31,15 @@ public class Contacts implements Serializable {
     public void setContact(Contact contact) {
         this.contact = contact;
     }
+    private String successMsg="";
+
+    public String getSuccessMsg() {
+        return successMsg;
+    }
     
     public void insert() {
         cF.create(this.contact);
         this.contact = new Contact();
-        JsfUtil.addSuccessMessage("اطلاعات با موفقیت ثبت شد");        
+        successMsg= "اطلاعات با موفقیت ثبت شد";        
     }
 }

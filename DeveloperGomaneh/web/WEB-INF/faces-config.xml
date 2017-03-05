@@ -24,5 +24,13 @@
             <base-name>/Bundle5</base-name>
             <var>bundle5</var>
         </resource-bundle>
+        <locale-config>
+            <default-locale>fa</default-locale>
+            <supported-locale>en</supported-locale>
+        </locale-config>
+        <resource-bundle>
+            <base-name>Language.index</base-name>
+            <var>trans</var>
+        </resource-bundle>
     </application>
 </faces-config>
