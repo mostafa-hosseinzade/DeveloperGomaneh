@@ -6,6 +6,7 @@
       xmlns:p="http://primefaces.org/ui"
       lang="en-US" >
     <h:head>
+        <link rel="stylesheet" type="text/css" href="#{request.contextPath}/resources/bootstrap/css/bootstrap.min.css"/>
         <link
             rel="stylesheet" type="text/css" href="#{request.contextPath}/resources/css/one.css" media="all" />
         <link
@@ -15,8 +16,8 @@
         <link
             rel="stylesheet" type="text/css" href="#{request.contextPath}/resources/css/four.css" media="all" />
         <link rel="stylesheet" type="text/css" href="#{request.contextPath}/resources/css/five.css" media="all" />
-        
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+        <link rel="stylesheet" href="#{request.contextPath}/resources/font-awesome-4.7.0/css/font-awesome.min.css" />
+
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="profile" href="http://gmpg.org/xfn/11" />
@@ -52,17 +53,17 @@
     <h:body class="home page page-id-2 page-template-default one-pager wpb-js-composer js-comp-ver-4.12 vc_responsive">
         <div id="page-preloader"><div
                 class="page-preloader-spin"></div>
-                    
+
         </div>
         <ui:include src="layout/header.xhtml" />
         <div id="page" class="layout-fullwidth">
             <a href="#page" class="scroll-top-button"></a>
-            
-            
+
+
 
             <div id="main" class="site-main">
                 <div id="main-content" class="main-content">
-                        
+
                     <div class="gem-slideshow">
                         <link  href="http://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400" rel="stylesheet" property="stylesheet" type="text/css" media="all" />
                         <ui:include src="layout/slider.xhtml"/>
@@ -73,7 +74,6 @@
                         <!--<ui:include src="layout/usersSay.xhtml" />-->
                         <!--<ui:include src="layout/Apps.xhtml" />-->
                         <ui:include src="layout/subscribe.xhtml" />
-                        
                     </div>
                 </div>
             </div>

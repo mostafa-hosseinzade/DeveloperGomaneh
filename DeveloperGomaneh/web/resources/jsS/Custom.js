@@ -400,7 +400,7 @@ var htmlDiv = document.getElementById("rs-plugin-settings-inline-css");
                                                                                                             } else {
                                                                                                                 revapi4 = tpj("#rev_slider_4_2").show().revolution({
                                                                                                                     sliderType: "carousel",
-                                                                                                                    jsFileLocation: "//codex-themes.com/thegem/app-one-pager/wp-content/plugins/revslider/public/assets/js/",
+                                                                                                                    jsFileLocation: "./",
                                                                                                                     sliderLayout: "fullwidth",
                                                                                                                     dottedOverlay: "none",
                                                                                                                     delay: 9000,
