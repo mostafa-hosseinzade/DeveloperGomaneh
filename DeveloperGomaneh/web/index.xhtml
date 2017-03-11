@@ -73,7 +73,7 @@
                         <ui:include src="layout/project.xhtml" />
                         <!--<ui:include src="layout/usersSay.xhtml" />-->
                         <!--<ui:include src="layout/Apps.xhtml" />-->
-                        <ui:include src="layout/subscribe.xhtml" />
+                        <!--<ui:include src="layout/subscribe.xhtml" />-->
                     </div>
                 </div>
             </div>
@@ -100,6 +100,23 @@
         <!--<script type="text/javascript" src="#{request.contextPath}/resources/jsS/revolution.extension.parallax.min.js"></script>-->
 
         <script type="text/javascript" src="#{request.contextPath}/resources/jsS/revolution.extension.carousel.min.js"></script>
+
+        <script type="text/javascript">
+            jQuery('#link12').on('mouseenter', function () {
+                setTimeout(function () {
+                    odometer.innerHTML = 143;
+                    odometer2.innerHTML = 42;
+                    odometer3.innerHTML = 15;
+                    odometer4.innerHTML = 9;
+                }, 1000);
+            });
+            jQuery('#link12').on('focus',function (){
+                setTimeout(function () {
+                    odometer.innerHTML = 456;
+                }, 1000);
+            });
+        </script>
+
     </h:body>
 </html>
 
