@@ -1,0 +1,66 @@
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      lang="en-US" >
+    <h:head>
+        <link rel="stylesheet" type="text/css" href="#{request.contextPath}/resources/css/bootstrap-custom.css" media="all" />
+        <link rel="stylesheet" href="#{request.contextPath}/resources/font-awesome-4.7.0/css/font-awesome.min.css" />
+        <link rel="profile" href="http://gmpg.org/xfn/11" />
+        <link rel="pingback" href="xmlrpc.html"/>
+        <link rel="shortcut icon" href="resources/images/favicon.ico" type="image/x-icon"/>
+        <ui:insert name="linkhead" />
+
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name='robots' content='noindex,follow' />
+        <title><ui:insert name="title">Gomaneh</ui:insert></title>
+        <style id="gem-icons-loading-hide">.gem-icon .gem-icon-half-1,.gem-icon .gem-icon-half-2{opacity:0!important}</style>
+
+        <script>window.start_page = new Date().getTime();</script>
+        <!--[if lt IE 9]><script src="http://thegem2.codexthemes.netdna-cdn.com/thegem/app-one-pager/wp-content/themes/TheGem/js/html5.js"></script><![endif]-->
+        <script type="text/javascript" src="#{request.contextPath}/resources/jsS/jquery-slider.js"></script>
+
+        <script type="text/javascript" src="#{request.contextPath}/resources/jsS/slider.js"></script>
+        <script type='text/javascript'>
+            /* <![CDATA[ */
+            var zilla_likes = {"ajaxurl": "http:\/\/codex-themes.com\/thegem\/app-one-pager\/wp-admin\/admin-ajax.php"};
+            /* ]]> */
+        </script>
+        <!--<script type="text/javascript" src="#{request.contextPath}/resources/jsS/three.js"></script>-->
+        <script type="text/javascript" src="#{request.contextPath}/resources/jsS/Custom.js"></script>
+        <link rel="stylesheet" type="text/css" href="#{request.contextPath}/resources/jsS/custom.css"/>
+        <style type="text/css">.recentcomments a{display:inline!important;padding:0!important;margin:0!important}</style> 
+        <!--[if lte IE 9]>
+        <link rel="stylesheet" type="text/css" href="http://codex-themes.com/thegem/app-one-pager/wp-content/plugins/js_composer/assets/css/vc_lte_ie9.min.css" media="screen"/>
+        <![endif]-->
+        <!--[if IE  8]>
+         <link   rel="stylesheet" type="text/css" href="http://codex-themes.com/thegem/app-one-pager/wp-content/plugins/js_composer/assets/css/vc-ie8.min.css" media="screen"/>
+        <![endif]-->
+        <noscript>
+            <style type="text/css">.wpb_animate_when_almost_visible{opacity:1}</style>
+        </noscript>
+    </h:head>
+    <h:body class="home page page-id-2 page-template-default one-pager wpb-js-composer js-comp-ver-4.12 vc_responsive">
+        <div id="page-preloader">
+            <div class="page-preloader-spin"></div>
+        </div>
+        <ui:include src="layout/header.xhtml" />
+        <div id="page" class="layout-fullwidth">
+            <a href="#page" class="scroll-top-button"></a>
+            <div id="main" class="site-main">
+                <div id="main-content" class="main-content">
+                    <div class="gem-slideshow">
+                        <ui:insert name="body" />
+                    </div>
+                </div>
+            </div>
+            <ui:include src="layout/footer.xhtml" />
+        </div> 
+        <script type="text/javascript" src="#{request.contextPath}/resources/jsS/four.js"></script>
+        <ui:insert name="jslink" />
+    </h:body>
+</html>
+
