@@ -5,11 +5,12 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <ui:composition>
         <div id="site-header-wrapper" class="site-header-wrapper-transparent"> 
             <header id="site-header" class="site-header animated-header" role="banner">
-                <div class="transparent-header-background" style="background-color: rgba(255, 255, 255, 0);">
+                <div class="transparent-header-background" style="background-color: #{(request.requestURI) eq (request.contextPath.concat('/')) ? 'rgba(255,255,255,0)' : '#10b6fe'}">
                     <div class="container">
                         <div
                             class="header-main logo-position-menu_center header-colors-light header-layout-default header-style-1"><div
@@ -18,35 +19,67 @@
                                     <a href="index.html" rel="home"> <span
                                             class="logo"><img
                                                 src="#{request.contextPath}/resources/images/Logo.png" srcset="#{request.contextPath}/resources/images/Logo.png 3x" alt="" style="width:164px;" class="default"/><img
-                                                src="#{request.contextPath}/resources/images/Logo.png" srcset="#{request.contextPath}/resources/images/Logo.png 3x" alt="" style="width:132px;" class="small"/></span> </a></h1></div> <nav
-                                id="primary-navigation" class="site-navigation primary-navigation responsive" role="navigation"> <button
-                                    class="menu-toggle dl-trigger">Primary Menu<span
-                                        class="menu-line-1"></span><span
-                                        class="menu-line-2"></span><span
-                                        class="menu-line-3"></span></button>
+                                                src="#{request.contextPath}/resources/images/Logo.png" srcset="#{request.contextPath}/resources/images/Logo.png 3x" alt="" style="width:132px;" class="small"/></span> 
+                                    </a>
+                                </h1>
+                            </div> 
+                            <nav id="primary-navigation" class="site-navigation primary-navigation responsive" role="navigation"> 
+                                <button class="menu-toggle dl-trigger">Primary Menu
+                                    <span class="menu-line-1"></span>
+                                    <span class="menu-line-2"></span>
+                                    <span class="menu-line-3"></span>
+                                </button>
                                 <ul id="primary-menu" class="nav-menu dl-menu styled ">
-                                    <li class="menu-item menu-item-search">
-                                        <a href="#"></a><div
-                                            class="minisearch">
-                                            <form role="search" id="searchform" class="sf" action="http://codex-themes.com/thegem/app-one-pager/" method="GET">
-                                                <input id="searchform-input" class="sf-input" type="text" placeholder="Search..." name="s"/><span
-                                                    class="sf-submit-icon"></span>
-                                                <input id="searchform-submit" class="sf-submit" type="submit" value=""/>
-                                            </form>
-                                        </div>
-                                    </li>
+                                    <!-- Check url is index page -->
+                                    <c:if test="#{(request.requestURI) eq (request.contextPath.concat('/'))}">
+                                        <li class="menu-item menu-item-search">
+                                            <a href="#"></a><div
+                                                class="minisearch">
+                                                <form role="search" id="searchform" class="sf" action="http://codex-themes.com/thegem/app-one-pager/" method="GET">
+                                                    <input id="searchform-input" class="sf-input" type="text" placeholder="Search..." name="s"/><span
+                                                        class="sf-submit-icon"></span>
+                                                    <input id="searchform-submit" class="sf-submit" type="submit" value=""/>
+                                                </form>
+                                            </div>
+                                        </li>
 
-                                    <li id="menu-item-66" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-66 megamenu-first-element">
-                                        <a href="#link7" style="font-size: 19px">#{trans['index.menu.app']}</a></li>
+                                        <li id="menu-item-66" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-66 megamenu-first-element">
+                                            <a href="#link7" style="font-size: 19px">#{trans['index.menu.app']}</a>
+                                        </li>
 
+                                        <li id="menu-item-65" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-65 megamenu-first-element">
+                                            <a  href="#link6" style="font-size: 19px">#{trans['index.menu.works']}</a>
+                                        </li>
 
-
-                                    <li id="menu-item-65" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-65 megamenu-first-element">
-                                        <a  href="#link6" style="font-size: 19px">#{trans['index.menu.works']}</a></li>
-
-                                    <li id="menu-item-64" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-64 megamenu-first-element">
-                                        <a href="#link4" style="font-size: 19px">#{trans['index.menu.our-team']}</a></li>
-
+                                        <li id="menu-item-64" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-64 megamenu-first-element">
+                                            <a href="#link4" style="font-size: 19px">#{trans['index.menu.our-team']}</a>
+                                        </li>
+                                    </c:if>
+                                    <!-- Check url not index page -->
+                                    <c:if test="#{!((request.requestURI) eq (request.contextPath.concat('/')))}">
+                                        <li class="mbr-navbar__item testd">
+                                            <h:link  styleClass="mbr-buttons__link btn text-white" outcome="invoice.xhtml" >پیش فاکتور</h:link>
+                                        </li>
+                                        <li class="mbr-navbar__item testd">
+                                            <h:link styleClass="mbr-buttons__link btn text-white" outcome="PortFolio.xhtml" >نمونه کارها</h:link>
+                                        </li>
+                                        <li class="mbr-navbar__item testd">
+                                            <a class="mbr-buttons__link btn text-white" href="#"  >مقاله ها</a>
+                                            <ul class="dropdown-test-d">
+                                                <p style="padding-top: 10px;padding-right: 10px;color: white;">گروه بندی مقالات</p>
+                                                <hr/>
+                                                <c:forEach var="item" items="#{content.message}">
+                                                    <li>
+                                                        <h:link value="#{item.title}" style="display: block" styleClass="btn btn-primary ContentLink" outcome="#{content.showContent()}">
+                                                            <f:param name="ctgId" value="#{item.id}"/>
+                                                            <span class="badge">#{item.contentCollection.size()}</span>
+                                                        </h:link>
+                                                    </li>
+                                                </c:forEach>                                    
+                                            </ul>
+                                        </li>
+                                    </c:if>
+                                    <!-- Logo Center -->
                                     <li class="menu-item-logo">
                                         <h1> 
                                             <a href="index.html" rel="home">
@@ -57,16 +90,44 @@
                                             </a>
                                         </h1>
                                     </li>
-                                    <li id="menu-item-63" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-63 megamenu-first-element">
-                                        <a href="#link3" style="font-size: 18px">#{trans['index.menu.portfolio']}</a>
-                                    </li>
-
-                                    <li id="menu-item-62" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-62 megamenu-first-element">
-                                        <a href="#link2" style="font-size: 18px">#{trans['index.menu.feature']} </a>
-                                    </li>
-                                    <li id="menu-item-60" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-60 megamenu-first-element">
-                                        <a href="#link" style="font-size: 18px">#{trans['index.menu.why-us']} </a>
-                                    </li>
+                                    <!-- Check url is index page -->
+                                    <c:if test="#{(request.requestURI) eq (request.contextPath.concat('/'))}">
+                                        <li id="menu-item-63" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-63 megamenu-first-element">
+                                            <a href="#link3" style="font-size: 18px">#{trans['index.menu.portfolio']}</a>
+                                        </li>
+                                        <li id="menu-item-62" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-62 megamenu-first-element">
+                                            <a href="#link2" style="font-size: 18px">#{trans['index.menu.feature']} </a>
+                                        </li>
+                                        <li id="menu-item-60" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-60 megamenu-first-element">
+                                            <a href="#link" style="font-size: 18px">#{trans['index.menu.why-us']} </a>
+                                        </li>
+                                    </c:if>
+                                    <!-- Check url not index page -->
+                                    <c:if test="#{!((request.requestURI) eq (request.contextPath.concat('/')))}">
+                                        <li class="mbr-navbar__item testd">
+                                            <h:link  styleClass="mbr-buttons__link btn text-white" outcome="invoice.xhtml" >پیش فاکتور</h:link>
+                                        </li>
+                                        <li class="mbr-navbar__item testd">
+                                            <h:link styleClass="mbr-buttons__link btn text-white" outcome="PortFolio.xhtml" >نمونه کارها</h:link>
+                                        </li>
+                                        <li class="mbr-navbar__item testd">
+                                            <a class="mbr-buttons__link btn text-white" href="#"  >مقاله ها</a>
+                                            <ul class="dropdown-test-d">
+                                                <p style="padding-top: 10px;padding-right: 10px;color: white;">گروه بندی مقالات</p>
+                                                <hr/>
+                                                <c:forEach var="item" items="#{content.message}">
+                                                    <li>
+                                                        <h:link value="#{item.title}" style="display: block" styleClass="btn btn-primary ContentLink" outcome="#{content.showContent()}">
+                                                            <f:param name="ctgId" value="#{item.id}"/>
+                                                            <span class="badge">#{item.contentCollection.size()}</span>
+                                                        </h:link>
+                                                    </li>
+                                                </c:forEach>                                    
+                                            </ul>
+                                        </li>
+                                        <li class="mbr-navbar__item"><h:link styleClass="mbr-buttons__link btn text-white" outcome="seo.xhtml"><b>سئو</b></h:link></li>
+                                        <li class="mbr-navbar__item"><h:link styleClass="mbr-buttons__link btn text-white" outcome="index.xhtml" ><b>صفحه اصلی </b></h:link></li>
+                                    </c:if>
                                 </ul>
                             </nav>
                         </div>
